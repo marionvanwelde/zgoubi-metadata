@@ -1,0 +1,54 @@
+zgoubi_name: POLARMES
+params:
+- {name: IC, type: I, default: 0, doc: ""}
+- {name: IL, type: I, default: 0, doc: ""}
+- {name: BNORM, type: E, unit: "", default: 0, doc: ""}
+- {name: AN, type: E, unit: "", default: 0, doc: ""}
+- {name: RN, type: E, unit: "", default: 0, doc: ""}
+- {name: TITL, type: A80, default: "", doc: ""}
+- {name: IA, type: I, default: 0, doc: ""}
+- {name: JR, type: I, default: 0, doc: ""}
+- {name: FNAME, type: A80, default: "", doc: ""}
+- {name: ID, type: I, default: 0, doc: ""}
+- {name: A, type: E, unit: "", default: 0, doc: ""}
+- {name: B, type: E, unit: "", default: 0, doc: ""}
+- {name: C, type: E, unit: "", default: 0, doc: ""}
+- {name: IORDRE, type: I, default: 0, doc: ""}
+- {name: XPAS, type: E, unit: cm, default: 0, doc: ""}
+- {name: KPOS, type: I, default: 0, doc: ""}
+- {name: RE, type: E, unit: cm, default: 0, doc: ""}
+- {name: TE, type: E, unit: "", default: 0, doc: ""}
+- {name: RS, type: E, unit: cm, default: 0, doc: ""}
+- {name: TS, type: E, unit: "", default: 0, doc: ""}
+- {name: DP, type: E, unit: "", default: 0, doc: ""}
+template:
+- - IC
+  - IL
+- - BNORM
+  - AN
+  - RN
+- - TITL
+- - IA
+  - JR
+- - FNAME
+- - ID
+  - A
+  - B
+  - C
+- - IORDRE
+- - XPAS
+- - KPOS
+- - cond_section
+cond_section:
+- key: KPOS
+  equals: 2
+  template:
+  - - RE
+    - TE
+    - RS
+    - TS
+- key: KPOS
+  equals: 1
+  template:
+  - - DP
+doc: |

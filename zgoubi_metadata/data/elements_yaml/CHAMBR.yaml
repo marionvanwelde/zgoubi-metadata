@@ -1,0 +1,16 @@
+zgoubi_name: CHAMBR
+params:
+- {name: IA, type: I, default: 0, doc: ""}
+- {name: IFORM, type: I, default: 0, doc: ""}
+- {name: YL, type: E, unit: "", default: 0, doc: ""}
+- {name: ZL, type: E, unit: "", default: 0, doc: ""}
+- {name: YC, type: E, unit: "", default: 0, doc: ""}
+- {name: ZC, type: E, unit: "", default: 0, doc: ""}
+template:
+- - IA
+- - IFORM
+  - YL
+  - ZL
+  - YC
+  - ZC
+doc: |

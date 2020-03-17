@@ -1,0 +1,16 @@
+zgoubi_name: SCALING
+params:
+- {name: IOPT, type: I, default: 0, doc: ""}
+- {name: NFAM, type: I, default: 0, doc: ""}
+- {name: NAMEF, type: A80, default: "", doc: ""}
+- {name: NT, type: I, default: 0, doc: ""}
+- {name: SCL, type: E, unit: "", default: 0, doc: ""}
+- {name: TIM, type: I, default: 0, doc: ""}
+template:
+- - IOPT
+  - NFAM
+- - NAMEF
+- - NT
+- - SCL
+- - TIM
+doc: |

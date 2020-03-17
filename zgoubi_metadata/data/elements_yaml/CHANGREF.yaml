@@ -1,0 +1,10 @@
+zgoubi_name: CHANGREF
+params:
+- {name: XCE, type: E, unit: "", default: 0, doc: ""}
+- {name: YCE, type: E, unit: "", default: 0, doc: ""}
+- {name: ALE, type: E, unit: "", default: 0, doc: ""}
+template:
+- - XCE
+  - YCE
+  - ALE
+doc: |

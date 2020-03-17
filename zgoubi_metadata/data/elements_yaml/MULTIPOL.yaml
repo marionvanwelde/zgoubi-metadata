@@ -1,0 +1,132 @@
+zgoubi_name: MULTIPOL
+params:
+- {name: IL, type: I, default: 0, doc: ""}
+- {name: XL, type: E, unit: cm, default: 0, doc: ""}
+- {name: R_0, type: E, unit: "", default: 0, doc: ""}
+- {name: B_1, type: E, unit: "", default: 0, doc: ""}
+- {name: B_2, type: E, unit: "", default: 0, doc: ""}
+- {name: B_3, type: E, unit: "", default: 0, doc: ""}
+- {name: B_4, type: E, unit: "", default: 0, doc: ""}
+- {name: B_5, type: E, unit: "", default: 0, doc: ""}
+- {name: B_6, type: E, unit: "", default: 0, doc: ""}
+- {name: B_7, type: E, unit: "", default: 0, doc: ""}
+- {name: B_8, type: E, unit: "", default: 0, doc: ""}
+- {name: B_9, type: E, unit: "", default: 0, doc: ""}
+- {name: B_10, type: E, unit: "", default: 0, doc: ""}
+- {name: X_E, type: E, unit: "", default: 0, doc: ""}
+- {name: LAM_E, type: E, unit: "", default: 0, doc: ""}
+- {name: E_2, type: E, unit: "", default: 0, doc: ""}
+- {name: E_3, type: E, unit: "", default: 0, doc: ""}
+- {name: E_4, type: E, unit: "", default: 0, doc: ""}
+- {name: E_5, type: E, unit: "", default: 0, doc: ""}
+- {name: E_6, type: E, unit: "", default: 0, doc: ""}
+- {name: E_7, type: E, unit: "", default: 0, doc: ""}
+- {name: E_8, type: E, unit: "", default: 0, doc: ""}
+- {name: E_9, type: E, unit: "", default: 0, doc: ""}
+- {name: E_10, type: E, unit: "", default: 0, doc: ""}
+- {name: NCE, type: I, default: 0, doc: ""}
+- {name: C_0, type: E, unit: "", default: 0, doc: ""}
+- {name: C_1, type: E, unit: "", default: 0, doc: ""}
+- {name: C_2, type: E, unit: "", default: 0, doc: ""}
+- {name: C_3, type: E, unit: "", default: 0, doc: ""}
+- {name: C_4, type: E, unit: "", default: 0, doc: ""}
+- {name: C_5, type: E, unit: "", default: 0, doc: ""}
+- {name: X_S, type: E, unit: "", default: 0, doc: ""}
+- {name: LAM_S, type: E, unit: "", default: 0, doc: ""}
+- {name: S_2, type: E, unit: "", default: 0, doc: ""}
+- {name: S_3, type: E, unit: "", default: 0, doc: ""}
+- {name: S_4, type: E, unit: "", default: 0, doc: ""}
+- {name: S_5, type: E, unit: "", default: 0, doc: ""}
+- {name: S_6, type: E, unit: "", default: 0, doc: ""}
+- {name: S_7, type: E, unit: "", default: 0, doc: ""}
+- {name: S_8, type: E, unit: "", default: 0, doc: ""}
+- {name: S_9, type: E, unit: "", default: 0, doc: ""}
+- {name: S_10, type: E, unit: "", default: 0, doc: ""}
+- {name: NCS, type: I, default: 0, doc: ""}
+- {name: CS_0, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_1, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_2, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_3, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_4, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_5, type: E, unit: "", default: 0, doc: ""}
+- {name: R_1, type: E, unit: "", default: 0, doc: ""}
+- {name: R_2, type: E, unit: "", default: 0, doc: ""}
+- {name: R_3, type: E, unit: "", default: 0, doc: ""}
+- {name: R_4, type: E, unit: "", default: 0, doc: ""}
+- {name: R_5, type: E, unit: "", default: 0, doc: ""}
+- {name: R_6, type: E, unit: "", default: 0, doc: ""}
+- {name: R_7, type: E, unit: "", default: 0, doc: ""}
+- {name: R_8, type: E, unit: "", default: 0, doc: ""}
+- {name: R_9, type: E, unit: "", default: 0, doc: ""}
+- {name: R_10, type: E, unit: "", default: 0, doc: ""}
+- {name: XPAS, type: X, default: 0, doc: ""}
+- {name: KPOS, type: I, default: 0, doc: ""}
+- {name: XCE, type: E, unit: "", default: 0, doc: ""}
+- {name: YCE, type: E, unit: "", default: 0, doc: ""}
+- {name: ALE, type: E, unit: "", default: 0, doc: ""}
+template:
+- - IL
+- - XL
+  - R_0
+  - B_1
+  - B_2
+  - B_3
+  - B_4
+  - B_5
+  - B_6
+  - B_7
+  - B_8
+  - B_9
+  - B_10
+- - X_E
+  - LAM_E
+  - E_2
+  - E_3
+  - E_4
+  - E_5
+  - E_6
+  - E_7
+  - E_8
+  - E_9
+  - E_10
+- - NCE
+  - C_0
+  - C_1
+  - C_2
+  - C_3
+  - C_4
+  - C_5
+- - X_S
+  - LAM_S
+  - S_2
+  - S_3
+  - S_4
+  - S_5
+  - S_6
+  - S_7
+  - S_8
+  - S_9
+  - S_10
+- - NCS
+  - CS_0
+  - CS_1
+  - CS_2
+  - CS_3
+  - CS_4
+  - CS_5
+- - R_1
+  - R_2
+  - R_3
+  - R_4
+  - R_5
+  - R_6
+  - R_7
+  - R_8
+  - R_9
+  - R_10
+- - XPAS
+- - KPOS
+  - XCE
+  - YCE
+  - ALE
+doc: |

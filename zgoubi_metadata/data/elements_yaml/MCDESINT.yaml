@@ -1,0 +1,14 @@
+zgoubi_name: MCDESINT
+params:
+- {name: M2, type: E, unit: "", default: 0, doc: ""}
+- {name: M3, type: E, unit: "", default: 0, doc: ""}
+- {name: I1, type: I, default: 0, doc: ""}
+- {name: I2, type: I, default: 0, doc: ""}
+- {name: I3, type: I, default: 0, doc: ""}
+template:
+- - M2
+  - M3
+- - I1
+  - I2
+  - I3
+doc: |

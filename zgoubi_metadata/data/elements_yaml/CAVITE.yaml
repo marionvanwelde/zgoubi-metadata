@@ -1,0 +1,46 @@
+zgoubi_name: CAVITE
+params:
+- {name: IOPT, type: E, unit: "", default: 0, doc: ""}
+- {name: X, type: E, unit: "", default: 0, doc: ""}
+- {name: L, type: E, unit: "", default: 0, doc: ""}
+- {name: h, type: E, unit: "", default: 0, doc: ""}
+- {name: V, type: E, unit: "", default: 0, doc: ""}
+- {name: sig_s, type: E, unit: "", default: 0, doc: ""}
+template:
+- - IOPT
+- - cond_section
+cond_section:
+- key: IOPT
+  equals: 0
+  template:
+  - - X
+    - X
+- key: IOPT
+  equals: 1
+  template:
+  - - L
+    - h
+  - - V
+    - X
+- key: IOPT
+  equals: 2
+  template:
+  - - L
+    - h
+  - - V
+    - sig_s
+- key: IOPT
+  equals: 3
+  template:
+  - - X
+    - X
+  - - V
+    - sig_s
+- key: IOPT
+  equals: 7
+  template:
+  - - L
+    - h
+  - - V
+    - sig_s
+doc: |

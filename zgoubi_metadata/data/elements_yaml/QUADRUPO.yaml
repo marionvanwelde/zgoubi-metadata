@@ -1,0 +1,58 @@
+zgoubi_name: QUADRUPO
+params:
+- {name: IL, type: I, default: 0, doc: ""}
+- {name: XL, type: E, unit: cm, default: 0, doc: ""}
+- {name: R_0, type: E, unit: "", default: 0, doc: ""}
+- {name: B_0, type: E, unit: "", default: 0, doc: ""}
+- {name: X_E, type: E, unit: "", default: 0, doc: ""}
+- {name: LAM_E, type: E, unit: "", default: 0, doc: ""}
+- {name: NCE, type: I, default: 0, doc: ""}
+- {name: C_0, type: E, unit: "", default: 0, doc: ""}
+- {name: C_1, type: E, unit: "", default: 0, doc: ""}
+- {name: C_2, type: E, unit: "", default: 0, doc: ""}
+- {name: C_3, type: E, unit: "", default: 0, doc: ""}
+- {name: C_4, type: E, unit: "", default: 0, doc: ""}
+- {name: C_5, type: E, unit: "", default: 0, doc: ""}
+- {name: X_S, type: E, unit: "", default: 0, doc: ""}
+- {name: LAM_S, type: E, unit: "", default: 0, doc: ""}
+- {name: NCS, type: I, default: 0, doc: ""}
+- {name: CS_0, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_1, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_2, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_3, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_4, type: E, unit: "", default: 0, doc: ""}
+- {name: CS_5, type: E, unit: "", default: 0, doc: ""}
+- {name: XPAS, type: X, default: 0, doc: ""}
+- {name: KPOS, type: I, default: 0, doc: ""}
+- {name: XCE, type: E, unit: "", default: 0, doc: ""}
+- {name: YCE, type: E, unit: "", default: 0, doc: ""}
+- {name: ALE, type: E, unit: "", default: 0, doc: ""}
+template:
+- - IL
+- - XL
+  - R_0
+  - B_0
+- - X_E
+  - LAM_E
+- - NCE
+  - C_0
+  - C_1
+  - C_2
+  - C_3
+  - C_4
+  - C_5
+- - X_S
+  - LAM_S
+- - NCS
+  - CS_0
+  - CS_1
+  - CS_2
+  - CS_3
+  - CS_4
+  - CS_5
+- - XPAS
+- - KPOS
+  - XCE
+  - YCE
+  - ALE
+doc: |

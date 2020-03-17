@@ -1,0 +1,10 @@
+zgoubi_name: SPNSTORE
+params:
+- {name: FNAME, type: A80, default: "", doc: ""}
+- {name: LABELS, type: A1000, default: "", doc: ""}
+- {name: IP, type: I, default: 0, doc: ""}
+template:
+- - FNAME
+  - LABELS
+- - IP
+doc: |

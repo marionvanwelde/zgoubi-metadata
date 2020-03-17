@@ -1,0 +1,137 @@
+zgoubi_name: FFAG
+params:
+- {name: IL, type: I, default: 0, doc: ""}
+- {name: N, type: I, default: 0, doc: ""}
+- {name: AT, type: E, unit: "", default: 0, doc: ""}
+- {name: RM, type: E, unit: cm, default: 0, doc: ""}
+- {name: KIRD, type: I, default: 0, doc: ""}
+- {name: RESOL, type: I, default: 0, doc: ""}
+- {name: XPAS, type: E, unit: cm, default: 0, doc: ""}
+- {name: KPOS, type: I, default: 0, doc: ""}
+- {name: RE, type: E, unit: cm, default: 0, doc: ""}
+- {name: TE, type: E, unit: "", default: 0, doc: ""}
+- {name: RS, type: E, unit: cm, default: 0, doc: ""}
+- {name: TS, type: E, unit: "", default: 0, doc: ""}
+template:
+- - IL
+- - N
+  - AT
+  - RM
+- - subelement1
+- - KIRD
+  - RESOL
+- - XPAS
+- - KPOS
+  - RE
+  - TE
+  - RS
+  - TS
+subelements:
+- name: subelement1
+  params:
+  - {name: ACN, type: E, unit: "", default: 0, doc: ""}
+  - {name: DELTA_RM, type: E, unit: "", default: 0, doc: ""}
+  - {name: BZ_0, type: E, unit: "", default: 0, doc: ""}
+  - {name: K, type: E, unit: "", default: 0, doc: ""}
+  - {name: G0_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: KAPPA_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: NCE, type: I, default: 0, doc: ""}
+  - {name: CE_0, type: E, unit: "", default: 0, doc: ""}
+  - {name: CE_1, type: E, unit: "", default: 0, doc: ""}
+  - {name: CE_2, type: E, unit: "", default: 0, doc: ""}
+  - {name: CE_3, type: E, unit: "", default: 0, doc: ""}
+  - {name: CE_4, type: E, unit: "", default: 0, doc: ""}
+  - {name: CE_5, type: E, unit: "", default: 0, doc: ""}
+  - {name: SHIFT_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: OMEGA_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: THETA_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: R1_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: U1_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: U2_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: R2_E, type: E, unit: "", default: 0, doc: ""}
+  - {name: G0_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: KAPPA_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: NCS, type: I, default: 0, doc: ""}
+  - {name: CS_0, type: E, unit: "", default: 0, doc: ""}
+  - {name: CS_1, type: E, unit: "", default: 0, doc: ""}
+  - {name: CS_2, type: E, unit: "", default: 0, doc: ""}
+  - {name: CS_3, type: E, unit: "", default: 0, doc: ""}
+  - {name: CS_4, type: E, unit: "", default: 0, doc: ""}
+  - {name: CS_5, type: E, unit: "", default: 0, doc: ""}
+  - {name: SHIFT_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: OMEGA_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: THETA_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: R1_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: U1_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: U2_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: R2_S, type: E, unit: "", default: 0, doc: ""}
+  - {name: G0_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: KAPPA_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: NCL, type: I, default: 0, doc: ""}
+  - {name: CL_0, type: E, unit: "", default: 0, doc: ""}
+  - {name: CL_1, type: E, unit: "", default: 0, doc: ""}
+  - {name: CL_2, type: E, unit: "", default: 0, doc: ""}
+  - {name: CL_3, type: E, unit: "", default: 0, doc: ""}
+  - {name: CL_4, type: E, unit: "", default: 0, doc: ""}
+  - {name: CL_5, type: E, unit: "", default: 0, doc: ""}
+  - {name: SHIFT_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: OMEGA_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: THETA_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: R1_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: U1_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: U2_L, type: E, unit: "", default: 0, doc: ""}
+  - {name: R2_L, type: E, unit: "", default: 0, doc: ""}
+  template:
+  - - ACN
+    - DELTA_RM
+    - BZ_0
+    - K
+  - - G0_E
+    - KAPPA_E
+  - - NCE
+    - CE_0
+    - CE_1
+    - CE_2
+    - CE_3
+    - CE_4
+    - CE_5
+    - SHIFT_E
+  - - OMEGA_E
+    - THETA_E
+    - R1_E
+    - U1_E
+    - U2_E
+    - R2_E
+  - - G0_S
+    - KAPPA_S
+  - - NCS
+    - CS_0
+    - CS_1
+    - CS_2
+    - CS_3
+    - CS_4
+    - CS_5
+    - SHIFT_S
+  - - OMEGA_S
+    - THETA_S
+    - R1_S
+    - U1_S
+    - U2_S
+    - R2_S
+  - - G0_L
+    - KAPPA_L
+  - - NCL
+    - CL_0
+    - CL_1
+    - CL_2
+    - CL_3
+    - CL_4
+    - CL_5
+    - SHIFT_L
+  - - OMEGA_L
+    - THETA_L
+    - R1_L
+    - U1_L
+    - U2_L
+    - R2_L
+doc: |

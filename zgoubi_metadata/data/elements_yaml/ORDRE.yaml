@@ -1,0 +1,6 @@
+zgoubi_name: ORDRE
+params:
+- {name: IO, type: I, default: 0, doc: ""}
+template:
+- - IO
+doc: |
