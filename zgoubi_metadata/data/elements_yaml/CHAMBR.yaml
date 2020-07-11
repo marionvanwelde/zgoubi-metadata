@@ -1,16 +1,41 @@
 zgoubi_name: CHAMBR
 params:
-- {name: IA, type: I, default: 0, doc: ""}
-- {name: IFORM, type: I, default: 0, doc: ""}
-- {name: YL, type: E, unit: "", default: 0, doc: ""}
-- {name: ZL, type: E, unit: "", default: 0, doc: ""}
-- {name: YC, type: E, unit: "", default: 0, doc: ""}
-- {name: ZC, type: E, unit: "", default: 0, doc: ""}
+- IA: {type: I, default: 0, doc: "0 (element inactive), 1 ((re)definition of the aperture), 2 (stop testing and reset counters, print information on stopped particles"}
+- IFORM: {type: I, default: 0, doc: "1 (rectangular aperture), 2 (elliptical aperture)"}
+- J: {type: I, default, 0, doc: "0 (default) or 1"}
+- C1: {type: E, unit: "cm", default: 100, doc: "If J=0, Y opening, if J=1, inner Y opening"}
+- C2: {type: E, unit: "cm", default: 100, doc: "If J=0, Z opening, if J=1, outer Y opening"}
+- C3: {type: E, unit: "cm", default: 0, doc: "If J=0, Y center, if J=1, inner Z opening"}
+- C4: {type: E, unit: "cm", default: 0, doc: "If J=0, Z center, if J=1, outer Z opening"}
 template:
 - - IA
-- - IFORM
+- - [IFORM, J]
   - YL
   - ZL
   - YC
   - ZC
-doc: |
+doc: Long transverse aperture limitation.
+
+  .. rubric:: Zgoubi manual description
+
+  CHAMBR causes the identification, counting and stopping of particles that reach the transverse limits of the vacuum
+  chamber. The chamber can be either rectangular (IFORM = 1) or elliptic (IFORM = 2). The chamber is centered at YC,
+  ZC and has transverse dimensions ±Y L and ±ZL such that any particle will be stopped if its coordinates Y, Z
+  satisfy.
+
+  The conditions introduced with CHAMBR are valid along the optical structure until the next occurrence of the
+  keyword CHAMBR. Then, if IL = 1 the aperture is possibly modified by introducing new values of YC, ZC, Y L and ZL,
+  or, if IL = 2 the chamber ends and information is printed concerning those particles that have been stopped.
+
+  The testing is done in optical elements at each integration step, between the EFB’s. For instance, in QUADRUPO
+  there will be no testing from −XE to 0 and from XL to XL + XS, but only from 0 to XL ; in DIPOLE, there is no
+  testing as long as the ENTRANCE EFB is not reached, and testing is stopped as soon as the EXIT or LATERAL EFB’s
+  are passed.
+
+  In optical elements defined in polar coordinates, Y stands for the radial coordinate (e.g., DIPOLE, see Figs. 3C,
+  p. 27, and 11, p. 82). Thus, centering CHAMBR at Y C = RM simulates a chamber curved with radius RM, and having a
+  radial acceptance RM ± YL. In DRIFT, the testing is done at the beginning and at the end, and only for positive
+  drifts. There is no testing in CHANGREF.
+
+  When a particle is stopped, its index IEX (see OBJET and section 4.6.10) is set to the value -4, and its actual
+  path length is stored in the array SORT for possible further use.
