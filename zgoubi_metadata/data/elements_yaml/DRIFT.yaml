@@ -1,6 +1,6 @@
 zgoubi_name: DRIFT
 params:
-- {name: XL, type: E, unit: cm, default: 0, doc: "Length of drift"}
+- XL: {type: E, unit: 'cm', default: 0, doc: "Length of drift"}
 template:
 - - XL
 doc: |

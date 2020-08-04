@@ -1,20 +1,21 @@
 zgoubi_name: CHAMBR
 params:
-- IA: {type: I, default: 0, doc: "0 (element inactive), 1 ((re)definition of the aperture), 2 (stop testing and reset counters, print information on stopped particles"}
-- IFORM: {type: I, default: 0, doc: "1 (rectangular aperture), 2 (elliptical aperture)"}
-- J: {type: I, default, 0, doc: "0 (default) or 1"}
-- C1: {type: E, unit: "cm", default: 100, doc: "If J=0, Y opening, if J=1, inner Y opening"}
-- C2: {type: E, unit: "cm", default: 100, doc: "If J=0, Z opening, if J=1, outer Y opening"}
-- C3: {type: E, unit: "cm", default: 0, doc: "If J=0, Y center, if J=1, inner Z opening"}
-- C4: {type: E, unit: "cm", default: 0, doc: "If J=0, Z center, if J=1, outer Z opening"}
+  IA: {type: I, default: 0, doc: "0 (element inactive), 1 ((re)definition of the aperture), 2 (stop testing and reset counters, print information on stopped particles"}
+  IFORM: {type: I, default: 0, doc: "1 (rectangular aperture), 2 (elliptical aperture)"}
+  J: {type: I, default: 0, doc: "0 (default) or 1"}
+  C1: {type: E, unit: "cm", default: 100, doc: "If J=0, Y opening, if J=1, inner Y opening"}
+  C2: {type: E, unit: "cm", default: 100, doc: "If J=0, Z opening, if J=1, outer Y opening"}
+  C3: {type: E, unit: "cm", default: 0, doc: "If J=0, Y center, if J=1, inner Z opening"}
+  C4: {type: E, unit: "cm", default: 0, doc: "If J=0, Z center, if J=1, outer Z opening"}
 template:
 - - IA
 - - [IFORM, J]
-  - YL
-  - ZL
-  - YC
-  - ZC
-doc: Long transverse aperture limitation.
+  - C1
+  - C2
+  - C3
+  - C4
+doc: |
+  Long transverse aperture limitation.
 
   .. rubric:: Zgoubi manual description
 

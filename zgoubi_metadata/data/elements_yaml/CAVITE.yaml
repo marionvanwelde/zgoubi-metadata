@@ -1,11 +1,11 @@
 zgoubi_name: CAVITE
 params:
-- {name: IOPT, type: E, unit: "", default: 0, doc: ""}
-- {name: X, type: E, unit: "", default: 0, doc: ""}
-- {name: L, type: E, unit: "", default: 0, doc: ""}
-- {name: h, type: E, unit: "", default: 0, doc: ""}
-- {name: V, type: E, unit: "", default: 0, doc: ""}
-- {name: sig_s, type: E, unit: "", default: 0, doc: ""}
+- IOPT: {type: E, unit: "", default: 0, doc: ""}
+- X: {type: E, unit: "", default: 0, doc: ""}
+- L: {type: E, unit: "", default: 0, doc: ""}
+- H: {type: E, unit: "", default: 0, doc: ""}
+- V: {type: E, unit: "", default: 0, doc: ""}
+- sig_s: {type: E, unit: "", default: 0, doc: ""}
 template:
 - - IOPT
 - - cond_section
