@@ -1,70 +1,70 @@
 zgoubi_name: DIPOLE
 params:
-- {name: IL, type: I, default: 0, doc: ""}
-- {name: AT, type: E, unit: "", default: 0, doc: ""}
-- {name: RM, type: E, unit: cm, default: 0, doc: ""}
-- {name: ACN, type: E, unit: "", default: 0, doc: ""}
-- {name: B_0, type: E, unit: "", default: 0, doc: ""}
-- {name: N, type: E, unit: "", default: 0, doc: ""}
-- {name: B, type: E, unit: "", default: 0, doc: ""}
-- {name: G, type: E, unit: "", default: 0, doc: ""}
-- {name: LAM_E, type: E, unit: "", default: 0, doc: ""}
-- {name: XI_E, type: E, unit: "", default: 0, doc: ""}
-- {name: NCE, type: I, default: 0, doc: ""}
-- {name: CE_0, type: E, unit: "", default: 0, doc: ""}
-- {name: CE_1, type: E, unit: "", default: 0, doc: ""}
-- {name: CE_2, type: E, unit: "", default: 0, doc: ""}
-- {name: CE_3, type: E, unit: "", default: 0, doc: ""}
-- {name: CE_4, type: E, unit: "", default: 0, doc: ""}
-- {name: CE_5, type: E, unit: "", default: 0, doc: ""}
-- {name: SHIFT_E, type: E, unit: "", default: 0, doc: ""}
-- {name: OMEGA_E, type: E, unit: "", default: 0, doc: ""}
-- {name: THETA_E, type: E, unit: "", default: 0, doc: ""}
-- {name: R1_E, type: E, unit: "", default: 0, doc: ""}
-- {name: U1_E, type: E, unit: "", default: 0, doc: ""}
-- {name: U2_E, type: E, unit: "", default: 0, doc: ""}
-- {name: R2_E, type: E, unit: "", default: 0, doc: ""}
-- {name: LAM_S, type: E, unit: "", default: 0, doc: ""}
-- {name: XI_S, type: E, unit: "", default: 0, doc: ""}
-- {name: NCS, type: I, default: 0, doc: ""}
-- {name: CS_0, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_1, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_2, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_3, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_4, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_5, type: E, unit: "", default: 0, doc: ""}
-- {name: SHIFT_S, type: E, unit: "", default: 0, doc: ""}
-- {name: OMEGA_S, type: E, unit: "", default: 0, doc: ""}
-- {name: THETA_S, type: E, unit: "", default: 0, doc: ""}
-- {name: R1_S, type: E, unit: "", default: 0, doc: ""}
-- {name: U1_S, type: E, unit: "", default: 0, doc: ""}
-- {name: U2_S, type: E, unit: "", default: 0, doc: ""}
-- {name: R2_S, type: E, unit: "", default: 0, doc: ""}
-- {name: LAM_L, type: E, unit: "", default: 0, doc: ""}
-- {name: XI_L, type: E, unit: "", default: 0, doc: ""}
-- {name: NCL, type: I, default: 0, doc: ""}
-- {name: CL_0, type: E, unit: "", default: 0, doc: ""}
-- {name: CL_1, type: E, unit: "", default: 0, doc: ""}
-- {name: CL_2, type: E, unit: "", default: 0, doc: ""}
-- {name: CL_3, type: E, unit: "", default: 0, doc: ""}
-- {name: CL_4, type: E, unit: "", default: 0, doc: ""}
-- {name: CL_5, type: E, unit: "", default: 0, doc: ""}
-- {name: SHIFT_L, type: E, unit: "", default: 0, doc: ""}
-- {name: OMEGA_L, type: E, unit: "", default: 0, doc: ""}
-- {name: THETA_L, type: E, unit: "", default: 0, doc: ""}
-- {name: R1_L, type: E, unit: "", default: 0, doc: ""}
-- {name: U1_L, type: E, unit: "", default: 0, doc: ""}
-- {name: U2_L, type: E, unit: "", default: 0, doc: ""}
-- {name: R2_L, type: E, unit: "", default: 0, doc: ""}
-- {name: R3, type: E, unit: "", default: 0, doc: ""}
-- {name: IORDRE, type: I, default: 0, doc: ""}
-- {name: Resol, type: E, unit: "", default: 0, doc: ""}
-- {name: XPAS, type: E, unit: cm, default: 0, doc: ""}
-- {name: KPOS, type: I, default: 0, doc: ""}
-- {name: RE, type: E, unit: cm, default: 0, doc: ""}
-- {name: TE, type: E, unit: "", default: 0, doc: ""}
-- {name: RS, type: E, unit: cm, default: 0, doc: ""}
-- {name: TS, type: E, unit: "", default: 0, doc: ""}
+  IL: {type: I, default: 0, doc: ""}
+  AT: {type: E, unit: "", default: 0, doc: ""}
+  RM: {type: E, unit: cm, default: 0, doc: ""}
+  ACN: {type: E, unit: "", default: 0, doc: ""}
+  B_0: {type: E, unit: "", default: 0, doc: ""}
+  N: {type: E, unit: "", default: 0, doc: ""}
+  B: {type: E, unit: "", default: 0, doc: ""}
+  G: {type: E, unit: "", default: 0, doc: ""}
+  LAM_E: {type: E, unit: "", default: 0, doc: ""}
+  XI_E: {type: E, unit: "", default: 0, doc: ""}
+  NCE: {type: I, default: 0, doc: ""}
+  CE_0: {type: E, unit: "", default: 0, doc: ""}
+  CE_1: {type: E, unit: "", default: 0, doc: ""}
+  CE_2: {type: E, unit: "", default: 0, doc: ""}
+  CE_3: {type: E, unit: "", default: 0, doc: ""}
+  CE_4: {type: E, unit: "", default: 0, doc: ""}
+  CE_5: {type: E, unit: "", default: 0, doc: ""}
+  SHIFT_E: {type: E, unit: "", default: 0, doc: ""}
+  OMEGA_E: {type: E, unit: "", default: 0, doc: ""}
+  THETA_E: {type: E, unit: "", default: 0, doc: ""}
+  R1_E: {type: E, unit: "", default: 0, doc: ""}
+  U1_E: {type: E, unit: "", default: 0, doc: ""}
+  U2_E: {type: E, unit: "", default: 0, doc: ""}
+  R2_E: {type: E, unit: "", default: 0, doc: ""}
+  LAM_S: {type: E, unit: "", default: 0, doc: ""}
+  XI_S: {type: E, unit: "", default: 0, doc: ""}
+  NCS: {type: I, default: 0, doc: ""}
+  CS_0: {type: E, unit: "", default: 0, doc: ""}
+  CS_1: {type: E, unit: "", default: 0, doc: ""}
+  CS_2: {type: E, unit: "", default: 0, doc: ""}
+  CS_3: {type: E, unit: "", default: 0, doc: ""}
+  CS_4: {type: E, unit: "", default: 0, doc: ""}
+  CS_5: {type: E, unit: "", default: 0, doc: ""}
+  SHIFT_S: {type: E, unit: "", default: 0, doc: ""}
+  OMEGA_S: {type: E, unit: "", default: 0, doc: ""}
+  THETA_S: {type: E, unit: "", default: 0, doc: ""}
+  R1_S: {type: E, unit: "", default: 0, doc: ""}
+  U1_S: {type: E, unit: "", default: 0, doc: ""}
+  U2_S: {type: E, unit: "", default: 0, doc: ""}
+  R2_S: {type: E, unit: "", default: 0, doc: ""}
+  LAM_L: {type: E, unit: "", default: 0, doc: ""}
+  XI_L: {type: E, unit: "", default: 0, doc: ""}
+  NCL: {type: I, default: 0, doc: ""}
+  CL_0: {type: E, unit: "", default: 0, doc: ""}
+  CL_1: {type: E, unit: "", default: 0, doc: ""}
+  CL_2: {type: E, unit: "", default: 0, doc: ""}
+  CL_3: {type: E, unit: "", default: 0, doc: ""}
+  CL_4: {type: E, unit: "", default: 0, doc: ""}
+  CL_5: {type: E, unit: "", default: 0, doc: ""}
+  SHIFT_L: {type: E, unit: "", default: 0, doc: ""}
+  OMEGA_L: {type: E, unit: "", default: 0, doc: ""}
+  THETA_L: {type: E, unit: "", default: 0, doc: ""}
+  R1_L: {type: E, unit: "", default: 0, doc: ""}
+  U1_L: {type: E, unit: "", default: 0, doc: ""}
+  U2_L: {type: E, unit: "", default: 0, doc: ""}
+  R2_L: {type: E, unit: "", default: 0, doc: ""}
+  R3: {type: E, unit: "", default: 0, doc: ""}
+  IORDRE: {type: I, default: 0, doc: ""}
+  Resol: {type: E, unit: "", default: 0, doc: ""}
+  XPAS: {type: E, unit: cm, default: 0, doc: ""}
+  KPOS: {type: I, default: 0, doc: ""}
+  RE: {type: E, unit: cm, default: 0, doc: ""}
+  TE: {type: E, unit: "", default: 0, doc: ""}
+  RS: {type: E, unit: cm, default: 0, doc: ""}
+  TS: {type: E, unit: "", default: 0, doc: ""}
 template:
 - - IL
 - - AT
