@@ -1,8 +1,135 @@
 zgoubi_name: MATRIX
 params:
-- {name: IORD, type: I, default: 0, doc: ""}
-- {name: IFOC, type: I, default: 0, doc: ""}
+- IORD: {type: I, default: 0, doc: ""}
+- IFOC: {type: I, default: 0, doc: ""}
+
 template:
 - - IORD
   - IFOC
 doc: |
+
+  Calculation of transfer coefficients, periodic parameters
+
+  .. rubric:: Zgoubi manual description
+
+  ``MATRIX`` causes the calculation of the transfer coefficients through the optical structure, from the ``OBJET`` down to the location
+  where ``MATRIX`` is introduced in the structure, or, upon option, down to the horizontal focus closest to that location. In this last
+  case the position of the focus is calculated automatically in the same way as the position of the waist in ``IMAGE``. Depending
+  on ``OBJET`` and on option ``IFOC``, ``MATRIX`` also delivers the beam matrix and betatron phase advances or (case of a periodic
+  structure) periodic beam matrix and tunes, chromaticities and other global parameters.
+  Depending on the value of option ``IORD``, different procedures follow
+
+  * If ``IORD`` = 0, ``MATRIX`` is inhibited (equivalent to ``FAISCEAU``, whatever ``IFOC``).
+
+  * If ``IORD`` = 1, using ``OBJET``, ``KOBJ`` = 5[.N], the first order transfer matrix [Rij] is calculated, from a third order approximation
+    of the coordinates. For instance
+
+    .. math::
+
+      \begin{align}
+        Y^+ &= (\frac{Y}{T_0}) T_0 + (\frac{Y}{T_0^2}) T_0^2 +  (\frac{Y}{T_0^3}) T_0^3 \\
+        Y^- &= -(\frac{Y}{T_0}) T_0 + (\frac{Y}{T_0^2}) T_0^2 -  (\frac{Y}{T_0^3}) T_0^3 \\
+      \end{align}
+
+    will yield, neglecting third order terms,
+
+    .. math::
+
+      R_{11} = (\frac{Y}{T_0}) = \frac{Y^+ - Y^-}{2T_0}
+
+    This is repeated N times if ``OBJET``, ``KOBJ`` = 5.N (2 ≤ N ≤ 99) is used, so delivering first order data for each 11-particle
+    set, with for each set the reference trajectory being trajectory number 1+(N-1)x11 in the Nx11-particle list (keyword
+    ``FAISCEAU`` will print out that list in zgoubi.res, if desired).
+    If ``OBJET``, ``KOBJ`` = 5.1 is used instead (hence introducing initial optical function values, :math:`\alpha_{Y, Z}`,
+    :math:`\alpha_{Y, Z}`, :math:`\D_{Y, Z}`, :math:`\D'_{Y, Z}`), then, using the Rij above,
+     ``MATRIX`` will transport the optical functions and phase advances :math:`\phi_{Y}` , :math:`\phi_{Z}`, following
+
+     .. math::
+
+       \begin{pmatrix}
+       \beta \\
+       \alpha \\
+       \gamma
+       \end{pmatrix}_{at\,MATRIX}
+       =
+       \begin{pmatrix}
+       R_{11}^2 & -2R_{11}R_{12} & R_{12}^2 \\
+       -R_{11}R_{21} & R_{12}R_{21} & R_{11}R_{12}  \\
+       R_{21}^2 & -2R_{21}R_{22} & R_{22}^2
+       \end{pmatrix}_{at\,MATRIX}
+       \begin{pmatrix}
+       \beta \\
+       \alpha \\
+       \gamma
+       \end{pmatrix}_{at\,OBJET}
+
+    .. math::
+
+      \begin{align}
+      \Delta \phi_Y &= Atan \frac{R_{12}}{(R_{11} \beta_{Y, objet} - R_{12} \alpha_{Y, objet})} \\
+      \Delta \phi_Z &= Atan \frac{R_{34}}{(R_{33} \beta_{Z, objet} - R_{34} \alpha_{Z, objet})} \\
+      \end{align}
+
+    .. math::
+
+      \phi_{Y, Z} \rightarrow \phi_{Y, Z} + 2\pi \text{ if } \phi_{Y, Z} < 0, \text{ given [0, $\pi$] Atan determination}
+
+    and print these out.
+
+  * If ``IORD`` = 2, using ``OBJET``, ``KOBJ`` = 6, fifth order Taylor expansions are used for the calculation of the first order transfer
+    matrix [Rij ] and of the second order matrix [Tijk]. Other higher order coefficients are also calculated.
+
+  * If ``IORD`` = 3, using ``OBJET``, ``KOBJ`` = 6.1, transport coefficients up to 3rd order are computed using 102 rays (after routines
+    developed for ``RAYTRACE`` [65, 66]).
+
+  An automatic generation of an appropriate object for the use ofMATRIX can be obtained using the procedureOBJET (pages 59, 282),
+  as follows
+
+  * if ``IORD`` = 1, use ``OBJET``(``KOBJ`` = 5[.N, 2 ≤ N ≤ 99]), that generates up to 99*11 initial coordinates. In this case, up to 99
+    matrices may be calculated, each one wrt. to the reference trajectory of concern (trajectory number 1, 12, 23, ... 1+(N-1)x11
+    respectively).
+
+  * if ``IORD`` = 2, use ``OBJET``(``KOBJ`` = 6) that generates 61 initial coordinates.
+
+  * if ``IORD`` = 3, use ``OBJET``(``KOBJ`` = 6.1) that generates 102 initial coordinates
+
+  The next option, IFOC, acts as follows
+
+  * If ``IFOC`` = 0, the transfer coefficients are calculated at the location ofMATRIX, and with respect to the reference trajectory.
+    For instance, :math:`Y^+` and :math:`T^+` above are defined for particle number i as :math:`Y^+` = :math:`Y^+(i) - Y(Ref)`,
+    and :math:`T^+` = :math:`T^+(i) - T(Ref)`.
+
+  * If ``IFOC`` = 1, the transfer coefficients are calculated at the horizontal focus closest to ``MATRIX`` (determined automatically),
+    while the reference direction is that of the reference particle. For instance, :math:`Y^+` is defined for particle number i as
+    :math:`Y^+ = Y^+(i) − Y_{focus}`, while :math:`T^+` is defined as :math:`T^+` = :math:`T^+(i) - T(Ref)`).
+
+    * If ``IFOC`` = 2, no change of reference frame is performed : the coordinates refer to the current frame. Namely, :math:`Y^+ = Y^+(i)`,
+      :math:`T^+ = T^+(i)`, etc.
+
+  ** Periodic Structures **
+
+  * If ``IFOC`` = 10 +NPeriod, then, from the 1-turn transport matrix as obtained in the way described above, ``MATRIX`` calculates
+  periodic parameters characteristic of the structure such as optical functions and tune numbers, assuming that it is NPeriod -
+  periodic. In non-coupled hypothesis, this is performed by a simple identification
+
+  .. math::
+
+    [T_{ij}] = I cos \mu + J sin \mu
+
+  In the coupled hypothesis, the computation uses the Edwards-Teng method [37].
+  Matrix computation is repeated N times if ``OBJET``, ``KOBJ`` = 5.N (2 ≤ N ≤ 99) is used, so delivering first order data for
+  each of the N 11-particle sets.
+
+  If ``IORD`` = 2 (using ``OBJET``, ``KOBJ`` = 6) additional periodic parameters are computed such as chromaticities, beta-function
+  momentum dependence, etc.
+
+  ``PRINT`` : Addition of ``PRINT`` following ``IORD``, ``IFOC`` [, coupled] will cause stacking of ``MATRIX`` output data into
+  zgoubi.MATRIX.out file (convenient for use with e.g. gnuplot type of data treatment software).
+  Addition of “coupled ” next to ``IORD``, ``IFOC`` [, ``PRINT``], in the case of periodic beam matrix
+  request (i.e., ``IFOC`` = 10 + NPeriod ) will cause use of coupled formalism.
+
+  :underline:`About the source code`:
+
+  The program matric computes the transport matrix coefficients, it is called by zgoubi when the keyword ``MATRIX`` is met
+  along the zgoubi.dat sequence. matimp, called by matric, ensures the print out of the matrix (and possibly the beam matrix)
+  in zgoubi.res, and upon ``PRINT`` option in zgoubi.MATRIX.out as well.
