@@ -1,14 +1,14 @@
 zgoubi_name: SOLENOID
 params:
-  IL: {type: I, default: 0, doc: ""}
+  IL: {type: I, unit: "", default: 0, doc: ""}
   XL: {type: E, unit: "cm", default: 0, doc: "Length of the element"}
   R0: {type: E, unit: "cm", default: 1, doc: "Radius of the element"}
   B0: {type: E, unit: "kilogauss", default: 0, doc: "Asymptotic field"}
-  MODL: {type: I, default: 1, doc: "r-extrapolation from on-axis field model"}
+  MODL: {type: I, unit: "", default: 1, doc: "r-extrapolation from on-axis field model"}
   X_E: {type: E, unit: "cm", default: 0, doc: "Entrance integration zone"}
   X_S: {type: E, unit: "cm", default: 0, doc: "Exit integration zone"}
   XPAS: {type: E, unit: 'mm', default: 1, doc: "Integration step"}
-  KPOS: {type: I, default: 0, doc: ""}
+  KPOS: {type: I, unit: "", default: 0, doc: ""}
   XCE: {type: E, unit: "", default: 0, doc: ""}
   YCE: {type: E, unit: "", default: 0, doc: ""}
   ALE: {type: E, unit: "", default: 0, doc: ""}

@@ -1,29 +1,29 @@
 zgoubi_name: SEXTUPOL
 params:
-  IL: {type: I, default: 0, doc: ""}
+  IL: {type: I, unit: "", default: 0, doc: ""}
   XL: {type: E, unit: "cm", default: 0, doc: "Length of the element"}
   R0: {type: E, unit: "cm", default: 1, doc: "Radius of the element"}
   B0: {type: E, unit: "kilogauss", default: 0, doc: "Field at pole tip of the element"}
   X_E: {type: E, unit: "cm", default: 0, doc: "Entrance face integration zone"}
   LAM_E: {type: E, unit: "cm", default: 0, doc: "Entrance face fringe field extent"}
-  NCE: {type: I, default: 0, doc: "UNUSED"}
-  CE_0: {type: E, default: 0, doc: "Fringe field coefficient C0"}
-  CE_1: {type: E, default: 1, doc: "Fringe field coefficient C1"}
-  CE_2: {type: E, default: 0, doc: "Fringe field coefficient C2"}
-  CE_3: {type: E, default: 0, doc: "Fringe field coefficient C3"}
-  CE_4: {type: E, default: 0, doc: "Fringe field coefficient C4"}
-  CE_5: {type: E, default: 0, doc: "Fringe field coefficient C5"}
-  X_S: {type: E, unit: "cm", default: 0, doc: "Exit face integration zone"}
+  NCE: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  CE_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  CE_1: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  CE_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  CE_3: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  CE_4: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  CE_5: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  X_S: {type: E, unit: "", unit: "cm", default: 0, doc: "Exit face integration zone"}
   LAM_S: {type: E, unit: "cm", default: 0, doc: "Exit face fringe field extent"}
-  NCS: {type: I, default: 0, doc: "UNUSED"}
-  CS_0: {type: E, default: 0, doc: "Fringe field coefficient C0"}
-  CS_1: {type: E, default: 1, doc: "Fringe field coefficient C1"}
-  CS_2: {type: E, default: 0, doc: "Fringe field coefficient C2"}
-  CS_3: {type: E, default: 0, doc: "Fringe field coefficient C3"}
-  CS_4: {type: E, default: 0, doc: "Fringe field coefficient C4"}
-  CS_5: {type: E, default: 0, doc: "Fringe field coefficient C5"}
-  XPAS: {type: E, unit: 'mm', default: 1, doc: "Integration step"}
-  KPOS: {type: I, default: 0, doc: ""}
+  NCS: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  CS_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  CS_1: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  CS_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  CS_3: {type: E, unit: "", unit: "", unit: "", unit: "", unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  CS_4: {type: E, unit: "", unit: "", unit: "", unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  CS_5: {type: E, unit: "", unit: "", unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  XPAS: {type: E, unit: "", unit: "", unit: 'mm', default: 1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 0, doc: ""}
   XCE: {type: E, unit: "", default: 0, doc: ""}
   YCE: {type: E, unit: "", default: 0, doc: ""}
   ALE: {type: E, unit: "", default: 0, doc: ""}
