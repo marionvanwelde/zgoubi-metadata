@@ -1,3 +1,9 @@
 zgoubi_name: MARKER
 params:
 doc: |
+  Marker
+
+  .. rubric:: Zgoubi manual description
+
+  Just a marker.
+  No data ’.plt’ as a second LABEL will cause storage of current coordinates into zgoubi.plt

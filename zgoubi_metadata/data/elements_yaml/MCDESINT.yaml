@@ -1,14 +1,104 @@
 zgoubi_name: MCDESINT
+
 params:
-- {name: M2, type: E, unit: "", default: 0, doc: ""}
-- {name: M3, type: E, unit: "", default: 0, doc: ""}
-- {name: I1, type: I, default: 0, doc: ""}
-- {name: I2, type: I, default: 0, doc: ""}
-- {name: I3, type: I, default: 0, doc: ""}
+- INFO: {type: A, unit: "", default: 0, doc: "Switch"}
+- M2: {type: E, unit: "MeV_c2", default: 0, doc: "Masses of the two decay products"}
+- M3: {type: E, unit: "MeV_c2", default: 0, doc: "Masses of the two decay products"}
+- TAU2: {type: E, unit:"s", default: 0, doc: "COM lifetime of particle 2"}
+- I1: {type: I, default: 0, doc: "Seeds for random number generators"}
+- I2: {type: I, default: 0, doc: "Seeds for random number generators"}
+- I3: {type: I, default: 0, doc: "Seeds for random number generators"}
+
 template:
-- - M2
-  - M3
+- - [INFO, M2, M3, TAU2]
 - - I1
   - I2
   - I3
+  
 doc: |
+
+  Monte-Carlo simulation of in-flight decay
+
+  .. rubric:: Zgoubi manual description
+
+  When ``MCDESINT``[38] is met in a structure (normally, after ``OBJET`` or after ``CIBLE``), in-flight decay simulation
+  starts. It must be preceded by ``PARTICUL`` for the definition of mass ``M1`` and ``COM`` lifetime :math:`\tau_1` of the
+  parent particle.
+  The two-body decay simulated is
+
+  .. math::
+
+    1 \rightarrow  2 + 3
+
+  The decay is isotropic in the center of mass. 1 is the incoming particle, with mass M1, momentum :math:`p1 = \gamma_1 M_1 \beta_1 c`
+  (relative momentum :math:`D1 = \frac{p_1}{q}\frac{1}{BORO} with BORO = reference rigidity, defined in ``[MC]OBJET``).
+  2 and 3 are decay products with respective masses and momenta M2,M3 and :math:`p2 = \gamma_2 M_2 \beta_2 c`, :math:`p3 = \gamma_3 M_3 \beta_3 c`.
+  The average distance s1 at which a particle will decay is related to its center of mass lifetime :math:`\tau_1` by
+
+  .. math::
+
+    s_1 = c \tau_1 \sqrt{\gamma_1^2 -1}
+
+  The actual path length s up to the decay point is calculated, for each one of the particles defined by
+  ``[MC]OBJET`` and prior t ray-tracing, from a random number :math:`0 < R_1 \leq 1` by using the exponential decay
+  formula
+
+  .. math::
+
+    s = s_1 \ln(R_1)
+
+  After decay of the parent particle 1, particle 2 will be ray-traced with assumed positive charge, while
+  particle 3 is discarded. Its scattering angles in the center of mass :math:`\theta^*` and :math:`\phi` are generated from two other
+  random numbers :math:`0 < R_2 \leq 1` and :math:`0 < R_3 \leq 1` by
+
+  .. math::
+
+    \begin{align}
+      \theta^* &= acos(1-2R_2) \text{ ( $0 < \theta^* \leq \pi$)}\\
+      \phi &= 2 \pi R_3 \text{ ( $0 < \phi \leq 2\pi$)}\\
+    \end{align}
+
+  :math:`\phi` is a relativistic invariant, and θ in the laboratory frame (Fig. 43) is given by
+
+  .. math::
+
+    \tan(\theta) = \frac{1}{\gamma_1} \frac{\sin\theta^*}{\frac{\beta_1}{\beta_2^*} + \cos\theta^*}
+
+  :math:`\beta_2^*` and momentum :math:`\p_2` are given by
+
+  .. math::
+
+    \begin{align}
+      \gamma_2^* &= \frac{M_1^2 + M_2^2 - M_3^2}{2M_1M_2}\\
+      \gamma_2 &= \gamm_1\gamma_2^* (1+\beta_1\beta_2\cos\theta^*)\\
+      \beta_2 &= (1 - \frac{1}{\gamma_2^2})^{1/2}\\
+      p_2 = M_2 \sqrt{\gamma_2^2 -1}
+    \end{align}
+
+  Finally, :math:`\theta` and :math:`\phi` are transformed into the angles T2 and P2 in the zgoubi frame, and the relative momentum
+  takes the value :math:`D2 = \frac{p_2}{q}\frac{1}{BORO} with BORO = reference rigidity, see ``OBJET``), while the starting
+  position of M2 is the very location of the parent particle decay, (Y1,Z1, s1).
+  The decay simulation by zgoubi satisfies the following procedures. In optical elements and field maps,
+  after each integration step ``XPAS``, the actual path length of the particle, F(6, I), is compared to its limit path
+  length s. If s is passed, then the particle is considered as having decayed at :math:`F(6, I) − \frac{XPAS}{2}`, at a position
+  obtained by a linear translation from the position at F(6, I). Presumably, the smaller ``XPAS``, the smaller the
+  error on position and angles at the decay point. In ``ESL`` and ``CHANGREF``, F(6, I) is compared to s at the end of the element.
+
+  If the decay occurs inside the element, the particle is considered as having decayed at its actual limit path length s, thus its coordinates at
+  s are recalculated by translation.
+  The limit path length of all particles (I = 1, ``IMAX``) is stored in the array ``FDES`` (6, I). For further statistical
+  purposes (e.g., use of ``HISTO``) the daughter particle 2 is tagged with an ′S′ standing for “secondary”. When
+  a particle decays, its coordinates D, Y , T, Z, P, s, time at the decay point are stored in ``FDES`` (J, I), J = 1, 7.
+
+  * A note on negative drifts* :
+
+  The use of negative drifts with ``MCDESINT`` is allowed and correct. For instance, negative drifts may occur in a structure
+  for some of the particles when using ``CHANGREF`` (due to the Z-axis rotation or a negative ``XCE``),
+  or when using ``DRIFT`` with XL < 0. Provision has been made to take it into account during the
+  ``MCDESINT`` procedure, as follows.
+  If, due to a negative drift, a secondary particle reaches back the decay location of its parent particle, then
+  the parent particle is “resurrected “ with its original coordinates at that location, the secondary particle is
+  discarded, and ray-tracing resumes in a regular way for the parent particle which is again allowed to decay,
+  after the same path length. This procedure is made possible by prior storage of the coordinates of the parent
+  particles (in array ``FDES`` (J, I)) each time a decay occurs.
+  Negative steps (``XPAS``< 0) in optical elements are not compatible with ``MCDESINT``.
