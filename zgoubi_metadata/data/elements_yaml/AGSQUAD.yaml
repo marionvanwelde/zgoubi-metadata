@@ -1,0 +1,81 @@
+zgoubi_name: AGSQUAD
+params:
+  IL: {type: I, unit: "", default: 2, doc: "Print field and coordinates along trajectories"}
+  XL: {type: E, unit: "cm", default: 10.0, doc: "Magnet length (straight reference frame)"}
+  R0: {type: E, unit: "cm", default: 1.0, doc: "Radius of the pole tips"}
+  IW1: {type: E, unit: "ampere", default: 0, doc: "Current in windings"}
+  IW2: {type: E, unit: "ampere", default: 0, doc: "Current in windings"}
+  IW3: {type: E, unit: "ampere", default: 0, doc: "Current in windings"}
+  dIW1: {type: E, unit: "", default: 0, doc: "Relative error on current"}
+  dIW2: {type: E, unit: "", default: 0, doc: "Relative error on current"}
+  dIW3: {type: E, unit: "", default: 0, doc: "Relative error on current"}
+  X_E: {type: E, unit: "cm", default: 0, doc: "Entrance face integration zone for the fringe field"}
+  LAM_E: {type: E, unit: "cm", default: 0, doc: "Entrance face fringe field extent"}
+  NCE: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  C0_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  C1_E: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  C2_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  C3_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  C4_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  C5_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  X_S: {type: E, unit: "cm", default: 0, doc: "Exit face integration zone for the fringe field"}
+  LAM_S: {type: E, unit: "cm", default: 0, doc: "Exit face fringe field extent"}
+  NCS: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  C0_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  C1_S: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  C2_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  C3_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  C4_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  C5_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  R1: {type: E, unit: "radian", default: 0, doc: "Roll angle"}
+  XPAS: {type: E, unit: "cm", default: 0.1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 1, doc: "Misalignment type"}
+  XCE: {type: E, unit: "cm", default: 0, doc: "x offset"}
+  YCE: {type: E, unit: "cm", default: 0, doc: "y offset"}
+  ALE: {type: E, unit: "radian", default: 0, doc: "misalignment rotation"}
+template:
+- - IL
+- - XL
+  - R0
+  - IW1
+  - IW2
+  - IW3
+- - dIW1
+  - dIW2
+  - dIW3
+- - X_E
+  - LAM_E
+- - NCE
+  - C0_E
+  - C1_E
+  - C2_E
+  - C3_E
+  - C4_E
+  - C5_E
+- - X_S
+  - LAM_S
+- - NCS
+  - C0_S
+  - C1_S
+  - C2_S
+  - C3_S
+  - C4_S
+  - C5_S
+- - R1
+- - XPAS
+- - KPOS
+  - XCE
+  - YCE
+  - ALE
+doc: |
+  AGS quadrupole.
+
+  .. rubric:: Zgoubi manual description
+
+  The AGS quadrupoles are regular quadrupoles. The simulation of ``AGSQUAD`` uses the same field modelling as
+  ``MULTIPOL``, section 1.3.7, page 25. However amperes are provided as input to ``AGSQUAD`` rather than fields,
+  the reason being that some of the AGS quadrupoles have two superimposed coil circuits, with separate power
+  supplies. It has been dealt with this particularity by allowing for an additional set of multi- pole data in
+  ``AGSQUAD``, compared to ``MULTIPOL``.
+  The field in ``AGSQUAD`` is computed using transfer functions from the ampere-turns in the coils to magnetic
+  field that account for the non-linearity of the magnetic permeability [33].

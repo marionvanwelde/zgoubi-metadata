@@ -2,7 +2,7 @@ zgoubi_name: AGSMM
 params:
   IL: {type: I, default: 2, doc: "Print field and coordinates along trajectories"}
   MOD: {type: I, unit: "", default: 1, doc: "Type of dipole magnet"}
-  dL: {type: E, unit: "", default: 0.0, doc: "UNUSED"}   ?
+  dL: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
   R0: {type: E, unit: "cm", default: 10.0, doc: "Radius of the pole tips"}
   dB1: {type: E, unit: "", default: 0, doc: "Relative error on dipole component"}
   dB2: {type: E, unit: "", default: 0, doc: "Relative error on quadrupole component"}
@@ -53,7 +53,7 @@ template:
   - dB2
   - dB3
 - - [NBLW, WMOD]
-- - {field_region}
+- - !!set {field_region}
 - - X_E
   - LAM_E
   - E2
@@ -80,7 +80,7 @@ template:
   - R2
   - R3
 - - XPAS
-- - {cond_section1}
+- - !!set {cond_section1}
 subelements:
   field_region:
     params:
