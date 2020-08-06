@@ -53,7 +53,7 @@ template:
   - dB2
   - dB3
 - - [NBLW, WMOD]
-- - !!set {field_region}
+- - !!set {winding}
 - - X_E
   - LAM_E
   - E2
@@ -82,7 +82,7 @@ template:
 - - XPAS
 - - !!set {cond_section1}
 subelements:
-  field_region:
+  winding:
     params:
       NW: {type: I, unit: "", default: 0, doc: "Number of windings"}
       I: {type: I, unit: "ampere", default: 0.0, doc: "Current of windings"}

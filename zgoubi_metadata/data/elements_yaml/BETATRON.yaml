@@ -1,0 +1,12 @@
+zgoubi_name: BETATRON
+params:
+  KICK: {type: E, unit: "", default: 0.0, doc: "Momentum kick, relative to particle momentum."}
+template:
+- - KICK
+doc: |
+  Betatron core.
+
+  .. rubric:: Zgoubi manual description
+
+  `BETATRON` simulates a betatron yoke, for instance for slow extraction.
+  It just imparts the particle a momentum kick, normally small.

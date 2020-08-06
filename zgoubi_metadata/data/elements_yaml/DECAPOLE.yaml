@@ -1,0 +1,83 @@
+zgoubi_name: DECAPOLE
+{type: E, unit: "", default: 0.0, doc: ""}
+params:
+  IL: {type: I, unit: "", default: 2, doc: "Print field and coordinates along trajectories"}
+  XL: {type: E, unit: "cm", default: 10.0, doc: "Magnet length (straight reference frame)"}
+  R0: {type: E, unit: "cm", default: 10.0, doc: "Radius of the pole tips"}
+  B0: {type: E, unit: "kilogauss", default: 0.0, doc: "Field at pole tips"}
+  X_E: {type: E, unit: "cm", default: 0.0, doc: "Entrance face integration zone for the fringe field"}
+  LAM_E: {type: E, unit: "cm", default: 0.0, doc: "Entrance face fringe field extent"}
+  NCE: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  C0_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C0"}
+  C1_E: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  C2_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C2"}
+  C3_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C3"}
+  C4_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C4"}
+  C5_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C5"}
+  X_S: {type: E, unit: "cm", default: 0.0, doc: "Exit face integration zone for the fringe field"}
+  LAM_S: {type: E, unit: "", default: 0.0, doc: "Exit face fringe field extent"}
+  NCS: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  C0_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C0"}
+  C1_S: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  C2_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C2"}
+  C3_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C3"}
+  C4_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C4"}
+  C5_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C5"}
+  XPAS: {type: E, unit: "cm", default: 0.1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 1, doc: "Misalignment type"}
+  XCE: {type: E, unit: "cm", default: 0.0, doc: "x offset"}
+  YCE: {type: E, unit: "cm", default: 0.0, doc: "y offset"}
+  ALE: {type: E, unit: "radian", default: 0.0, doc: "misalignment rotation"}
+template:
+- - IL
+- - XL
+  - R0
+  - B0
+- - XE
+  - LAM_E
+- - NCE
+  - C0_E
+  - C1_E
+  - C2_E
+  - C3_E
+  - C4_E
+  - C5_E
+- - XS
+  - LAM_S
+- - NCS
+  - C0_S
+  - C1_S
+  - C2_S
+  - C3_S
+  - C4_S
+  - C5_S
+- - XPAS
+- - KPOS
+  - XCE
+  - YCE
+  - ALE
+doc: |
+  Decapole magnet.
+
+  .. rubric:: Zgoubi manual description
+
+  The meaning of parameters for ``DECAPOLE`` is the same as for ``QUADRUPO``.
+  In fringe field regions the magnetic field :math:`\vec{B}(X, Y, Z)` and its derivatives up to fourth order are
+  derived from the scalar potential expressed to the 5th order in Y and Z
+
+  .. math::
+
+      V (X, Y,Z) = G(X) (Y^4Z - 2Y^2Z^3 + \frac{Z^5}{5})
+
+  with :math:`G0=\frac{B_0}{R_0^4}`
+  The modelling of the fringe field form factor G(X) is described under ``QUADRUPO``, p. 128.
+  Outside fringe field regions, or everywhere in sharp edge decapole (:math:`λ_E = λ_S = 0`) , :math:`\vec{B}(X, Y, Z)` in the
+  magnet is given by
+
+  .. math::
+
+      \begin{align}
+          B_X &= 0 \\
+          B_Y &= 4G_0(Y^2 − Z^2)YZ \\
+          B_Z &= G_0(Y^4 − 6Y^2Z^2 + Z^4)
+      \end{align}
