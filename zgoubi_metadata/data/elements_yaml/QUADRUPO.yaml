@@ -17,7 +17,7 @@ params:
   LAM_S: {type: E, unit: "cm", default: 0, doc: "Exit face fringe field extent"}
   NCS: {type: I, default: 0, doc: "UNUSED"}
   CS_0: {type: E, default: 0, doc: "Fringe field coefficient C0"}
-  CS_1: {type: E, default: 1 doc: "Fringe field coefficient C1"}
+  CS_1: {type: E, default: 1, doc: "Fringe field coefficient C1"}
   CS_2: {type: E, default: 0, doc: "Fringe field coefficient C2"}
   CS_3: {type: E, default: 0, doc: "Fringe field coefficient C3"}
   CS_4: {type: E, default: 0, doc: "Fringe field coefficient C4"}
@@ -55,16 +55,57 @@ template:
   - XCE
   - YCE
   - ALE
-
 doc: |
   Quadrupole magnet
 
   .. rubric:: Zgoubi manual description
 
-  The length of the magnet XL is the distance between the effective field boundaries (EFB), Fig. 35. The field
-  at the pole tip R0 is B0. The extent of the entrance (exit) fringe field is characterized by λE(λS). The distance of ray-tracing on both sides of the EFBs, in the field fall off regions,
+  The length of the magnet XL is the distance between the effective field boundaries (EFB), Fig. 35. The field at the pole tip R0 is B0.
+  The extent of the entrance (exit) fringe field is characterized by :math:`\lambda_E` (:math:`\lambda_S`). The distance of ray-tracing on both sides of the EFBs, in the field fall off regions,
   will be ± XE at the entrance, and ± XS at the exit (Fig. 35), by prior and further automatic change of frame.
-  In the fringe field regions [−XE,XE] and [−XS,XS] on both sides of the EFBs, ~B (X, Y,Z) and its derivatives
-  up to fourth order are calculated at each step of the trajectory from the analytical expressions of the
-  three components BX, BY , BZ obtained by differentiation of the scalar potential (see section 1.3.7) expressed
-  to the 8th order in Y and Z.
+  In the fringe field regions [−XE,XE] and [−XS,XS] on both sides of the EFBs, :math:`\vec{B}(X, Y, Z)` and its derivatives up to fourth
+  order are calculated at each step of the trajectory from the analytical expressions of the three components
+  BX, BY , BZ obtained by differentiation of the scalar potential (see section 1.3.7) expressed to the 8th order in Y and Z.
+
+  .. math::
+
+    \begin{align}
+      V(X,Y,Z) = (G(X) - \frac{G''(X)}{12} (Y^2 + Z^2) + \frac{G''''(X)}{384} (Y^2 + Z^2)^2 - \frac{G''''''(X)}{23040} (Y^2 + Z^2)^3) YZ \\
+      G^{(n)} &= \frac{d^n G(X)}{dX^n} \\
+    \end{align}
+
+  where G(X) is the gradient on axis
+
+  .. math::
+
+    G(X) = \frac{G_0}{1 + exp P(d(X))}
+
+  with :math:`G_0 = \frac{B_0}{R_0}`
+
+  and,
+
+  .. math::
+
+    P(d) = C_0 + C_1 (\frac{d}{\lambda}) + C_2 (\frac{d}{\lambda})^2 + C_3 (\frac{d}{\lambda})^3 + C_4 (\frac{d}{\lambda})^4 + C_5 (\frac{d}{\lambda})^5
+
+    where d(X) is the distance to the field boundary and :math:`\lambda` stands for :math:`\lambda_E` or :math:`\lambda_E` (normally, :math:`\lambda` ≃ 2 * R0).
+    When fringe fields overlap inside the magnet (XL ≤ XE + XS), the gradient G is expressed as
+
+    .. math::
+
+      G = G_E + G_S - 1
+
+
+  where, :math:`G_E` is the entrance gradient and :math:`G_S` is the exit gradient.
+  If :math:`\lambda_E` = 0 (:math:`\lambda_S` = 0), the field at entrance (exit) is considered as sharp edged, and then XE(XS) is forced to zero
+  (for the mere purpose of saving computing time).
+  Outside of the fringe field regions (or everywhere when :math:`\lambda_E` = :math:`\lambda_S` = 0) :math:`\vec{B}(X, Y, Z)` in the magnet is given
+  by
+
+  .. math::
+
+    \begin{align}
+      B_X &= 0 \\
+      B_Y &= G_0 Z \\
+      B_Z &= G_0 Y
+    \end{align}

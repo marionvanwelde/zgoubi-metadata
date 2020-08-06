@@ -17,7 +17,7 @@ params:
   LAM_S: {type: E, unit: "cm", default: 0, doc: "Exit face fringe field extent"}
   NCS: {type: I, default: 0, doc: "UNUSED"}
   CS_0: {type: E, default: 0, doc: "Fringe field coefficient C0"}
-  CS_1: {type: E, default: 1 doc: "Fringe field coefficient C1"}
+  CS_1: {type: E, default: 1, doc: "Fringe field coefficient C1"}
   CS_2: {type: E, default: 0, doc: "Fringe field coefficient C2"}
   CS_3: {type: E, default: 0, doc: "Fringe field coefficient C3"}
   CS_4: {type: E, default: 0, doc: "Fringe field coefficient C4"}
@@ -61,6 +61,25 @@ doc: |
 
   .. rubric:: Zgoubi manual description
 
-  The meaning of parameters for SEXTUPOL is the same as for QUADRUPO.
-  In fringe field regions the magnetic field ~B (X, Y,Z) and its derivatives up to fourth order are derived from
-  the scalar potential approximated to 7th order in Y and Z
+  The meaning of parameters for ``SEXTUPOL`` is the same as for ``QUADRUPO``.
+
+  In fringe field regions the magnetic field :math:`\vec{B}(X, Y, Z)` and its derivatives up to fourth order are derived
+  from the scalar potential approximated to the 6th order in Y and Z
+
+    .. math::
+
+      V(X,Y,Z) = (G(X) - \frac{G''(X)}{16} (Y^2 + Z^2) + \frac{G''''(X)}{640} (Y^2 + Z^2)^2)(Y^2Z - \frac{Z^3}{3})
+
+    with :math:`G_0 = \frac{B_0}{R_0^2}`
+
+    The modelling of the fringe field form factor G(X) is described under ``QUADRUPO``, p. 128.
+    Outside fringe field regions, or everywhere in sharp edge sextupole (:math:`λ_E = λ_S = 0`),
+    :math:`\vec{B}(X, Y, Z)` in the magnet is given by
+
+    .. math::
+
+      \begin{align}
+        B_X &= 0 \\
+        B_Y &= 2 G_0 Y Z \\
+        B_Z &= G_0 (Y^2 − Z^2)
+      \end{align}

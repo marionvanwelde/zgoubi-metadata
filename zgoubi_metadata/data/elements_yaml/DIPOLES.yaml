@@ -17,7 +17,7 @@ template:
 - - N
   - AT
   - RM
-- - subelement1
+- - {field_region}
 - - KIRD
   - RESOL
 - - XPAS
