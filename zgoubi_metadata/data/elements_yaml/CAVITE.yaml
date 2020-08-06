@@ -18,7 +18,7 @@ cond_section:
 - key: IOPT
   equals: 1
   template:
-  - - !!str L
+  - - L
     - h
   - - V
     - X

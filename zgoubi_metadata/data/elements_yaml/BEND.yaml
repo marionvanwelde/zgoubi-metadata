@@ -1,7 +1,7 @@
 zgoubi_name: BEND
 params:
   IL: {type: I, default: 0, doc: ""}
-  XL: {type: E, unit: cm, default: 0, doc: ""}
+  XL: {type: E, unit: 'cm', default: 0, doc: ""}
   Sk: {type: E, unit: "", default: 0, doc: ""}
   B1: {type: E, unit: "", default: 0, doc: ""}
   X_E: {type: E, unit: "", default: 0, doc: ""}
