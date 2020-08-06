@@ -1,5 +1,4 @@
 zgoubi_name: DECAPOLE
-{type: E, unit: "", default: 0.0, doc: ""}
 params:
   IL: {type: I, unit: "", default: 2, doc: "Print field and coordinates along trajectories"}
   XL: {type: E, unit: "cm", default: 10.0, doc: "Magnet length (straight reference frame)"}
