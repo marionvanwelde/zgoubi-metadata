@@ -1,88 +1,89 @@
 zgoubi_name: DIPOLE
 params:
-  IL: {type: I, default: 0, doc: ""}
-  AT: {type: E, unit: "", default: 0, doc: ""}
-  RM: {type: E, unit: cm, default: 0, doc: ""}
-  ACN: {type: E, unit: "", default: 0, doc: ""}
-  B_0: {type: E, unit: "", default: 0, doc: ""}
-  N: {type: E, unit: "", default: 0, doc: ""}
-  B: {type: E, unit: "", default: 0, doc: ""}
-  G: {type: E, unit: "", default: 0, doc: ""}
-  LAM_E: {type: E, unit: "", default: 0, doc: ""}
-  XI_E: {type: E, unit: "", default: 0, doc: ""}
-  NCE: {type: I, default: 0, doc: ""}
-  CE_0: {type: E, unit: "", default: 0, doc: ""}
-  CE_1: {type: E, unit: "", default: 0, doc: ""}
-  CE_2: {type: E, unit: "", default: 0, doc: ""}
-  CE_3: {type: E, unit: "", default: 0, doc: ""}
-  CE_4: {type: E, unit: "", default: 0, doc: ""}
-  CE_5: {type: E, unit: "", default: 0, doc: ""}
-  SHIFT_E: {type: E, unit: "", default: 0, doc: ""}
-  OMEGA_E: {type: E, unit: "", default: 0, doc: ""}
-  THETA_E: {type: E, unit: "", default: 0, doc: ""}
-  R1_E: {type: E, unit: "", default: 0, doc: ""}
-  U1_E: {type: E, unit: "", default: 0, doc: ""}
-  U2_E: {type: E, unit: "", default: 0, doc: ""}
-  R2_E: {type: E, unit: "", default: 0, doc: ""}
-  LAM_S: {type: E, unit: "", default: 0, doc: ""}
-  XI_S: {type: E, unit: "", default: 0, doc: ""}
-  NCS: {type: I, default: 0, doc: ""}
-  CS_0: {type: E, unit: "", default: 0, doc: ""}
-  CS_1: {type: E, unit: "", default: 0, doc: ""}
-  CS_2: {type: E, unit: "", default: 0, doc: ""}
-  CS_3: {type: E, unit: "", default: 0, doc: ""}
-  CS_4: {type: E, unit: "", default: 0, doc: ""}
-  CS_5: {type: E, unit: "", default: 0, doc: ""}
-  SHIFT_S: {type: E, unit: "", default: 0, doc: ""}
-  OMEGA_S: {type: E, unit: "", default: 0, doc: ""}
-  THETA_S: {type: E, unit: "", default: 0, doc: ""}
-  R1_S: {type: E, unit: "", default: 0, doc: ""}
-  U1_S: {type: E, unit: "", default: 0, doc: ""}
-  U2_S: {type: E, unit: "", default: 0, doc: ""}
-  R2_S: {type: E, unit: "", default: 0, doc: ""}
-  LAM_L: {type: E, unit: "", default: 0, doc: ""}
-  XI_L: {type: E, unit: "", default: 0, doc: ""}
-  NCL: {type: I, default: 0, doc: ""}
-  CL_0: {type: E, unit: "", default: 0, doc: ""}
-  CL_1: {type: E, unit: "", default: 0, doc: ""}
-  CL_2: {type: E, unit: "", default: 0, doc: ""}
-  CL_3: {type: E, unit: "", default: 0, doc: ""}
-  CL_4: {type: E, unit: "", default: 0, doc: ""}
-  CL_5: {type: E, unit: "", default: 0, doc: ""}
-  SHIFT_L: {type: E, unit: "", default: 0, doc: ""}
-  OMEGA_L: {type: E, unit: "", default: 0, doc: ""}
-  THETA_L: {type: E, unit: "", default: 0, doc: ""}
-  R1_L: {type: E, unit: "", default: 0, doc: ""}
-  U1_L: {type: E, unit: "", default: 0, doc: ""}
-  U2_L: {type: E, unit: "", default: 0, doc: ""}
-  R2_L: {type: E, unit: "", default: 0, doc: ""}
-  R3: {type: E, unit: "", default: 0, doc: ""}
-  IORDRE: {type: I, default: 0, doc: ""}
-  Resol: {type: E, unit: "", default: 0, doc: ""}
-  XPAS: {type: E, unit: cm, default: 0, doc: ""}
-  KPOS: {type: I, default: 0, doc: ""}
-  RE: {type: E, unit: cm, default: 0, doc: ""}
-  TE: {type: E, unit: "", default: 0, doc: ""}
-  RS: {type: E, unit: cm, default: 0, doc: ""}
-  TS: {type: E, unit: "", default: 0, doc: ""}
+  IL: {type: I, unit: "", default: 0, doc: "Print field and coordinates along trajectories"}
+  AT: {type: E, unit: "degree", default: 0, doc: "Total angular extent of the dipole (positive value in all cases)"}
+  RM: {type: E, unit: "centimeter", default: 0, doc: "Reference radius"}
+  ACENT: {type: E, unit: "degree", default: 0, doc: "Azimuth for positioning of EFBs"}
+  B0: {type: E, unit: "kilogauss", default: 0, doc: "Reference field"}
+  N: {type: E, unit: "", default: 0, doc: "Field index (radial quadrupolar)"}
+  B: {type: E, unit: "", default: 0, doc: "Field index (radial sextupolar)"}
+  G: {type: E, unit: "", default: 0, doc: "Field index (radial octupolar)"}
+  LAM_E: {type: E, unit: "centimeter", default: 0, doc: "Entrance fringe field extent (normally ≃ gap size)"}
+  XI_E: {type: E, unit: "", default: -1.0, doc: "UNUSED"}
+  NCE: {type: I, unit: "", default: 6, doc: "UNUSED"}
+  C0_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  C1_E: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  C2_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  C3_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  C4_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  C5_E: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  SHIFT_E: {type: E, unit: "centimeter", default: 0, doc: "Shift of the EFB"}
+  OMEGA_E: {type: E, unit: "degree", default: 0, doc: "Azimuth of entrance EFB with respect to ACENT"}
+  THETA_E: {type: E, unit: "degree", default: 0, doc: "Entrance wedge angle of EFB"}
+  R1_E: {type: E, unit: "centimeter", default: 1e9, doc: "Entrance EFB radius"}
+  U1_E: {type: E, unit: "centimeter", default: 1e9, doc: "Entrance EFB linear extent"}
+  U2_E: {type: E, unit: "centimeter", default: 1e9, doc: "Entrance EFB linear extent"}
+  R2_E: {type: E, unit: "centimeter", default: 1e9, doc: "Entrance EFB radius"}
+  LAM_S: {type: E, unit: "centimeter", default: 0, doc: "Exit fringe field extent (normally ≃ gap size)"}
+  XI_S: {type: E, unit: "", default: -1.0, doc: "UNUSED"}
+  NCS: {type: I, default: 6, doc: "UNUSED"}
+  C0_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  C1_S: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  C2_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  C3_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  C4_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  C5_S: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  SHIFT_S: {type: E, unit: "centimeter", default: 0, doc: "Shift of the EFB"}
+  OMEGA_S: {type: E, unit: "degree", default: 0, doc: "Azimuth of exit EFB with respect to ACENT"}
+  THETA_S: {type: E, unit: "degree", default: 0, doc: "Exit wedge angle of EFB"}
+  R1_S: {type: E, unit: "centimeter", default: 1e9, doc: "Exit EFB radius"}
+  U1_S: {type: E, unit: "centimeter", default: 1e9, doc: "Exit EFB linear extent"}
+  U2_S: {type: E, unit: "centimeter", default: 1e9, doc: "Exit EFB linear extent"}
+  R2_S: {type: E, unit: "centimeter", default: 1e9, doc: "Exit EFB radius"}
+  LAM_L: {type: E, unit: "centimeter", default: 0, doc: "Lateral fringe field extent (normally ≃ gap size)"}
+  XI_L: {type: E, unit: "", default: 0, doc: "Flag to activate/deactivate the lateral EFB (0 to deactivate)"}
+  NCL: {type: I, default: 6, doc: "UNUSED"}
+  C0_L: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  C1_L: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  C2_L: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  C3_L: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  C4_L: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  C5_L: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  SHIFT_L: {type: E, unit: "centimeter", default: 0, doc: "Shift of the EFB"}
+  OMEGA_L: {type: E, unit: "degree", default: 0, doc: ""}
+  THETA_L: {type: E, unit: "degree", default: 0, doc: "Lateral field boundary wedge angle"}
+  R1_L: {type: E, unit: "centimeter", default: 1e9, doc: "Lateral EFB radius"}
+  U1_L: {type: E, unit: "centimeter", default: 1e9, doc: "Lateral EFB linear extent"}
+  U2_L: {type: E, unit: "centimeter", default: 1e9, doc: "Lateral EFB linear extent"}
+  R2_L: {type: E, unit: "centimeter", default: 1e9, doc: "Lateral EFB radius"}
+  RM3: {type: E, unit: "centimeter", default: 1e9, doc: "Reference radius of the lateral EFB"}
+  IORDRE: {type: I, default: 2, doc: ""}
+  Resol: {type: E, unit: "", default: 10, doc: ""}
+  XPAS: {type: E, unit: "cm", default: 1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 2, doc: "Positionning of the map, normally 2"}
+  RE: {type: E, unit: "centimeter", default: 0, doc: "Entrance reference radius"}
+  TE: {type: E, unit: "radian", default: 0, doc: "Entrance reference angle"}
+  RS: {type: E, unit: "centimeter", default: 0, doc: "Exit reference radius"}
+  TS: {type: E, unit: "radian", default: 0, doc: "Exit reference angle"}
+  DP: {type: E, unit: "", default: 0, doc: "Reference relative momentum"}
 template:
 - - IL
 - - AT
   - RM
-- - ACN
-  - B_0
+- - ACENT
+  - B0
   - N
   - B
   - G
 - - LAM_E
   - XI_E
 - - NCE
-  - CE_0
-  - CE_1
-  - CE_2
-  - CE_3
-  - CE_4
-  - CE_5
+  - C0_E
+  - C1_E
+  - C2_E
+  - C3_E
+  - C4_E
+  - C5_E
   - SHIFT_E
 - - OMEGA_E
   - THETA_E
@@ -93,12 +94,12 @@ template:
 - - LAM_S
   - XI_S
 - - NCS
-  - CS_0
-  - CS_1
-  - CS_2
-  - CS_3
-  - CS_4
-  - CS_5
+  - C0_S
+  - C1_S
+  - C2_S
+  - C3_S
+  - C4_S
+  - C5_S
   - SHIFT_S
 - - OMEGA_S
   - THETA_S
@@ -109,12 +110,12 @@ template:
 - - LAM_L
   - XI_L
 - - NCL
-  - CL_0
-  - CL_1
-  - CL_2
-  - CL_3
-  - CL_4
-  - CL_5
+  - C0_L
+  - C1_L
+  - C2_L
+  - C3_L
+  - C4_L
+  - C5_L
   - SHIFT_L
 - - OMEGA_L
   - THETA_L
@@ -122,13 +123,116 @@ template:
   - U1_L
   - U2_L
   - R2_L
-  - R3
+  - RM3
 - - IORDRE
   - Resol
 - - XPAS
 - - KPOS
-  - RE
-  - TE
-  - RS
-  - TS
+- - !!set {cond_section1}
+conditional_sections:
+  cond_section1:
+    - KPOS
+    - 1:
+        - - DP
+      2:
+        - - RE
+          - TE
+          - RS
+          - TS
 doc: |
+  Dipole magnet, polar frame.
+
+  .. rubric:: Zgoubi manual description
+
+  ``DIPOLE`` provides a model of a dipole field, possibly with transverse field indices. The field along a particle
+  trajectory is computed as the particle motion proceeds, straightforwardly from the dipole geometrical boundaries.
+  Field simulation in ``DIPOLE`` is the same as used in ``DIPOLE-M`` and ``AIMANT`` for computing a field map;
+  the essential difference in ``DIPOLE`` is in its skipping that intermediate stage of field map generation found in
+  ``DIPOLE-M`` and ``AIMANT``.
+
+  ``DIPOLE`` has a version, ``DIPOLES``, that allows overlapping of fringe fields in a configuration of neighboring
+  magnets.
+
+  The dimensioning of the magnet is defined by (Fig. 11, p. 82):
+
+      - AT : total angular aperture
+      - RM : mean radius used for the positioning of field boundaries
+
+  The 2 or 3 effective field boundaries (EFB), from which the dipole field is drawn, are defined from geometric
+  boundaries, the shape and position of which are determined by the following parameters:
+
+      - ACENT: arbitrary inner angle, used for EFB’s positioning;
+      - ω: azimuth of an EFB with respect to ACENT;
+      - θ: angle of an EFB with respect to its azimuth (wedge angle) : radius of curvature of an EFB;
+      - R1, R2 U1, U2: extent of the linear part of an EFB.
+
+  The magnetic field is calculated in polar coordinates. At any position (R, θ) along the particle trajectory the
+  value of the vertical component of the mid-plane field is calculated using
+
+  .. math::
+
+  B_Z(R,θ) = F(R,θ)* B_0 * (1 + N * \frac{R-RM}{RM} + B * (\frac{R-RM}{RM})**2 + G * (\frac{R-RM}{RM})**3 )
+
+  where N, B and G are respectively the first, second and third order field indices and F(R,θ) is the fringe field
+  coefficient (it determines the “flutter” in periodic structures).
+
+  Calculation of the Fringe Field Coefficient
+
+  With each EFB a realistic extent of the fringe field, λ (normally equal to the gap size), is associated and a
+  fringe field coefficient F is calculated. In the following λ stands for either :math:`λ_E` (Entrance), :math:`λ_S`
+  (Exit) or :math:`λ_L` (Lateral EFB).
+
+  F is an exponential type fringe field (Fig. 12, p. 84) given by [34]
+
+  .. math::
+
+  F = \frac{1}{1+exp P(s)}
+
+  wherein s is the distance to the EFB and depends on (R, θ), and
+
+  .. math::
+
+  P(s) = C_0+C_1(\frac{s}{λ})+ C_2(\frac{s}{λ})**2+ C_3(\frac{s}{λ})**3+ C_4(\frac{s}{λ})**4+ C_5(\frac{s}{λ})**5
+
+  It is also possible to simulate a shift of the EFB, by giving a non zero value to the parameter shift.
+  s is then changed to s−shift in the previous equation. This allows small variations of the magnetic length.
+
+  Let :math:`F_E` (respectively :math:`F_S` , :math:`F_L`) be the fringe field coefficient attached to the entrance
+  (respectively exit, lateral) EFB. At any position on a trajectory the resulting value of the fringe field
+  coefficient (eq. 4.4.8) is
+
+  .. math::
+
+  F(R,θ) = F_E * F_S * F_L
+
+  In particular, :math:`F_L ≡ 1` if no lateral EFB is requested.
+
+  Calculation of the Mid-plane Field and Derivatives
+
+  :math:`B_Z (R, θ)` in Eq. 4.4.8 is computed at the n × n nodes (n = 3 or 5 in practice) of a “flying” interpolation
+  grid in the median plane centered on the projection :math:`m_0` of the actual particle position :math:`M_0` as
+  schemed in Fig. 20. A polynomial interpolation is involved, of the form
+
+  .. math::
+
+  B_Z (R,θ) = A_{00} + A_{10}θ + A_{01}R + A_{20}θ**2 + A_{11}θR + A_{02}R**2
+
+  that yields the requested derivatives, using
+
+  .. math::
+
+  A_{kl} = \frac{1}{k!l!} \frac{∂**{k+l}B_Z}{∂θ**k ∂r**l}
+
+  Note that, the source code contains the explicit analytical expressions of the coefficients :math:`A_{kl}`
+  solutions of the normal equations, so that the operation is not CPU time consuming.
+
+  Extrapolation Off Median Plane
+
+  From the vertical field \vec{B} and derivatives in the median plane, first a transformation from polar to Cartesian
+  coordinates is performed, following eqs (1.4.9 or 1.4.10), then, extrapolation off median plane is performed by
+  means of Taylor expansions, following the procedure described in section 1.3.3.
+
+  .. rubric:: Zgoubidoo usage and example
+
+  >>> m = Dipole()
+  >>> m.fit()
