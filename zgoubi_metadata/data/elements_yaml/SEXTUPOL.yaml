@@ -55,7 +55,6 @@ template:
   - XCE
   - YCE
   - ALE
-
 doc: |
   Sextupole magnet
 
@@ -66,20 +65,19 @@ doc: |
   In fringe field regions the magnetic field :math:`\vec{B}(X, Y, Z)` and its derivatives up to fourth order are derived
   from the scalar potential approximated to the 6th order in Y and Z
 
-    .. math::
+  .. math::
 
-      V(X,Y,Z) = (G(X) - \frac{G''(X)}{16} (Y^2 + Z^2) + \frac{G''''(X)}{640} (Y^2 + Z^2)^2)(Y^2Z - \frac{Z^3}{3})
+    V(X,Y,Z) = (G(X) - \frac{G''(X)}{16} (Y^2 + Z^2) + \frac{G''''(X)}{640} (Y^2 + Z^2)^2)(Y^2Z - \frac{Z^3}{3})
 
-    with :math:`G_0 = \frac{B_0}{R_0^2}`
+  with :math:`G_0 = \frac{B_0}{R_0^2}`
 
-    The modelling of the fringe field form factor G(X) is described under ``QUADRUPO``, p. 128.
-    Outside fringe field regions, or everywhere in sharp edge sextupole (:math:`λ_E = λ_S = 0`),
-    :math:`\vec{B}(X, Y, Z)` in the magnet is given by
+  The modelling of the fringe field form factor G(X) is described under ``QUADRUPO``, p. 128.
+  Outside fringe field regions, or everywhere in sharp edge sextupole (:math:`λ_E = λ_S = 0`), :math:`\vec{B}(X, Y, Z)` in the magnet is given by
 
-    .. math::
+  .. math::
 
-      \begin{align}
-        B_X &= 0 \\
-        B_Y &= 2 G_0 Y Z \\
-        B_Z &= G_0 (Y^2 − Z^2)
-      \end{align}
+    \begin{align}
+      B_X &= 0 \\
+      B_Y &= 2 G_0 Y Z \\
+      B_Z &= G_0 (Y^2 − Z^2)
+    \end{align}

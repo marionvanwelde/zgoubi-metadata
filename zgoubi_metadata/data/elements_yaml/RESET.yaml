@@ -1,0 +1,13 @@
+zgoubi_name: RESET
+params:
+
+template:
+
+doc: |
+
+  Reset counters and flags
+
+  .. rubric:: Zgoubi manual description
+
+  Resets counters involved in ``CHAMBR``, ``COLLIMA``, ``HISTO`` and ``INTEG`` procedures.
+  Switches off ``CHAMBR``, ``MCDESINT``, ``SCALING`` and ``SPNTRK`` options.

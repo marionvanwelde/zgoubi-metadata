@@ -1,0 +1,47 @@
+zgoubi_name: SEPARA
+params:
+  IA: {type I, unit="", default=0, doc="0 Element inactive; 1 Horizontal separation V/m, T; 2 Vertical separation"}
+  XL: {type: E, unit="", default=0, doc="Length of the separator"}
+  E: {type: E, unit="", default=0, doc="Electric field"}
+  B: {type: E, unit="", default=0, doc="Magnetic field"}
+
+template:
+- - IA
+  - XL
+  - E
+  - B
+
+doc: |
+
+  Wien Filter - analytical simulation
+
+  .. rubric:: Zgoubi manual description
+
+
+  Note : ``SEPARA`` is an analytical transport: simulation by stepwise integration may use ``WIENFILTER``.
+  ``SEPARA`` provides an analytic simulation of an electrostatic separator. Input data are the length L of the
+  element, the electric field E and the magnetic field B. The mass m and charge q of the particles are entered
+  by means of the keyword ``PARTICUL``.
+  The subroutines involved in ``SEPARA`` solve the following system of three equations with three unknown
+  variables S, Y , Z (while X ≡ L), that describe the cycloidal motion of a particle in :math:`\vec{E}` ,
+  :math:`\vec{B}` static fields (Fig. 36).
+
+  .. math::
+    \begin{align}
+      X &= -R cos(\frac{\omega S}{\beta c} + \epsilon) - \frac{\alpha S}{\omega \beta c} + \frac{C_1}{\omega} \\
+      Y &= R sin(\frac{\omega S}{\beta c} + \epsilon) - \frac{\alpha}{\omega^2} - \frac{C_2}{\omega} + Y_0 \\
+      Z &= S sin(P_0) + Z_0 \\
+    \end{align}
+
+  where, S is the path length in the separator, :math:`\alpha = - \frac{Ec^2}{\gamma}`, :math:`\omega = - \frac{Bc^2}{m\gamma}`,
+  :math:`C_1 = \beta sin(T_0) cos(P_0)` and :math:`C_2 = \beta c cos(T_0) cos(P_0)` are initial conditions.
+  :math:`c` = velocity of light, :math:`\beta c` = velocity of the particle, :math:`\gamma = (1-\beta^2)^{-1/2}`
+  and :math:`tan \epsilon = (C_2 + \frac{\alpha}{\omega})/ C_1`. :math:`Y_0, T_0, Z_0, P_0` are the initial coordinates of
+  the particle in the zgoubi reference frame. Here :math:`\beta c` and :math:`\gamma` are assumed constant, which is
+  true as long as the change of momentum due to the electric field remains negligible all along the separator.
+  The option index IA in the input data allows switching to inactive element (thus equivalent to ``ESL``), horizontal
+  or vertical separator. Normally, E, B and the value of :math:`\beta W` for wanted particles are related by:
+
+  .. math::
+
+    B_{[T]} = - \frac{E_{[V/m]}}{\beta_W c_{m / s}}

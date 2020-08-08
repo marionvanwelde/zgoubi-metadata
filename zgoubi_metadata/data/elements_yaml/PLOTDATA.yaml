@@ -1,0 +1,13 @@
+zgoubi_name: PLOTDATA
+params:
+template:
+doc: |
+
+  Intermediate output for the PLOTDATA graphic software
+
+  .. rubric:: Zgoubi manual description
+
+  ``PLOTDATA`` was at the origin implemented for the purpose of plotting particle coordinates using the ``TRIUMF`` ``PLOTDATA``
+  package [67]. However nothing precludes using it with a different aim.
+  The ``PLOTDATA`` keyword can be introduced at up to 20 locations in zgoubi.dat. There, particle coordinates will be stored in a
+  local array, ``FF``. They are overwritten at each pass. Usage of ``FF`` is left to the user, see ``FORTRAN`` subroutine pltdat.f.

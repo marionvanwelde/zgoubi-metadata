@@ -1,6 +1,38 @@
 zgoubi_name: ORDRE
 params:
-- {name: IO, type: I, default: 0, doc: ""}
+  IO: {type: I, default: 4, doc: "Taylor expansions of R and u up to u(IO) (default is IO = 4 )"}
 template:
 - - IO
 doc: |
+
+  Taylor expansions order
+
+  .. rubric:: Zgoubi manual description
+
+  The position :math:`\vec{R}` and velocity :math:`\vec{u}` of a particle are obtained from Taylor expansions as described in eq. (1.2.4).
+  By default, these expansions are up to the fifth order derivative of :math:`\vec{u}`,
+
+  .. math::
+
+    \begin{align}
+      \vec{R_1} & \approx \vec{R_0} + \vec{u}\Delta s + ... \vec{u}^{(5)}\frac{\Delta s^6}{6!} \\
+      \vec{u_1} & \approx \vec{u} + \vec{u}'\Delta s + ... \vec{u}^{(5)}\frac{\Delta s^}{5!} \\ \\
+    \end{align}
+
+  which corresponds to fourth order derivatives of fields :math:`\vec{B}`, eq. (1.2.8). and of :math:`\vec{E}` , eq. (1.2.13).
+  However, third or higher order derivatives of fields may be zero in some optical elements, for instance in a
+  sharp edge quadrupole. Also, in several elements, no more than first and second order field derivatives are
+  implemented in the code. One may also wish to save on computation time by limiting the time-consuming
+  calculation of lengthy (while possibly ineffective in terms of accuracy) Taylor expansions.
+  In that spirit, the purpose of ``ORDRE``, option ``IO`` = 2 − 5, is to allow for expansions to the :math:`\vec{u}^`{(n)} term in
+  eq. 1.2.4. Default functioning is IO = 4, stated in ``FORTRAN`` file block.f.
+
+  Note the following :
+    As concerns the optical elements ``DECAPOLE``, ``DODECAPO``, ``EBMULT``, ``ELMULT``, ``MULTIPOL``, ``OCTUPOLE``,
+    ``QUADRUPO``, ``SEXTUPOL``
+    field derivatives (see eq. 1.2.10 p. 21, eq. 1.2.15 p. 22,) have been installed in the code according to :math:`\vec{u}^`{(5)}
+    Taylor development order ; it may not be as complete for other optical elements. In particular, in electric
+    optical elements field derivatives (eq. 1.2.15) are usually provided to no more than second order, which
+    justifies saving on computing time by means of ``ORDRE``, so to avoid pushing Taylor expansions as high as :math:`\vec{u}^`{(n)}.
+
+  ** NOTE ** : see also the option ``IORDRE`` in field map declarations (``DIPOLE-M``, ``TOSCA``, etc.).
