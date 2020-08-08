@@ -1,0 +1,60 @@
+zgoubi_name: SVDOC
+params:
+  LABELS: {type: A, unit="", default="", doc: "The N label(s) at which beam data are to be computed/recorded.
+  If some “LABELi ” in this list actually does not appear in zgoubi.dat optical sequence,
+  then it is peacefully ignored ; wild card accepted, in the form ’*LABEL’ or ’LABEL*’ or ’*LABEL*’."}
+doc: |
+
+  SVD orbit correction- UNDER DEVELOPEMENT - Feb. 2019
+
+  .. rubric:: Zgoubi manual description
+
+  The method is the following :
+
+    1.  Reference trajectory (case of beam line) or orbit (case of periodic structure- requires ``FIT``[2], see
+        below) : the initial coordinate(s) in ``OBJET`` are considered the reference(s) - multiple references are allowed,
+        see below. A reference does not have to be zero, however, ``FIT`` can be used do find the reference orbit
+        initial coordinates, in that case ``FIT`` should appear before ``SVDOC`` in the sequence. For instance, (i) in a
+        spectrometer beam line, ``FIT`` would allow to determine the necessary initial coordinates (varied by ``FIT``) for
+        a particle with a given momentum to acquire some requested radial excursion as some requested location
+        down the line (the constraint(s) in ``FIT``); (ii) if the sequence is assumed periodic, ``FIT`` will find the closed
+        orbit (possibly multiple closed orbits, e.g. in the case of a multiple-pass recirculating linac, or a fixed-field
+        ring such as a cyclotron or ``FFAG``). A practical example of periodic orbit finding using ``FIT``[2] is given in
+        PART B, page 322.
+
+
+    2.  The algorithm computes the :math:`A` matrix (in :math:`A\vec{x} = \vec{y} - \vec{y_0}`, with :math:`x` the correctors
+        signal, :math:`y` the pickups signal, :math:`\vec{y_0}` a reference PU signal - the reference orbit), by injecting a
+        non-zero signal (angle) in each orbit corrector, one after the other successively, and saving the successive PU readings
+        (as rows of the A matrix). There can be up to 20 different particles tracked (meaning 20 different reference orbits,
+        and 20 times more columns (PUs) in A), each PU is “multiple-beam”, capable of discriminating each orbit in the ``SVD``
+        process (case for instace of chromatic orbits, or multiple-pass ERL, or ``FFAG`` lattice).
+
+    3.  The inverse matrix A−1 is computed and stored (logged to zgoubi.SVD.out).
+
+    4.  Optionally, ``SVDOC`` can carry on with error trials, in the following way:
+
+      (i) apply the compensation signal (the SVD-inverted A−1 matrix) on the correctors,
+
+      (ii) apply orbit defects,
+
+      (iii) find the corrected [multiple-]orbit (logged to zgoubi.SVDOrbit.out),
+
+      (iv) repeat (ii)-(iv).
+
+
+  The method is the following for instance in the case of a periodic sequence:
+
+  * use ``ERRORS`` to activate orbit defects. Note that ``ERRORS`` must be set to OFF in the zgoubi sequence,
+    as (i) the first pass through the sequence is used to determine the ~y0 reference orbit mentionned earlier
+    (possibly using ``FIT``[2], placed at the end of the sequence), (ii) the ON/OFF switch in ``ERRORS`` is managed
+    by ``SVDOC`` in this procedure;
+
+  * ``SVDOC`` the strength in the correctors that the SVD used is reset to zero;
+
+  * ``FIT``[2] finds the orbit resulting from these defects, this orbit is recorded at the PUs that the SVD used;
+
+  * ``SVDOC`` then sets the strengths in the correctors, using the ``SVD`` matrix;
+
+  * ``FIT``[2] finds the new orbit - presumably improved ! and delivers it (logged to zgoubi.SVDOrbits.out,
+    together with the uncorrected orbit).

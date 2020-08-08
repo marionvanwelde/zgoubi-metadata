@@ -1,0 +1,11 @@
+zgoubi_name: SRPNT
+params:
+doc: |
+
+  Print SR loss statistics into zgoubi.res
+
+  .. rubric:: Zgoubi manual description
+
+  ``SRPRNT`` may be introduced anywhere in a structure. It allows switching on synchrotron radiation energy loss computation. It
+  produces in addition a print out (to zgoubi.res) of current state of statistics on several parameters related to ``SR`` loss presumably
+  activated beforehand with keyword ``SRLOSS``.
