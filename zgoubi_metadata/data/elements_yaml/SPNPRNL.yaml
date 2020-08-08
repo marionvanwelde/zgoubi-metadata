@@ -1,6 +1,30 @@
 zgoubi_name: SPNPRNL
 params:
-- {name: FNAME, type: A80, default: "", doc: ""}
+- FNAME: {type: 'A', default: "", doc: "Name of storage file (e.g., zgoubi.spn)"}
 template:
 - - FNAME
 doc: |
+
+  Store spin coordinates in file FNAME
+
+  .. rubric:: Zgoubi manual description
+
+  ``SPNPRNL`` has similar effect to ``SPNPRT`` (page 195), except that the information is stored in a dedicated file ``FNAME`` (should
+  post-processing with zpop follow, advised name is ``FNAME`` = ‘zgoubi.spn’ (formatted write) or ‘b zgoubi.spn’ (binary write) ).
+  The data are formatted and ordered according to the FORTRAN sequence found in the subroutine spnprn.f, with meaning of
+  printed quantities as follows :
+
+    * ``LET(I),IEX(I) : tagging character and flag (see ``OBJET``)
+
+    * ``SI(1-4,I)`` : spin components SX, SY , SZ and modulus, at the origin
+
+    * ``SF(1-4,I)`` : idem at the current position
+
+    * ``GAMMA`` : Lorentz relativistic factor
+
+    * ``I`` : particle number
+
+    * ``IMAX`` : total number of particles ray-traced (see ``OBJET``)
+
+    * ``IPASS`` : turn number (see ``REBELOTE``)
+    

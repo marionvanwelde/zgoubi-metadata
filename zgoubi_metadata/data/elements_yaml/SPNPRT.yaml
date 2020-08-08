@@ -1,3 +1,25 @@
 zgoubi_name: SPNPRT
 params:
 doc: |
+
+  Print spin coordinates
+
+  .. rubric:: Zgoubi manual description
+
+  ``SPNPRT`` can be introduced anywhere in a structure. It produces a print out (to zgoubi.res) of various informations
+  such as the initial and actual coordinates and modulus of the spin of the ``IMAX`` particles, their Lorentz factor :math:`\gamma`,
+  the mean values of the spin components, etc., at the location where it is placed in the zgoubi.dat data list.
+
+  ``PRINT`` : If ``PRINT`` appears after ``SPNPRT``, then spin data will be stored in zgoubi.SPNPRT.Out. The latter is opened at the
+  first occurence of ``PRINT``. In particular, if ``REBELOTE`` is used then data will be stacked in zgoubi.SPNPRT.Out.
+
+  ``MATRIX`` : If ``MATRIX” appears after ``SPNPRT``, then spin rotation matrix (or matrices) will be computed. This is done assuming
+  appropriate initial particle and spin sampling has been defined (by respectively ``OBJET`` and ``SPNTRK``), as follows :
+
+  * three particles are needed for SPNPRT to compute a spin matrix. All three have identical initial coordinates (for instance,
+    the local stable precession axis coordinates) and rigidity, and their spins are on a direct triedra, for instance, respectively,
+    (SX, SY , SZ) = (1, 0, 0), (0, 1, 0), (0, 0, 1),
+
+  * there may be several groups of three particles, each group with a particular rigidity (i.e., the three particles in a group
+    have the same momentum). ``OBJET`` with ``KOBJ=1`` or ``KOBJ=2`` can be used for instance to generate these particles by groups of
+    like rigidity. ``SPNPRT`` will thus compute as many matrices.

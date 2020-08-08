@@ -1,0 +1,26 @@
+zgoubi_name: SPACECHARG
+params:
+  LMNT: {type:A, unit="", default="none", doc: "LMNT = ’all’, ’none’, or keyword"}
+  MODEL: {type:A, unit="", default="none", doc: "model : ’KV’, ’Gaussian’"}
+  PRINT: {type:A, unit="", default="none", doc: "optionnal: print out to zgoubi.SPACECHARG.out"}
+  LAMBDA: {type: E, unit="MeV_c", default=0, doc: "Linear charge density"}
+template:
+- - LMNT
+  - [MODEL, PRINT]
+- - LAMBDA
+doc: |
+
+  Space charge
+
+  .. rubric:: Zgoubi manual description
+
+  The keyword ``SPACECHARG`` enables (or disables) the calculation of space charge effects.
+  It must be preceded by ``PARTICUL`` for definition of mass and charge values, as they enter in
+  the definition of space charge parameters. ``SPACECHARG`` is supposed to
+  appear a first time at the location where space charge effects should start
+  being taken into account, with the first data ``LMNT`` set to ’all’ or a
+  keyword. ``SPACECHARG`` is supposed to appear a second time at the location
+  where calculations should stop, with ``LMNT`` set to ’none’.
+  It results in summary outputs in zgoubi.res. Occurence of PRINT amongst ``SPACECHARG`` arguments
+  results in storage of computational data and other relevant informations
+  in zgoubi.SPACECHARG.out, as space charge computation proceeds.

@@ -1,0 +1,77 @@
+zgoubi_name: SPNTRK
+params:
+  KSO: {type: I, unit="", default: "", doc: "KSO=0 : spin tracking [switched] off; KSO= -1 : spin tracking resumes. Otherwise : as stated below"}
+  KSO2: {type: I, unit="", default: "", doc: ""}
+  SX: {type: E, unit="", default: "", doc: "X initial components of the initial spin"}
+  SY: {type: E, unit="", default: "", doc: "Y initial components of the initial spin"}
+  SZ: {type: E, unit="", default: "", doc: "Z initial components of the initial spin"}
+  FNAME: {type: A, unit="", default: "", doc: "File name (under development)"}
+  T0: {type: E, unit="", default: "", doc: "Angles of average polarization direction"}
+  P0: {type: E, unit="", default: "", doc: "Angles of average polarization direction"}
+  A: {type: A, unit="", default: "", doc: "Angle of the cone around (TO, PO)"}
+  DELTA_A: {type: A, unit="", default: "", doc: "standard deviation of distribution around A"}
+  IR: {type: I, unit="", default:0, doc: "Random sequence seed"}
+
+template:
+- - [KSO, KSO2]
+- - !!set {cond_section}
+- - IR
+
+conditional_sections:
+  cond_section:
+    - [KSO, KSO2]
+    - 1:
+      2:
+      3:
+      4:
+        - - SX
+          - SY
+          - SZ
+
+      4.1:
+        - - SX
+          - SY
+          - SZ
+
+      4.2:
+        - - FNAME
+
+      5:
+        - - T0
+          - P0
+        - - A
+          - DELTA_A
+
+doc: |
+
+  Store spin coordinates in file FNAME
+
+  .. rubric:: Zgoubi manual description
+
+  The keyword ``SPNTRK`` allows switching spin tracking on (index ``KSO``=1) or off (``KSO``=0), or resuming
+  (index ``KSO``=-1, following an occurence ``KSO``=0). It also permits the attribution of an initial spin to each
+  one of the ``IMAX`` particles of the beam, following a distribution that depends on the option index ``KSO``. It
+  must be preceded by ``PARTICUL`` for the definition of mass and gyromagnetic factor.
+
+  * ``KSO`` = 1 (respectively 2, 3) : the ``IMAX`` particles defined with ``[MC]OBJET`` are given a longitudinal (1,0,0)
+    spin component (respectively transverse horizontal (0,1,0), vertical (0,0,1)).
+
+  * ``KSO`` = 4 : initial spin components are entered explicitly for each one of the ``IMAX`` particles of the beam.
+
+  * ``KSO`` = 4.1 : three initial spin components SX, SY , SZ are entered explicitly just once, they are then
+    assigned to each one of the ``IMAX`` particles of the beam.
+
+  * ``KSO`` = 4.2 : under development. Read spin components from a file, file name has to be provided. (that
+    file at present can be zgoubi.res : ``KSO``=4.2 looks for key “(deg) (deg)“ that appears at start of the spin
+    coordinates list under the keyword ``SPNPRT``).
+
+  * ``KSO`` = 5 : random generation of ``IMAX`` initial spin conditions as described in Fig. 44. Given a mean
+    polarization axis (S) defined by its angles T0 and P0, and a cone of angle A with respect to this axis, the
+    ``IMAX`` spins are sorted randomly in a Gaussian distribution
+
+  ..math::
+
+    p(a) = exp\left[ - \frac{(A- a)^2}{2\delta A^2}\right] / \delta A \sqrt{2\pi}
+
+  and within a cylindrical uniform distribution around the (S) axis. Examples of simple distributions available
+  by this mean are given in Fig. 45.

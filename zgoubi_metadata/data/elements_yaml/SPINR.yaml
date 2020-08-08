@@ -1,0 +1,61 @@
+zgoubi_name: SPINR
+params:
+  IOPT: {type: I, unit="", default="1", doc: "Option"}
+  X: {type: E, unit="", default="", doc:'UNUSED'}
+  PHI: {type: E, unit="degrees", default=0, doc: "Angle (in (X, Y ) plane) between the X-axis and the spin precession axis"}
+  MU: {type: E, unit="degrees", default=0, doc: "spin precession angle around that axis"}
+  B: {type: E, unit="", default="", doc: 'Angle (in (X, Y ) plane) between the X-axis and the spin precession axis'}
+  B0: {type: E, unit="", default="", doc: 'six coefficients that define the spin precession around that axis.'}
+  C0: {type: E, unit="", default="", doc: 'six coefficients that define the spin precession around that axis.'}
+  C1: {type: E, unit="", default="", doc: 'six coefficients that define the spin precession around that axis.'}
+  C2: {type: E, unit="", default="", doc: 'six coefficients that define the spin precession around that axis.'}
+  C3: {type: E, unit="", default="", doc: 'six coefficients that define the spin precession around that axis.'}
+
+template:
+- - IOPT
+- - !!set {cond_section}
+
+conditional_sections:
+  cond_section:
+    - IOPT
+    - 0:
+        - - X
+          - X
+      1:
+        - - PHI
+          - MU
+      2:
+        - - PHI
+          - B
+          - B0
+        - - C0
+          - C1
+          - C2
+          - C3
+
+doc: |
+
+  Spin rotation
+
+  .. rubric:: Zgoubi manual description
+
+  ``SPINR`` causes spin precession, a local transformation on the spin vector of the particles,
+  as, e.g., in a local helical spin rotator. Two options are available, as follows.
+
+
+  * IOPT = 0 inhibits the keyword.
+
+  * If IOPT = 1 : the precession is defined by its axis, at angle :math:`\phi` with respect to zgoubi’s X-axis and assumed
+    in the horizontal plane, and by its value, :math:`\mu`.
+
+  * If IOPT = 2 : given the spin precession axis direction :math:`\phi` in the (X,Y) plane,
+    the spin precession angle follows a function of the reference Lorentz factor :
+
+      .. math::
+
+        \mu(\gamma) = \left(\frac{B}{B_0} \right)^2 \times \left( C_0 + \frac{C_1}{\gamma} + \frac{C_2}{\gamma^2} + \frac{C_3}{\gamma^3} \right)
+
+  with :math:`B` and :math:`B+0` normally a nominal and a reference magnetic field value,
+  and :math:`C_i` empirical coefficients.
+  The reference Lorentz factor corresponds to the reference rigidity ``BORO``, as defined for instance with
+  ``[MC]OBJET``, possibly updated in the presence of acceleration (see section 7.2, page 199).

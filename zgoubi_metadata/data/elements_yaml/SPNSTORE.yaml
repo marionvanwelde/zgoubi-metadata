@@ -1,10 +1,33 @@
 zgoubi_name: SPNSTORE
 params:
-- {name: FNAME, type: A80, default: "", doc: ""}
-- {name: LABELS, type: A1000, default: "", doc: ""}
-- {name: IP, type: I, default: 0, doc: ""}
+  FNAME: {type: A, default: "", doc: "Name of storage file (e.g., zgoubi.spn)"}
+  LABELS: {type: A, default: "", doc: "label(s) of the element(s) at the exit of which the store occurs (10 labels maximum)"}
+  IP: {type: I, default: 0, doc: "Store every IP other pass (when using REBELOTE with NPASS ≥ IP − 1)."}
 template:
 - - FNAME
   - LABELS
 - - IP
 doc: |
+
+  Store spin coordinates in file FNAME
+
+  .. rubric:: Zgoubi manual description
+
+  ``SPNSTORE`` has an effect similar to ``SPNPRNL``, with two more features.
+
+  * On the first data line, ``FNAME`` may be followed by a series of up to 10 LABELs proper to the elements of the zgoubi.dat
+    data file at the exit of which the print should occur ; if no label is given, the print occurs by default at the very location of
+    ``SPNSTORE`` ; if labels are given, then print occurs right downstream of all optical elements wearing those labels
+    (and no longer at the ``SPNSTORE`` location).
+
+  * The next data line gives a parameter, ``IP`` : printing will
+    occur every ``IP`` other pass, when using ``REBELOTE`` with
+    ``NPASS ≥ IP − 1``.
+
+  For instance the following data input in zgoubi.dat :
+  ``SPNSTORE``
+  zgoubi.spn HPCKUP VPCKUP
+  12
+  will result in output prints into zgoubi.spn, every 12 other pass,
+  each time elements of the zgoubi.dat data list labeled either
+  ``HPCKUP`` or ``VPCKUP`` are encountered.
