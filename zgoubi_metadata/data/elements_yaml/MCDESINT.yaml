@@ -1,20 +1,17 @@
 zgoubi_name: MCDESINT
-
 params:
-- INFO: {type: A, unit: "", default: 0, doc: "Switch"}
-- M2: {type: E, unit: "MeV_c2", default: 0, doc: "Masses of the two decay products"}
-- M3: {type: E, unit: "MeV_c2", default: 0, doc: "Masses of the two decay products"}
-- TAU2: {type: E, unit:"s", default: 0, doc: "COM lifetime of particle 2"}
-- I1: {type: I, unit: "", default: 0, doc: "Seeds for random number generators"}
-- I2: {type: I, unit: "", default: 0, doc: "Seeds for random number generators"}
-- I3: {type: I, unit: "", default: 0, doc: "Seeds for random number generators"}
-
+  INFO: {type: A, unit: "", default: '', doc: "Switch"}
+  M2: {type: E, unit: "MeV_c2", default: 0.0, doc: "Masses of the two decay products"}
+  M3: {type: E, unit: "MeV_c2", default: 0.0, doc: "Masses of the two decay products"}
+  TAU2: {type: E, unit:"s", default: 0.0, doc: "COM lifetime of particle 2"}
+  I1: {type: I, unit: "", default: 0.0, doc: "Seeds for random number generators"}
+  I2: {type: I, unit: "", default: 0.0, doc: "Seeds for random number generators"}
+  I3: {type: I, unit: "", default: 0.0, doc: "Seeds for random number generators"}
 template:
 - - [INFO, M2, M3, TAU2]
 - - I1
   - I2
   - I3
-
 doc: |
 
   Monte-Carlo simulation of in-flight decay
