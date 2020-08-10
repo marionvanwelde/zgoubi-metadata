@@ -1,3 +1,14 @@
 zgoubi_name: END
 params:
 doc: |
+  End of input data list.
+
+  .. rubric:: Zgoubi manual description
+
+  The end of a problem, or of a set of several problems stacked in the data file, should be stated by means of the
+  keywords FIN or END.
+
+  Any information following these keywords will be ignored.
+
+  In some cases, these keywords may cause some information to be printed in zgoubi.res, for instance when the keyword
+  PICKUPS is used.

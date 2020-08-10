@@ -1,8 +1,45 @@
 zgoubi_name: DRIFT
 params:
-  XL: {type: E, unit: 'cm', default: 0, doc: "Length of drift"}
+  IL: {type: I, unit: '', default: 0, doc: "Print field and coordinates along trajectories"}
+  XL: {type: E, unit: 'cm', default: 0, doc: "Drift length"}
+  SPLIT: {type: L, unit: '', default: True, doc: "Split the drift in multiple steps"}
+  N: {type: I, unit: '', default: 10, doc: "If N > 1, the drift will be split in multiple steps."}
 template:
-- - XL
+- - !!set {cond_section1}
+conditional_sections:
+  cond_section1:
+    - SPLIT
+    - True:
+        - - XL
+          - 'split'
+          - N
+          - IL
+      False:
+        - - XL
 doc: |
-  A drift tube
-  Region with no magnetic or electric field.
+  Field free drift space.
+
+  .. rubric:: Zgoubi manual description
+
+  ``DRIFT`` or ``ESL`` allow introduction of a drift space with length XL with positive or negative sign, anywhere in
+  a structure. This is an exact transport: the associated equations of motion are (Fig. 24)
+
+  .. math::
+
+      \begin{align}
+          Y_2 &= Y_1 +XL *tgT  \\
+          Z_2 &= Z_1 + \frac{XL}{cosT}tgP \\
+          SAR_2 &= SAR_1 + \frac{XL}{cosT *cosP}
+      \end{align}
+
+  whereas the velocity vector is left unchanged.
+
+  The flag ’.plt’ can be added as a second LABEL following ``DRIFT`` keyword. It causes local coordinates to be logged
+  to zgoubi.res or to zgoubi.plt (in the same manner as IL=1, or 2, respectively, does in the case optical elements).
+  A drift can be split into pieces, using the ’split’ flag. This may be used for graphic purposes for instance:
+  a sub-product of ’split’ is its allowing using the IL flag, so logging coordinates to either zgoubi.res or to
+  zgoubi.plt (in the same manner as IL=1 or 2, respectively, does in optical elements, step by step).
+
+  .. rubric:: Zgoubidoo usage and example
+
+  >>> Drift(XL=10 * _ureg.cm)
