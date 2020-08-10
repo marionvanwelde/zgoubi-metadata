@@ -1,0 +1,75 @@
+zgoubi_name: SYNRAD
+params:
+  KSR: {type: I, unit: "", default: 0, doc: "Switch. 0 : inhibit SR calculations, 1 : start, 2 : stop"}
+  D1: {type: E, unit: "", default: "", doc: "Dummies"}
+  D2: {type: E, unit: "", default: "", doc: "Dummies"}
+  D3: {type: E, unit: "", default: "", doc: "Dummies"}
+  X0: {type: E, unit: "", default: "", doc: "Observer position in frame of magnet next to SYNRAD"}
+  Y0: {type: E, unit: "", default: "", doc: "Observer position in frame of magnet next to SYNRAD"}
+  Z0: {type: E, unit: "", default: "", doc: "Observer position in frame of magnet next to SYNRAD"}
+  NU1: {type: E, unit: "", default: "", doc: "Frequency range"}
+  NU2: {type: E, unit: "", default: "", doc: "Frequency range"}
+  N: {type: I, unit: "", default: "", doc: "Sampling"}
+
+template:
+  - - KSR
+  - - !!set {cond_section}
+
+conditional_sections:
+  cond_section:
+    - KSR
+    - 0:
+        - - D1
+          - D2
+          - D3
+      1:
+        - - X0
+          - Y0
+          - Z0
+      2:
+        - - NU1
+          - NU2
+          - N
+
+doc: |
+
+  Synchrotron radiation spectral-angular densities
+
+  .. rubric:: Zgoubi manual description
+
+  The keyword ``SYNRAD`` enables (or disables) the calculation of synchrotron radiation (SR) electric field and spectral angular
+  energy density. It must be preceded by ``PARTICUL`` for defining mass and charge values, as they enter in the definition of SR
+  parameters.
+  ``SYNRAD`` is supposed to appear a first time at the location where SR should start being taken into account, with the first data
+  ``KSR`` set to 1. It results in on-line storage of the electric field vector and other relevant quantities.
+  Data stored in zgoubi.sre :
+
+    * :math:`(ELx, ELy, ELz)` : electric field vector :math:`\vec{\varepsilon}` (eq. 3.2.1)
+
+    * :math:`(btx, bty, btz) = \vec{\beta} = \frac{1}{c} \times \text{particle velocity}`
+
+    * :math:`(gx, gy, gz) = \frac{d\vec{\beta}}{dt} = \text{particle acceleration}` (eq. 3.2.3)
+
+    * :math:`\Delta\tau` = observer time increment (eq. 3.2.2)
+
+    * :math:`t' = \tau - r(t')/c` = retarded (particle) time
+
+    * :math:`(rtx, rty, rtz): \vec{R}(t)`, particle to observer vector (eq. 3.2.4)
+
+    * :math:`(x, y, z)` = particle coordinates
+
+    * :math:`\Delta s` = step size in the magnet (fig. 2)
+
+    * :math:`NS` = step number
+
+    * :math:`I` = particle number
+
+    * :math:`LET(I)` = tagging letter
+
+    * :math:`IEX(I)` = stop flag (see section 7.12)
+
+
+  ``SYNRAD`` is supposed to appear a second time at the location where SR calculations should stop, with KSR set to 2. It results in
+  the output of the angular energy density :math:`\int_{\nu_1}^{\nu_2} \partial^3W / \partial\phi\partial\psi\partial\nu` (eq. 3.2.11)
+  as calculated from the Fourier transform of the electric field (eq. 3.2.11).
+  The spectral range of interest and frequency sampling (:math:`\nu_1`, :math:`\nu_2`, :math:`N`) are specified next to ``KSR``.

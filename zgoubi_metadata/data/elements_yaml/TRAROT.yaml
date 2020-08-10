@@ -1,0 +1,28 @@
+zgoubi_name: TRAROT
+params:
+  TX: {type: E, unit: "m", default: 0, doc: "X-Translation"}
+  TY: {type: E, unit: "m", default: 0, doc: "Y-Translation"}
+  TZ: {type: E, unit: "m", default: 0, doc: "Z-Translation"}
+  RX: {type: E, unit: "rad", default: 0, doc: "X-Rotation"}
+  RY: {type: E, unit: "rad", default: 0, doc: "Y-Rotation"}
+  RZ: {type: E, unit: "rad", default: 0, doc: "Z-Rotation"}
+
+template:
+  - - TX
+    - TY
+    - TZ
+  - - RX
+    - RY
+    - RZ
+
+doc: |
+
+  Translation-Rotation of the reference frame
+
+  .. rubric:: Zgoubi manual description
+
+  UNDER DEVELOPMENT. Check before use.
+  This procedure performs translation and rotation of the local zgoubi frame. It can be used for instance for
+  skewing multipoles.
+  Relationship to spin tracking, particle decay or gas-scattering may not be fully installed, to be checked
+  before use.

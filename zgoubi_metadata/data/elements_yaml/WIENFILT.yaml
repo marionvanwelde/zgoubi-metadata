@@ -1,0 +1,101 @@
+zgoubi_name: WIENFILT
+params:
+  IL: {type: I, unit: "", default: 0, doc: "Print coordinates"}
+  XL: {type: E, unit: "m", default: 0, doc: "Length"}
+  E: {type: E, unit: "V/m", default: 0, doc: "Electric field"}
+  B: {type: E, unit: "T", default: 0, doc: "Magnetic field"}
+  HV: {type: I, unit: "", default: 0, doc: "option : element inactive (HV = 0) horizontal(HV = 1) or vertical (HV = 2) separation "}
+  XE: {type: E, unit: "cm", default: 0, doc: "Integration zone extent"}
+  LAM_E_E: {type: E, unit: "cm", default: 0, doc: "Fringe field extents E"}
+  LAM_B_E: {type: E, unit: "cm", default: 0, doc: "Fringe field extents E"}
+  CEE_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CEE_1: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CEE_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CEE_3: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CEE_4: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CEE_5: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CEB_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CEB_1: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CEB_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CEB_3: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CEB_4: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CEB_5: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  XS: {type: E, unit: "cm", default: 0, doc: "Integration zone extent"}
+  LAM_E_S: {type: E, unit: "cm", default: 0, doc: "Fringe field extents E"}
+  LAM_B_S: {type: E, unit: "cm", default: 0, doc: "Fringe field extents E"}
+  CSE_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CSE_1: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CSE_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CSE_3: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CSE_4: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CSE_5: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for E"}
+  CSB_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CSB_1: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CSB_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CSB_3: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CSB_4: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  CSB_5: {type: E, unit: "", default: 0, doc: "Fringe field coefficients for B"}
+  XPAS: {type: E, unit: "", unit: "", unit: 'mm', default: 1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 0, doc: "KPOS =1 : element aligned, 2 : misaligned"}
+  XCE: {type: E, unit: "", default: 0, doc: "X-Shift"}
+  YCE: {type: E, unit: "", default: 0, doc: "Y-Shift"}
+  ALE: {type: E, unit: "", default: 0, doc: "Tilt"}
+
+template:
+  - - IL
+  - - XL
+    - YL
+    - B0
+  - - XPAS
+  - - KPOS
+    - XCE
+    - YCE
+    - ALE
+
+doc: |
+
+  Wien filter
+
+  .. rubric:: Zgoubi manual description
+
+  ``WIENFILT`` simulates a Wien filter, with transverse and orthogonal electric and magnetic fields :math:`\vec{E}_Y` ,
+  :math:`\vec{B}_Z` (index KHV=1) or :math:`\vec{E}_Z` , :math:`\vec{B}_Y` (index KHV=1) (Fig. 36). It must be preceded by ``PARTICUL`` for the definition
+  of particle mass and charge.
+  The length ``XL`` of the element is the distance between its entrance and exit EFBs. The electric and magnetic
+  field intensities E0 and B0 in the central, uniform field region, normally satisfy the relation
+
+  .. math::
+
+    B_0 = - \frac{E_0}{\beta_W c}
+
+  for the selection of “wanted” particles of velocity :math:`\beta_W c`. Ray-tracing in field fall-off regions extends over a
+  distance :math:`\X_E` (:math:`\X_S`) beyond the entrance (exit) EFB by means of prior and further automatic change of frame.
+  Four sets of coefficients :math:`\lambda`, :math:`C_0` − :math:`C_5` allow the description of the entrance and exit fringe fields outside the
+  uniform field region, following the model [41]
+
+  .. math::
+
+    F = \frac{1}{1+exp(P(s))}
+
+  where :math:`P(s)` is of the term
+
+  .. math::
+
+    P(s) = C_0 + C_1 \left(\frac{s}{\lambda}\right) + C_2 \left(\frac{s}{\lambda}\right)^2 + C_3 \left(\frac{s}{\lambda}\right)^3 + C_4 \left(\frac{s}{\lambda}\right)^4 + C_5 \left(\frac{s}{\lambda}\right)^5
+
+  and s is the distance to the EFB. When fringe fields overlap inside the element (i.e., :math:`XL \leq X_E + X_S`), the
+  field fall-off is expressed as
+
+  .. math::
+
+    F = F_E + F_S - 1
+
+    where FE(FS) is the value of the coefficient respective to the entrance (exit) EFB.
+    If :math:`\lambda_E` = 0 (:math:`\lambda_S` = 0) for either the electric or magnetic component, then both are considered as sharp
+    edge fields and :math:`X_E`(:math:`X_S`) is forced to zero (for the purpose of saving computing time). In this case, the
+    magnetic wedge angle vertical first order focusing effect is simulated at entrance and exit by a kick :math:`P_2 = P_1 - Z_1 tan(\epsilon /\rho)` applied to each particle (P1, P2 are the vertical angles upstream and downstream the
+    EFB, Z1 the vertical particle position at the EFB, :math:`\rho` the local horizontal bending radius and :math:`\epsilon` the wedge
+    angle experienced by the particle ; :math:`\epsilon` depends on the horizontal angle T). This is not done for the electric
+    field, however it is advised not to use a sharp edge electric dipole model since this entails non symplectic
+    mapping, and in particular precludes accounting for momentum effects of the non zero longitudinal electric
+    field component.

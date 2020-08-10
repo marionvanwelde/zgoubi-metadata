@@ -1,3 +1,19 @@
 zgoubi_name: YMY
 params:
 doc: |
+
+  Reverse signs of Y and Z axes
+
+  .. rubric:: Zgoubi manual description
+
+  ``YMY`` performs a 180 degrees rotation of particle coordinates with respect to the X-axis, as shown in Fig. 42. This
+  is done by means of a change of sign of Y and Z axes, and therefore coordinates, as follows
+
+  .. math::
+
+    \begin{align}
+      Y2 &= -Y1 \\
+      T2 &= -T1 \\
+      Z2 &= -Z1 \\
+      P2 = -P1
+    \end{align}

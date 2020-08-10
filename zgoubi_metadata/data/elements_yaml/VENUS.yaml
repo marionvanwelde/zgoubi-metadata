@@ -1,0 +1,32 @@
+zgoubi_name: VENUS
+params:
+  IL: {type: I, unit: "", default: 0, doc: "Print coordinates"}
+  XL: {type: E, unit: "m", default: 0, doc: "Length"}
+  YL: {type: E, unit: "m", default: 0, doc: "Width = +- YL"}
+  BO: {type: E, unit: "rad", default: 0, doc: "Field"}
+  XPAS: {type: E, unit: "", unit: "", unit: 'mm', default: 1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 0, doc: "KPOS =1 : element aligned, 2 : misaligned"}
+  XCE: {type: E, unit: "", default: 0, doc: "X-Shift"}
+  YCE: {type: E, unit: "", default: 0, doc: "Y-Shift"}
+  ALE: {type: E, unit: "", default: 0, doc: "Tilt"}
+
+template:
+  - - IL
+  - - XL
+    - YL
+    - B0
+  - - XPAS
+  - - KPOS
+    - XCE
+    - YCE
+    - ALE
+
+doc: |
+
+  Simulation of a rectangular shape dipole magnet
+
+  .. rubric:: Zgoubi manual description
+
+  ``VENUS`` is dedicated to a ‘rough’ simulation of SATURNE Laboratory’s VENUS dipole. The field B0 is
+  constant inside the magnet, with longitudinal extent XL and transverse extent ±YL ; outside these limits,
+  B0 = 0 (Fig. 41).

@@ -1,0 +1,10 @@
+zgoubi_name: UNDULATOR
+params:
+template:
+doc: |
+
+  Undulator magnet
+
+  .. rubric:: Zgoubi manual description
+
+  UNDULATOR magnet. UNDER DEVELOPMENT.

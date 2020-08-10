@@ -1,0 +1,18 @@
+zgoubi_name: SYSTEM
+params:
+  NCMD: {type: I, unit: "", default: 0, doc: "The number of calls to follow"}
+
+template:
+  - - NCMD
+
+doc: |
+
+  System call
+
+  .. rubric:: Zgoubi manual description
+
+  The keyword ``SYSTEM`` allows one or a series of system calls. It can appear anywhere, an arbitrary number of times, in the
+  zgoubi.dat data list. It is effective at the very location where it appears.
+  ``SYSTEM`` keyword is followed by the list of the desired system commands. That can be saving zgoubi output files, calling again
+  zgoubi at the end of a run so allowing dependent consecutive jobs, etc.
+  EXAMPLES - Examples of the use of ``SYSTEM`` are given in pp. 262, 316.
