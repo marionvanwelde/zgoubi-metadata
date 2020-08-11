@@ -40,9 +40,8 @@ doc: |
     B_Z \vert _{Z=0} = B_0 \left(\frac{N}{R_0} Y + \frac{B}{R_0^2} Y^2 + \frac{G}{R_0} Y^3 \right)
 
   ``SEXQUAD`` defines in a simple way a sharp edge field with quadrupolar, sextupolar and octupolar components.
-  ``QUADISEX`` adds a dipole component. The length of the element is ``XL``. The vertical component :math:`B \equiv B_Z(X, Y, Z)`
-  B ≡ BZ(X, Y,Z = 0) of the field and its derivatives in median plane are calculated at each step using the
-  following expressions
+  ``QUADISEX`` adds a dipole component. The length of the element is ``XL``. The vertical component :math:`B \equiv B_Z(X, Y, Z = 0)`
+  of the field and its derivatives in median plane are calculated at each step using the following expressions
 
   ..math::
 

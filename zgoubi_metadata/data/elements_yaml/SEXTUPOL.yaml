@@ -1,6 +1,6 @@
 zgoubi_name: SEXTUPOL
 params:
-  IL: {type: I, unit: "", default: 0, doc: ""}
+  IL: {type: I, unit: "", default: 0, doc: "Print coordinates"}
   XL: {type: E, unit: "cm", default: 0, doc: "Length of the element"}
   R0: {type: E, unit: "cm", default: 1, doc: "Radius of the element"}
   B0: {type: E, unit: "kilogauss", default: 0, doc: "Field at pole tip of the element"}
@@ -23,10 +23,10 @@ params:
   CS_4: {type: E, unit: "", unit: "", unit: "", unit: "", default: 0, doc: "Fringe field coefficient C4"}
   CS_5: {type: E, unit: "", unit: "", unit: "", default: 0, doc: "Fringe field coefficient C5"}
   XPAS: {type: E, unit: "", unit: "", unit: 'mm', default: 1, doc: "Integration step"}
-  KPOS: {type: I, unit: "", default: 0, doc: ""}
-  XCE: {type: E, unit: "", default: 0, doc: ""}
-  YCE: {type: E, unit: "", default: 0, doc: ""}
-  ALE: {type: E, unit: "", default: 0, doc: ""}
+  KPOS: {type: I, unit: "", default: 0, doc: "KPOS =1 : element aligned, 2 : misaligned"}
+  XCE: {type: E, unit: "", default: 0, doc: "X-Shift"}
+  YCE: {type: E, unit: "", default: 0, doc: "Y-Shift"}
+  ALE: {type: E, unit: "", default: 0, doc: "Tilt"}
 template:
 - - IL
 - - XL

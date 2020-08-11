@@ -1,112 +1,118 @@
 zgoubi_name: MULTIPOL
 params:
-- {name: IL, type: I, default: 0, doc: ""}
-- {name: XL, type: E, unit: cm, default: 0, doc: ""}
-- {name: R_0, type: E, unit: "", default: 0, doc: ""}
-- {name: B_1, type: E, unit: "", default: 0, doc: ""}
-- {name: B_2, type: E, unit: "", default: 0, doc: ""}
-- {name: B_3, type: E, unit: "", default: 0, doc: ""}
-- {name: B_4, type: E, unit: "", default: 0, doc: ""}
-- {name: B_5, type: E, unit: "", default: 0, doc: ""}
-- {name: B_6, type: E, unit: "", default: 0, doc: ""}
-- {name: B_7, type: E, unit: "", default: 0, doc: ""}
-- {name: B_8, type: E, unit: "", default: 0, doc: ""}
-- {name: B_9, type: E, unit: "", default: 0, doc: ""}
-- {name: B_10, type: E, unit: "", default: 0, doc: ""}
-- {name: X_E, type: E, unit: "", default: 0, doc: ""}
-- {name: LAM_E, type: E, unit: "", default: 0, doc: ""}
-- {name: E_2, type: E, unit: "", default: 0, doc: ""}
-- {name: E_3, type: E, unit: "", default: 0, doc: ""}
-- {name: E_4, type: E, unit: "", default: 0, doc: ""}
-- {name: E_5, type: E, unit: "", default: 0, doc: ""}
-- {name: E_6, type: E, unit: "", default: 0, doc: ""}
-- {name: E_7, type: E, unit: "", default: 0, doc: ""}
-- {name: E_8, type: E, unit: "", default: 0, doc: ""}
-- {name: E_9, type: E, unit: "", default: 0, doc: ""}
-- {name: E_10, type: E, unit: "", default: 0, doc: ""}
-- {name: NCE, type: I, default: 0, doc: ""}
-- {name: C_0, type: E, unit: "", default: 0, doc: ""}
-- {name: C_1, type: E, unit: "", default: 0, doc: ""}
-- {name: C_2, type: E, unit: "", default: 0, doc: ""}
-- {name: C_3, type: E, unit: "", default: 0, doc: ""}
-- {name: C_4, type: E, unit: "", default: 0, doc: ""}
-- {name: C_5, type: E, unit: "", default: 0, doc: ""}
-- {name: X_S, type: E, unit: "", default: 0, doc: ""}
-- {name: LAM_S, type: E, unit: "", default: 0, doc: ""}
-- {name: S_2, type: E, unit: "", default: 0, doc: ""}
-- {name: S_3, type: E, unit: "", default: 0, doc: ""}
-- {name: S_4, type: E, unit: "", default: 0, doc: ""}
-- {name: S_5, type: E, unit: "", default: 0, doc: ""}
-- {name: S_6, type: E, unit: "", default: 0, doc: ""}
-- {name: S_7, type: E, unit: "", default: 0, doc: ""}
-- {name: S_8, type: E, unit: "", default: 0, doc: ""}
-- {name: S_9, type: E, unit: "", default: 0, doc: ""}
-- {name: S_10, type: E, unit: "", default: 0, doc: ""}
-- {name: NCS, type: I, default: 0, doc: ""}
-- {name: CS_0, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_1, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_2, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_3, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_4, type: E, unit: "", default: 0, doc: ""}
-- {name: CS_5, type: E, unit: "", default: 0, doc: ""}
-- {name: R_1, type: E, unit: "", default: 0, doc: ""}
-- {name: R_2, type: E, unit: "", default: 0, doc: ""}
-- {name: R_3, type: E, unit: "", default: 0, doc: ""}
-- {name: R_4, type: E, unit: "", default: 0, doc: ""}
-- {name: R_5, type: E, unit: "", default: 0, doc: ""}
-- {name: R_6, type: E, unit: "", default: 0, doc: ""}
-- {name: R_7, type: E, unit: "", default: 0, doc: ""}
-- {name: R_8, type: E, unit: "", default: 0, doc: ""}
-- {name: R_9, type: E, unit: "", default: 0, doc: ""}
-- {name: R_10, type: E, unit: "", default: 0, doc: ""}
-- {name: XPAS, type: X, default: 0, doc: ""}
-- {name: KPOS, type: I, default: 0, doc: ""}
-- {name: XCE, type: E, unit: "", default: 0, doc: ""}
-- {name: YCE, type: E, unit: "", default: 0, doc: ""}
-- {name: ALE, type: E, unit: "", default: 0, doc: ""}
+  IL: {type: I, unit: "", default: 0, doc: "Print coordinates"}
+  XL: {type: E, unit: "cm", default: 0, doc: "Length of the element"}
+  R0: {type: E, unit: "cm", default: 1, doc: "Radius at pole tip"}
+  B1: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for dipole"}
+  B2: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for quadrupole"}
+  B3: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for sextupole"}
+  B4: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for octupole"}
+  B5: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for decapole"}
+  B6: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for"}
+  B7: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for"}
+  B8: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for"}
+  B9: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for"}
+  B10: {type: E, unit: "kG", default: 0.0, doc: "Fied at pole tip for dodecapole"}
+  X_E: {type: E, unit: "cm", default: 0.0, doc: "Integration zone"}
+  LAM_E: {type: E, unit: "cm", default: 0.0, doc: "Fringe field extent"}
+  E2: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E3: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E4: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E5: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E6: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E7: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E8: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E9: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  E10: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  NCE: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  CE_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  CE_1: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  CE_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  CE_3: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  CE_4: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  CE_5: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  X_S: {type: E, unit: "cm", default: 0, doc: "Exit face integration zone"}
+  LAM_S: {type: E, unit: "cm", default: 0, doc: "Exit face fringe field extent"}
+  S2: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S3: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S4: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S5: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S6: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S7: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S8: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S9: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  S10: {type: E, unit: "", default: 0.0, doc: "Fringe field extent"}
+  NCS: {type: I, unit: "", default: 0, doc: "UNUSED"}
+  CS_0: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C0"}
+  CS_1: {type: E, unit: "", default: 1, doc: "Fringe field coefficient C1"}
+  CS_2: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C2"}
+  CS_3: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C3"}
+  CS_4: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C4"}
+  CS_5: {type: E, unit: "", default: 0, doc: "Fringe field coefficient C5"}
+  R1: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R2: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R3: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R4: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R5: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R6: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R7: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R8: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R9: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  R10: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
+  XPAS: {type: E, unit: "", unit: "", unit: 'mm', default: 1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 0, doc: "KPOS =1 : element aligned, 2 : misaligned"}
+  XCE: {type: E, unit: "", default: 0, doc: "X-Shift"}
+  YCE: {type: E, unit: "", default: 0, doc: "Y-Shift"}
+  ALE: {type: E, unit: "", default: 0, doc: "Tilt"}
+  XS: {type: E, unit: "cm", default:0.0, doc:"X-Shift"}
+  YS: {type: E, unit: "cm", default:0.0, doc:"Y-Shift"}
+  ZR: {type: E, unit: "rad", default:0.0, doc:"Z-Rotation"}
+  ZS: {type: E, unit: "cm", default:0.0, doc:"Z-Shift"}
+  YR: {type: E, unit: "rad", default:0.0, doc:"Y-rotation"}
+
 template:
 - - IL
 - - XL
-  - R_0
-  - B_1
-  - B_2
-  - B_3
-  - B_4
-  - B_5
-  - B_6
-  - B_7
-  - B_8
-  - B_9
-  - B_10
+  - R0
+  - B1
+  - B2
+  - B3
+  - B4
+  - B5
+  - B6
+  - B7
+  - B8
+  - B9
+  - B10
 - - X_E
   - LAM_E
-  - E_2
-  - E_3
-  - E_4
-  - E_5
-  - E_6
-  - E_7
-  - E_8
-  - E_9
-  - E_10
+  - E2
+  - E3
+  - E4
+  - E5
+  - E6
+  - E7
+  - E8
+  - E9
+  - E10
 - - NCE
-  - C_0
-  - C_1
-  - C_2
-  - C_3
-  - C_4
-  - C_5
+  - CE_0
+  - CE_1
+  - CE_2
+  - CE_3
+  - CE_4
+  - CE_5
 - - X_S
   - LAM_S
-  - S_2
-  - S_3
-  - S_4
-  - S_5
-  - S_6
-  - S_7
-  - S_8
-  - S_9
-  - S_10
+  - S2
+  - S3
+  - S4
+  - S5
+  - S6
+  - S7
+  - S8
+  - S9
+  - S10
 - - NCS
   - CS_0
   - CS_1
@@ -114,19 +120,79 @@ template:
   - CS_3
   - CS_4
   - CS_5
-- - R_1
-  - R_2
-  - R_3
-  - R_4
-  - R_5
-  - R_6
-  - R_7
-  - R_8
-  - R_9
-  - R_10
+- - R1
+  - R2
+  - R3
+  - R4
+  - R5
+  - R6
+  - R7
+  - R8
+  - R9
+  - R10
 - - XPAS
 - - KPOS
-  - XCE
-  - YCE
-  - ALE
+- - !!set {cond_section}
+
+conditional_sections:
+  cond_section:
+    - KPOS
+    - 1:
+        - XCE
+        - YCE
+        - ALE
+    - 2:
+        - XCE
+        - YCE
+        - ALE
+    - 3:
+        - XCE
+        - YCE
+        - ALE
+    - 4:
+      - - XS
+        - YS
+        - ZR
+        - ZS
+        - YR
+
 doc: |
+
+  Magnetic multipole
+
+  .. rubric:: Zgoubi manual description
+
+
+  The simulation of multipolar magnetic field :math:`\vec{M}` by ``MULTIPOL`` proceeds by addition of the dipolar (:math:`\vec{B_1}`),
+  quadrupolar (:math:`\vec{B_2}`), sextupolar (:math:`\vec{B_3}`), etc., up to 20-polar (:math:`\vec{B_10}`) components, and of their derivatives up to
+  fourth order, following
+
+  .. math::
+
+  \begin{align}
+    \vec{M} &= \vec{B_1} + \vec{B_2} + \vec{B_3} + ... + \vec{B_{10}} \\
+    \frac{\partial\vec{M}}{\partial X} &= \frac{\partial\vec{B_1}}{\partial X} + \frac{\partial\vec{B_2}}{\partial X} + \frac{\partial\vec{B_3}}{\partial X} + ... + \frac{\partial\vec{B_{10}}}{\partial X} \\
+    \frac{\partial^2\vec{M}}{\partial X \partial Z} &= \frac{\partial^2\vec{B_1}}{\partial X \partial Z} + \frac{\partial^2\vec{B_2}}{\partial X \partial Z} + \frac{\partial^2\vec{B_3}}{\partial X \partial Z} + ... + \frac{\partial^2\vec{B_{10}}}{\partial X \partial Z} \\
+    \text{etc.}
+  \end{align}
+
+  The independent components :math:`\vec{B_1}`, :math:`\vec{B_2}`, :math:`\vec{B_3}`, ..., :math:`\vec{B_10}` and their derivatives up to the fourth order are calculated
+  as described in section 1.3.7.
+  The entrance and exit fringe fields are treated separately. They are characterized by the integration zone :math:`X_E` at
+  entrance and :math:`X_S` at exit, as for ``QUADRUPO``, and by the extent :math:`\lambda{E}` at
+  entrance, :math:`\lambda{S}` at exit. The fringe field extents for the dipole component are :math:`\lambda{E}`
+  and :math:`\lambda{S}`. The fringe field for the quadrupolar (sextupolar, ..., 20-polar) component is given by
+  a coefficient :math:`E_2` (:math:`E_3`, ..., :math:`E_{10}`) at entrance, and :math:`S_2` (:math:`S_3`, ..., :math:`S_{10}`) at
+  exit, such that the extent is :math:`\lambda{E} ∗ E2 (\lambda{E} * E3, ..., \lambda{E} * E10)`  at entrance
+  and :math:`\lambda{S} ∗ S2 (\lambda{S} * S3, ..., \lambda{S} * S10)` at exit.
+  If :math:`\lambda{E}` = 0 (:math:`\lambda{S}` = 0) the multipole lens is considered to have a sharp edge field at entrance (exit),
+  and then, :math:`X_E` (:math:`X_S`) is forced to zero (for the mere purpose of saving computing time).
+  If :math:`E_i` = 0 :math:`S_i`Si = 0) (i = 2, 10), the entrance (exit) fringe field for the multipole component i is considered as a sharp
+  edge field. In sharp edge field model, the wedge angle vertical first order focusing effect (if :math:`\vec{B_1}` is non zero)
+  is simulated at magnet entrance and exit by a kick P2 = P1 − Z1 tan(:math:`\varepsilon`/:math:`\rho`) applied to each
+  particle (P1, P2 are the vertical angles upstream and downstream of the EFB, Z1 is the vertical particle position at
+  the EFB, :math:`\rho` the local horizontal bending radius and :math:`\varepsilon` the wedge angle experienced by the
+  particle ; :math:`\varepsilon` depends on the horizontal angle T).
+  Any multipole component :math:`\vec{B_i}` can be rotated independently by an angle :math:`RX_i` around the longitudinal Xaxis,
+  for the simulation of positioning defects, as well as skew lenses.
+  Magnet (mis-)alignment is assured by KPOS. KPOS also allows some degrees of automatic alignment useful for periodic structures (section 7.9).
