@@ -1,0 +1,44 @@
+zgoubi_name: TRANSMAT
+params:
+  KSR: {type: I, unit: "", default: 0, doc: "Switch. 0 : inhibit SR calculations, 1 : start, 2 : stop"}
+  XL: {type: E, unit: "", default: "", doc: "Dummies"}
+
+
+template:
+  - - KSR
+  - - !!set {cond_section}
+
+conditional_sections:
+  cond_section:
+    - KSR
+    - 0:
+        - - D1
+          - D2
+          - D3
+      1:
+        - - X0
+          - Y0
+          - Z0
+      2:
+        - - NU1
+          - NU2
+          - N
+
+doc: |
+
+  Matrix transfer
+
+  .. rubric:: Zgoubi manual description
+
+  ``TRANSMAT`` performs a second order transport of the particle coordinates in the following way
+
+  .. math::
+
+    X_i = \sum_j R_{ij} X_{j}^{0} + \sum_{j,k} T_{ijk} X_{j}^{0}X_{k}^{0}
+
+  where, :math:`X_i` stands for any of the current coordinates Y , T, Z, P, path length and momentum dispersion,
+  and :math:`X_i^0` stands for any of the initial coordinates. [Rij ] ([Tijk]) is the first order (second order) transfer matrix
+  as usually involved in second order beam optics [35]. Second order transfer is optional. The length of the
+  element represented by the matrix may be introduced for the purpose of path length updating.
+
+  Note : ``MATRIX`` delivers [Rij ] and [Tijk] matrices in a format suitable for straightforward use with ``TRANSMAT``

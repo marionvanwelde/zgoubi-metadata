@@ -1,0 +1,65 @@
+zgoubi_name: POISSON
+params:
+  IC: {type: I, unit="", default: 0, doc: "Print the field map"}
+  IL: {type: I, unit="", default: 0, doc: ""}
+  BNORM: {type: E, default: 0., doc: "Field conversion coeffs"}
+  XN: {type: E, default: 0., doc: "X-coordinate conversion coeffs"}
+  YN: {type: E, default: 0., doc: "Y-coordinate conversion coeffs"}
+  TITL: {type: A, default: '', doc: "Title. Start with “FLIP” to get field map X-flipped."}
+  IX: {type: I, default: 0.0, doc: "Number of longitudinal nodes of the mesh"}
+  IY: {type: I, default: 0.0, doc: "Number of horizontal-transverse nodes of the mesh"}
+  FNAME: {type: A, default: '', doc: "File name"}
+  ID: {type: I, default: '', doc: "File name"}
+  A: {}
+  B: {}
+  C: {}
+  IORDRE: {type: I, default: 2, doc: "Degree of polynomial interpolation, 2nd or 4th order"}
+  XPAS: {type: E, default: 0, doc: "Integration step"}
+  KPOS: {type: I, default: 0, doc: "1: Element aligned, 2: Element misaligned"}
+  XCE: {type: E, unit: "", default: 0, doc: "X shift"}
+  YCE: {type: E, unit: "", default: 0, doc: "Y shift"}
+  ALE: {type: E, unit: "", default: 0, doc: "Tilts"}
+template:
+- - IC
+  - IL
+- - BNORM
+  - XN
+  - YN
+- - TITL
+- - IX
+  - IY
+- - FNAME
+- - ID
+  - A
+  - B
+  - C
+- - IORDRE
+- - XPAS
+- - KPOS
+  - XCE
+  - YCE
+  - ALE
+doc: |
+
+  Read magnetic field data from ``POISSON`` output
+
+  .. rubric:: Zgoubi manual description
+
+  This keyword allows reading a field profile B(X) from ``POISSON`` output. Let ``FNAME`` be the name of this
+  output file (normally, ``FNAME`` = outpoi.lis) ; the data are read following the ``FORTRAN`` statements here
+  under
+
+    I = 0
+    11 CONTINUE
+    I = I + 1
+    READ(LUN,101,ERR=10,END=10) K, K, K, R, X(I), R, R, B(I)
+    101 FORMAT(I1, I3, I4, E15.6, 2F11.5, 2F12.3)
+    GOTO 11
+    10 CONTINUE
+
+  where X(I) is the longitudinal coordinate, and B(I) is the Z component of the field at a node (I) of the mesh.
+  Ks and Rs are dummy variables appearing in the ``POISSON`` output file outpoi.lis but not used here.
+  From this field profile, a 2-D median plane map is built, with a rectangular and uniform mesh ; mid-plane
+  symmetry is assumed. The field at each node (Xi, Yj) of the map is B(Xi), independent of Yj (i.e., the
+  distribution is uniform in the Y direction).
+  For the rest, ``POISSON`` works in a way similar to ``CARTEMES``.

@@ -1,0 +1,48 @@
+zgoubi_name: OPTICS
+params:
+  IOPT: {type: I, unit: "", default: 0, doc: "IOPT = 0/1 : Off/On"}
+  NLBL: {type: I, unit: "", default: 1, doc: "Number of labels (default is 1)"}
+  LABEL: {type: A, unit="", default:"", doc: ’label’ can be ’all’, ’ALL’, or a list of NLBL first label(s) asappearing at one or more elements in zgoubi.dat sequence ; I1 or A5, A7
+wild card accepted, in the form ’*label’ or ’label*’ or ’*label*’.}
+  PRINT: {type: I, unit: "", default: 0, doc: "Presence of ’PRINT’ will cause print out of optical functions in zgoubi.OPTICS.out"}
+  COUPLED: {type: I, unit: "", default: 0, doc: "optical function computation is in coupled hypothesis if specified, uncoupled otherwise"}
+template:
+- - [IOPT, NLBL, LABEL]
+- - [PRINT]
+- - [COUPLED]
+doc: |
+
+  Write out optical functions. Log to zgoubi.OPTICS.out
+
+  .. rubric:: Zgoubi manual description
+
+  ``OPTICS`` normally appears next to object definition, it normally works in conjunction with element label(s).
+  ``OPTICS`` causes the transport and write out, in zgoubi.res, of the 6×6 beam matrix, following options ``KOPT``
+  and ’label ’, below.
+
+  * IF ``KOPT``=0 : Off
+
+  * IF ``KOPT``=1 : Will transport the optical functions with initial values as specified in ``OBJET``, option ``KOBJ``=5.1.
+  Note that ``OPTICS`` assumes the first particle of the set of 11 as defined by ``OBJET``, to be the reference particle
+  for computation of the transport coefficients.
+
+  Note : In the case of a periodic structure, the initial coordinate values in ``OBJET``[``KOBJ``=5.1] may be
+  the periodic ones (as obtained, for instance, from a first run using ``MATRIX``[``IFOC``=11]). Using ``TWISS``
+  keyword instead may be considered in that case.
+  A second argument, ’label ’, allows
+
+  * if label = all : printing out, into zgoubi.res, after all keywords of the zgoubi.dat structure,
+
+  * otherwise, printing out at all keyword featuring ``LABEL`` ≡ label as a first label (see section 7.7,
+  page 200, regarding the labelling of keywords).
+
+  ``PRINT`` : An optional third argument, ``IMP``=1, or equivalently the command ``PRINT``, will cause saving of
+  the transported optical functions into file zgoubi.OPTICS.out.
+
+  * About the source code* :
+
+  The program beamat ensures the transport of the beam matrix along the zgoubi.dat sequence. beamat is
+  called by opticc, itself called after each optical element, in the program zgoubi.
+  The starting beam matrix value is in the array FI, initialized by OBJET[KOBJ=5.1], program obj5. The
+  array F0 contains the running beam matrix. The program beaimp prints to zgoubi.res,
+  whereas optimp prints to zgoubi.OPTICS.out. Both are called from opticc.

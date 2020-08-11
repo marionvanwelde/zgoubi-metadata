@@ -1,8 +1,10 @@
 zgoubi_name: SVDOC
 params:
-  LABELS: {type: A, unit="", default="", doc: "The N label(s) at which beam data are to be computed/recorded.
+  LABELS: {type: A, unit:"", default:"", doc: "The N label(s) at which beam data are to be computed/recorded.
   If some “LABELi ” in this list actually does not appear in zgoubi.dat optical sequence,
   then it is peacefully ignored ; wild card accepted, in the form ’*LABEL’ or ’LABEL*’ or ’*LABEL*’."}
+
+template:
 doc: |
 
   SVD orbit correction- UNDER DEVELOPEMENT - Feb. 2019

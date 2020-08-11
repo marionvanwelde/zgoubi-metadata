@@ -1,0 +1,22 @@
+zgoubi_name: PICKUPS
+params:
+  N: {type: I, unit="", default: 0, doc: "0: inactive, >1: number of LABELs at which beam centroid is computed"}
+  PRINT: {type: A, unit="", default:0, doc:"PRINT is optional: will cause print of pickup contents to zgoubi.PICKUP.out."}
+template:
+- - [N, PRINT]
+doc: |
+
+  Bunch centroid path; orbit
+
+  .. rubric:: Zgoubi manual description
+
+  ``PICKUPS`` computes the average values of the coordinates of the particles in a bunch (coordinates of the bunch centroid) at one
+  or more keywords specified by their ``LABELs`` . The list of ``LABEL(s)`` concerned is specified by the user, as part of the arguments
+  under the keyword ``PICKUPS``.
+  In conjunction with ``REBELOTE`` in the case of a periodic structure, with ``REBELOTE`` thus being used to cause multi-turn
+  tracking, ``PICKUPS`` are zeroed at start of each turn.
+  Pickup data computed during zgoubi execution are stored in the file zgoubi.PICKUP.out, usable for further analysis, or for
+  plotting (for instance, using gnuplot).
+  A summary of the list of pickups and their individual bunch data is listed in the result file zgoubi.res (below the ``END`` keyword)
+  at the end of zgoubi execution. It is concluded with statistics as the rms, minimum and maximum values of the bunch centroid
+  data over the ensemble of pickups.

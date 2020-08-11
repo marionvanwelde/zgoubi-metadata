@@ -1,0 +1,53 @@
+zgoubi_name: TWISS
+params:
+  KTW: {type: I, unit="", default="", doc=""}
+  FACD: {type: , unit="", default="", doc=""}
+  FACA: {type: , unit="", default="", doc=""}
+  COUPLED: {type: , unit="", default="", doc=""}
+  SRINT: {type: , unit="", default="", doc=""}
+  DKINT: {type: , unit="", default="", doc=""}
+
+template:
+  - - KTW
+    - FACD
+    - FACA  
+
+doc: |
+
+  Calculation of periodic optical parameters. Log to zgoubi.TWISS.out
+
+  .. rubric:: Zgoubi manual description
+
+  ``TWISS`` causes the calculation of transport coefficients and various other global parameters, in particular periodical quantities as
+  tunes and optical functions, in the coupled hypothesis. ``TWISS`` is normally placed at the end of the structure ; it causes a series
+  of up to 5 successive passes in the structure (at the manner of ``REBELOTE``).
+  The object necessary for these calculations will be generated automatically if one uses ``OBJET`` with option ``KOBJ``= 5.
+  ``TWISS`` works in a way similar to ``MATRIX``, iterating the ``MATRIX`` process wherever necessary, changing for instance the
+  reference trajectory in ``OBJET`` for dp/p related computations. In particular :
+
+  * It assumes that the reference particle (particle #1 of 11, when using ``OBJET``[``KOBJ``= 5] ) is located on the closed orbit.
+    This condition has to be satisfied for ``TWISS`` to work consistently, because ``TWISS`` does not look for the closed orbit by itself. A
+    simple way to first find the orbit is to have ``TWISS`` preceded by a dedicated ``FIT``[2], see example in PART B, page 321.
+  * A first pass (the only one if ``KTW``=1 ) through the structure allows computing the periodic optical functions at the end
+    of the structure, from the rays.
+
+  * The periodic dispersions from the first pass are used to define chromatic closed orbits at :math:`\delta p /p` (or at :math:`\pm FacD \delta p /p`,
+    accounting for a user’s parameter :math:`FacD \neq 1`). A second and a third pass (which terminate the process if KTW=2 ) with chromatic
+    objects centered respectively on :math:`\pm \delta p /p` chromatic orbits will then compute the chromatic first order transport matrices.
+    From these the chromaticities are deduced. Full accuracy on the chromatic orbits can be obtained using ``FIT``[2].
+
+  * Anharmonicities need two additional passes (which terminate the process if ``KTW``=3 ). They are deduced from the
+    difference in tunes for particles tracked on different transverse invariants, horizontal or vertical.
+
+  The execution of TWISS will cause printout to the file zgoubi.TWISS.out, a MADX type “twiss” file, with similar formatting,
+  including periodic optical data as a header (tunes, chromaticities, etc.) and, in sequence element by element : optical functions,
+  element strength, first order transport coefficients, spin :math:`\vec{n_0}` vector (requires ``SPNTRK`` request).
+  SR Integrals, DK Integrals
+
+  Presence of ``SRINT`` in TWISS arguments will cause computation of SR integrals, which will then be added to zgoubi.TWISS.out
+  header. Presence of ``DKINT`` in TWISS arguments will cause computation of Derbenev-Kondratenko integrals, which will then
+  be added to zgoubi.TWISS.out header. In the case SR and/or DK integrals are requested, they are computed along particle number
+  1 trajectory, it is the responsibility of the user to ensure that particle number 1 is on the closed orbit, and the DK integrals
+  case to ensure in addition that its initial spin coordinates in ``SPNTRK`` are on the spin closd orbit.
+  SR and DK integrals are computed step by step; all optical elements contribute (not just dipoles) as long as trajectory number 1
+  experiences :math:`1/ \rho \neq 0`.

@@ -1,0 +1,75 @@
+zgoubi_name: MAP2D-E
+params:
+  IC: {type: I, unit:"", default: 1, doc: "Print the field map"}
+  IL: {type: I, unit:"", default: 0, doc: ""}
+  ENORM': {type: E, unit:"", default: 0.0, doc: "Field conversion coeffs"}
+  X-NORM: {type: E, unit:"", default: 0.0, doc: "X-coordinate unit conversion coeffs"}
+  Y-NORM: {type: E, unit:"", default: 0.0, doc: "Y-coordinate unit conversion coeffs"}
+  TITL: {type: A, unit:"", default: '', doc: "Title. Start with “FLIP” to get field map X-flipped."}
+  IX: {type: I, unit:"", default: 0.0, doc: "Number of longitudinal nodes of the mesh"}
+  JY: {type: I, unit:"", default: 0.0, doc: "Number of horizontal-transverse nodes of the mesh"}
+  FNAME: {type: A, unit:"", default: '', doc: "File name"}
+  ID: {type: I, unit:"", default: '', doc: "File name"}
+  A: {}
+  B: {}
+  C: {}
+  IORDRE: {type: I, unit: "",  default: 2, doc: "Degree of polynomial interpolation, 2nd or 4th order"}
+  XPAS: {type: E, unit: "", unit: "", unit: 'mm', default: 1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 0, doc: "KPOS =1 : element aligned, 2 : misaligned"}
+  XCE: {type: E, unit: "", default: 0.0, doc: "X-Shift"}
+  YCE: {type: E, unit: "", default: 0.0, doc: "Y-Shift"}
+  ALE: {type: E, unit: "", default: 0.0, doc: "Tilt"}
+
+template:
+- - IL
+  - IC
+- - ENORM
+  - XNORM
+  - YNORM
+- - TITL
+- - IX
+  - JY
+- - FNAME
+- - ID
+  - A
+  - B
+  - C
+- - IORDRE
+- - XPAS
+- - KPOS
+  - XCE
+  - YCE
+  - ALE
+
+doc: |
+  2-D Cartesian uniform mesh field map - arbitrary electric field
+
+  .. rubric:: Zgoubi manual description
+
+  MAP2D-E reads a 2-D field map that provides the three components EX, EY , EZ of the electric field at
+  all nodes of a 2-D Cartesian uniform mesh in an (X, Y ) plane. No particular symmetry is assumed, which
+  allows the treatment of any type of field (e.g., field of a parallel-plate mirror with arbitrary Z elevation - the
+  map needs not be a mid-plane map).
+  The field map data file has to be be filled with a format that satisfies the FORTRAN reading sequence
+  below (in principle compatible with TOSCA code outputs), details and possible updates are to be found in
+  the source file ’fmapw.f’ :
+    OPEN (UNIT = NL, FILE = FNAME, STATUS = ‘OLD’ [,FORM=’UNFORMATTED’])
+    DO 1 J=1,JY
+    DO 1 I=1,IX
+    IF (BINARY) THEN
+    READ(NL) Y(J), Z, X(I), EY(I,J), EZ(I,J), EX(I,J)
+    ELSE
+    READ(NL,100) Y(J), Z, X(I), EY(I,J), EZ(I,J), EX(I,J)
+    100 FORMAT (1X, 6E11.4)
+    ENDIF
+    1 CONTINUE
+  IX (JY) is the number of longitudinal (transverse horizontal) nodes of the 2-D uniform mesh, Z is the
+  considered Z-elevation of the map. For binary files, FNAME must begin with ‘E_’ or ‘b_’, a flag ‘BINARY’
+  will thus be set to ‘.TRUE.’. The field :math:`\vec{E} = (E_X, E_Y, E_Z)` is next normalized with ENORM, prior to raytracing.
+  As well the coordinates X, Y are normalized with X-,Y-NORM coefficients (useful to convert to
+  centimeters, the working units in zgoubi.
+  At each step of the trajectory of a particle, the field and its derivatives are calculated using a second or
+  fourth degree polynomial interpolation followed by a Z extrapolation (see sections 1.3.4 page 26, 1.4.3
+  page 31). The interpolation grid is 3*3-node for 2nd order (option IORDRE = 2) or 5*5 for 4th order
+  (option IORDRE = 4).
+  Entrance and/or exit integration boundaries may be defined, in the same way as for CARTEMES.

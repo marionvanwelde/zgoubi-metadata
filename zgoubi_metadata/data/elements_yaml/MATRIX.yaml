@@ -1,11 +1,15 @@
 zgoubi_name: MATRIX
 params:
-- IORD: {type: I, unit: "", default: 0, doc: ""}
-- IFOC: {type: I, unit: "", default: 0, doc: ""}
+  IORD: {type: I, unit: "", default: 0, doc: ""}
+  IFOC: {type: I, unit: "", default: 0, doc: ""}
+  PRINT: {type: I, unit: "", default: 0, doc: "Occurence of “PRINT” will cause printout to zgoubi.MATRIX.out file."}
+  COUPLED: {type: I, unit: "", default: 0, doc: "Occurence of “coupled ”, in the periodic case (IFOC = 10 + NPER, above), will cause use of coupled formalism."}
 
 template:
 - - IORD
   - IFOC
+- - [PRINT, COUPLED]
+
 doc: |
 
   Calculation of transfer coefficients, periodic parameters

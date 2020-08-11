@@ -1,0 +1,218 @@
+zgoubi_name: SEXTUPOL
+params:
+  BORO: {type: E, unit: "kG cm", default: 0.0, doc: "Reference rigidity"}
+  KOBJ: {type: I, unit: "", default: "", doc: "Option index"}
+  K2: {type: I, unit: "", default: 0, doc: "More options"}
+  IY: {type: I, unit: "", default: 0, doc: "Total number of points in +-Y"}
+  IT: {type: I, unit: "", default: 0, doc: "Total number of points in +-T"}
+  IZ: {type: I, unit: "", default: 0, doc: "Total number of points in +-Z"}
+  IP: {type: I, unit: "", default: 0, doc: "Total number of points in +-P"}
+  IS: {type: I, unit: "", default: 0, doc: "Total number of points in +-S"}
+  ID: {type: I, unit: "", default: 0, doc: "Total number of points in +-D"}
+  DY: {type: E, unit: "cm", default: 0.0, doc: "Sampling size in Y"}
+  DT: {type: E, unit: "mrad", default: 0.0, doc: "Sampling size in T"}
+  DZ: {type: E, unit: "cm", default: 0.0, doc: "Sampling size in Z"}
+  DP: {type: E, unit: "mrad", default: 0.0, doc: "Sampling size in P"}
+  DS: {type: E, unit: "cm", default: 0.0, doc: "Sampling size in S"}
+  DD: {type: E, unit: "", default: 0.0, doc: "Sampling size in relative momentum"}
+  YR: {type: E, unit: "cm", default: 0.0, doc: "Reference trajectory"}
+  TR: {type: E, unit: "mrad", default: 0.0, doc: "Reference trajectory"}
+  ZR: {type: E, unit: "cm", default: 0.0, doc: "Reference trajectory"}
+  PR: {type: E, unit: "mrad", default: 0.0, doc: "Reference trajectory"}
+  SR: {type: E, unit: "cm", default: 0.0, doc: "Reference trajectory"}
+  DR: {type: E, unit: "", default: 0.0, doc: "Reference trajectory"}
+  IMAX: {type: I, unit: "", default: 0, doc: "Total number of particles"}
+  IDMAX: {type: I, unit: "", default: 0, doc: "Number of distinct momenta"}
+  Y: {type: E, unit: "cm", default: 0.0, doc: "Coordinates of the IMAX particles"}
+  T: {type: E, unit: "mrad", default: 0.0, doc: "Coordinates of the IMAX particles"}
+  Z: {type: E, unit: "cm", default: 0.0, doc: "Coordinates of the IMAX particles"}
+  P: {type: E, unit: "mrad", default: 0.0, doc: "Coordinates of the IMAX particles"}
+  S: {type: E, unit: "cm", default: 0.0, doc: "Coordinates of the IMAX particles"}
+  D: {type: E, unit: "", default: 0.0, doc: "Coordinates of the IMAX particles"}
+  LET: {type: A, unit: "", default: "", doc: "Tagging of the IMAX particles"}
+  IEX: {type: , unit: "", default: "", doc: ""}
+  HEADER_NH: {type: A, unit: "", default: "", doc: ""}
+  IT1: {type: I, unit: "", default: 0, doc: "Read particles numbered IT1 to IT2, step ITStep"}
+  IT2: {type: I, unit: "", default: 0, doc: "Read particles numbered IT1 to IT2, step ITStep"}
+  ITSTEP: {type: I, unit: "", default: 0, doc: "Read particles numbered IT1 to IT2, step ITStep"}
+  IP1: {type: I, unit: "", default: 0, doc: "Read particles that belong in pass numbered"}
+  IP2: {type: I, unit: "", default: 0, doc: "Read particles that belong in pass numbered"}
+  IPSTEP: {type: I, unit: "", default: 0, doc: "Read particles that belong in pass numbered"}
+  YF: {type: E, unit: "", default: 0.0, doc: "Scaling factor"}
+  TF: {type: E, unit: "", default: 0.0, doc: "Scaling factor"}
+  ZF: {type: E, unit: "", default: 0.0, doc: "Scaling factor"}
+  PF: {type: E, unit: "", default: 0.0, doc: "Scaling factor"}
+  SF: {type: E, unit: "", default: 0.0, doc: "Scaling factor"}
+  DF: {type: E, unit: "", default: 0.0, doc: "Scaling factor"}
+  TF: {type: E, unit: "", default: 0.0, doc: "Scaling factor"}
+  TAG: {type: A, unit: "", default: "", doc: "TAG-ing letter"}
+  YR: {type: E, unit: "cm", default: 0.0, doc: "Reference"}
+  TR: {type: E, unit: "mrad", default: 0.0, doc: "Reference"}
+  ZR: {type: E, unit: "cm", default: 0.0, doc: "Reference"}
+  PR: {type: E, unit: "mrad", default: 0.0, doc: "Reference"}
+  SR: {type: E, unit: "cm", default: 0.0, doc: "Reference"}
+  DR: {type: E, unit: "", default: 0.0, doc: "Reference"}
+  TR: {type: E, unit: "us", default: 0.0, doc: "Reference"}
+  INITC: {type: I, unit: "", default: 0, doc: "0, set new R0 = R0 as read, new R = R as read 1, set new R0 = R as read, new R = R as read, 2 save R as read in new R0, set new R = R0 as read"}
+  FNAME: {type: A, unit: "", default: "", doc: "File name"}
+  ALPHA_Y: {type: E, unit: "", default: 0.0, doc: "Initial beam ellipse parameters"}
+  BETA_Y: {type: E, unit: "m", default: 0.0, doc: "Initial beam ellipse parameters"}
+  ALPHA_Z: {type: E, unit: "", default: 0.0, doc: "Initial beam ellipse parameters"}
+  BETA_Z: {type: E, unit: "m", default: 0.0, doc: "Initial beam ellipse parameters"}
+  ALPHA_S: {type: E, unit: "", default: 0.0, doc: "Initial beam ellipse parameters"}
+  BETA_S: {type: E, unit: "m", default: 0.0, doc: "Initial beam ellipse parameters"}
+  DY: {type: E, unit: "", default: 0.0, doc: "Initial beam ellipse parameters"}
+  DYP: {type: E, unit: "", default: 0.0, doc: "Initial beam ellipse parameters"}
+  DZ: {type: E, unit: "", default: 0.0, doc: "Initial beam ellipse parameters"}
+  DZP: {type: E, unit: "", default: 0.0, doc: "Initial beam ellipse parameters"}
+  EMIT_Y: {type: E, unit: "m", default: 0.0, doc: "Emittances"}
+  EMIT_Z: {type: E, unit: "m", default: 0.0, doc: "Emittances"}
+  EMIT_S: {type: E, unit: "m", default: 0.0, doc: "Emittances"}
+
+template:
+- - BORO
+  - KOBJ
+- - !!set {cond_section}
+
+conditional_sections:
+  cond_section:
+    - KOBJ
+    - 1:
+        - - IY
+          - IT
+          - IZ
+          - IP
+          - IS
+          - ID
+        - - DY
+          - DT
+          - DZ
+          - DP
+          - DS
+          - DD
+        - - YR
+          - TR
+          - ZR
+          - PR
+          - SR
+          - DR
+    - 2:
+        - - IMAX
+          - IDMAX
+    - 3:
+        - - [HEADER_NH]
+        - - IT1
+          - IT2
+          - ITSTEP
+        - - IP1
+          - IP2
+          - IPSTEP
+        - - YF
+          - TF
+          - ZF
+          - PF
+          - SF
+          - DF
+          - TF
+          - TAG
+        - - YR
+          - TR
+          - ZR
+          - PR
+          - SR
+          - DR
+        - - INITC
+        - - FNAME
+    - 5:
+        - - DY
+          - DT
+          - DZ
+          - DP
+          - DS
+          - DD
+        - - YR
+          - TR
+          - ZR
+          - PR
+          - SR
+          - DR
+        - - !!set {cond_section2}
+
+    - 6:
+        - - DY
+          - DT
+          - DZ
+          - DP
+          - DS
+          - DD
+        - - YR
+          - TR
+          - ZR
+          - PR
+          - SR
+          - DR
+
+    - 7:
+        - - IY
+          - IT
+          - IZ
+          - IP
+          - IS
+          - ID
+        - - DY
+          - DT
+          - DZ
+          - DP
+          - DS
+          - DD
+        - - YR
+          - TR
+          - ZR
+          - PR
+          - SR
+          - DR
+    - 8:
+        - - IY
+          - IT
+          - IZ
+          - IP
+          - IS
+          - ID
+        - - Y0
+          - T0
+          - Z0
+          - P0
+          - S0
+          - D0
+        - - ALPHA_Y
+          - BETA_Y
+          - EMIT_Y
+        - - ALPHA_Z
+          - BETA_Z
+          - EMIT_Z
+        - - ALPHA_S
+          - BETA_S
+          - EMIT_S
+
+  cond_section2:
+    - K2
+    - 1:
+        - - ALPHA_Y
+          - BETA_Y
+          - ALPHA_Z
+          - BETA_Z
+          - ALPHA_S
+          - BETA_S
+        - - DY
+          - DYP
+          - DZ
+          - DZP
+    - 2:
+        - -
+
+
+doc: |
+
+  Generation of an object
+
+  .. rubric:: Zgoubi manual description

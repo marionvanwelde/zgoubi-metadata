@@ -1,5 +1,6 @@
 zgoubi_name: SRPNT
 params:
+template:
 doc: |
 
   Print SR loss statistics into zgoubi.res

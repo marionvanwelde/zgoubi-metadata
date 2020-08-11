@@ -1,31 +1,33 @@
 zgoubi_name: TOSCA
 params:
-- {name: IC, type: I, default: 0, doc: ""}
-- {name: IL, type: I, default: 0, doc: ""}
-- {name: BNORM, type: E, unit: "", default: 0, doc: ""}
-- {name: XN, type: E, unit: "", default: 0, doc: ""}
-- {name: YN, type: E, unit: "", default: 0, doc: ""}
-- {name: ZN, type: E, unit: "", default: 0, doc: ""}
-- {name: TIT, type: A80, default: "", doc: ""}
-- {name: IX, type: I, default: 0, doc: ""}
-- {name: IY, type: I, default: 0, doc: ""}
-- {name: IZ, type: I, default: 0, doc: ""}
-- {name: MOD, type: I, default: 0, doc: ""}
-- {name: FNAME, type: A8000, default: "", doc: ""}
-- {name: ID, type: I, default: 0, doc: ""}
-- {name: A, type: E, unit: "", default: 0, doc: ""}
-- {name: B, type: E, unit: "", default: 0, doc: ""}
-- {name: C, type: E, unit: "", default: 0, doc: ""}
-- {name: IORDRE, type: I, default: 0, doc: ""}
-- {name: XPAS, type: X, default: 0, doc: ""}
-- {name: KPOS, type: I, default: 0, doc: ""}
-- {name: XCE, type: E, unit: "", default: 0, doc: ""}
-- {name: YCE, type: E, unit: "", default: 0, doc: ""}
-- {name: ALE, type: E, unit: "", default: 0, doc: ""}
-- {name: RE, type: E, unit: cm, default: 0, doc: ""}
-- {name: TE, type: E, unit: "", default: 0, doc: ""}
-- {name: RS, type: E, unit: cm, default: 0, doc: ""}
-- {name: TS, type: E, unit: "", default: 0, doc: ""}
+  IC: {type: I, unit: "", default: 0, doc: "Print the map"}
+  IL: {type: I, unit: "", default: 0, doc: "Print coordinates"}
+  BNORM: {type: E, unit: "", default: 0, doc: "Field unit conversion coefficients. Convert values as read from map file to kG"}
+  XN: {type: E, unit: "", default: 0, doc: "X-coordinates unit conversion coefficients. Convert values as read from map file to cm"}
+  YN: {type: E, unit: "", default: 0, doc: "Y-coordinates unit conversion coefficients. Convert values as read from map file to cm"}
+  ZN: {type: E, unit: "", default: 0, doc: "Z-coordinates unit conversion coefficients. Convert values as read from map file to cm"}
+  TITL: {type: A, unit: "",default: "", doc: "Title. Start with “FLIP” to get field map X-flipped."}
+  IX: {type: I, unit: "",default: 0, doc: "Number of nodes of the mesh in the X-direction"}
+  IY: {type: I, unit: "",default: 0, doc: "Number of nodes of the mesh in the Y-direction"}
+  IZ: {type: I, unit: "",default: 0, doc: "Number of nodes of the mesh in the Z-direction"}
+  MOD: {type: I, unit: "",default: 0, doc: "field map style"}
+  MOD2: {type: I, unit: "",default: 0, doc: "field map style"}
+  FNAME: {type: A, unit: "", default: "", doc: "Map file name(s), one line per name"}
+  ID: {type: I, unit: "", default: 0, doc: "Integration boundary. Ineffective when ID = 0"}
+  A: {type: E, unit: "", default: 0, doc: ""}
+  B: {type: E, unit: "", default: 0, doc: ""}
+  C: {type: E, unit: "", default: 0, doc: ""}
+  IORDRE: {type: I, unit: "", default: 0, doc: ""}
+  XPAS: {type: E, unit: 'mm', default: 1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 0, doc: "KPOS =1 : element aligned, 2 : misaligned"}
+  XCE: {type: E, unit: "", default: 0, doc: "X-Shift"}
+  YCE: {type: E, unit: "", default: 0, doc: "Y-Shift"}
+  ALE: {type: E, unit: "", default: 0, doc: "Tilt"}
+  RE: {type: E, unit: "cm", default:0.0, doc:"X-Shift"}
+  TE: {type: E, unit: "cm", default:0.0, doc:"Y-Shift"}
+  RS: {type: E, unit: "rad", default:0.0, doc:"Z-Rotation"}
+  TS: {type: E, unit: "cm", default:0.0, doc:"Z-Shift"}
+
 template:
 - - IC
   - IL
@@ -33,7 +35,7 @@ template:
   - XN
   - YN
   - ZN
-- - TIT
+- - TITL
 - - IX
   - IY
   - IZ
@@ -46,19 +48,24 @@ template:
 - - IORDRE
 - - XPAS
 - - KPOS
-- - cond_section
-cond_section:
-- key: KPOS
-  equals: 1
-  template:
-  - - XCE
-    - YCE
-    - ALE
-- key: KPOS
-  equals: 2
-  template:
-  - - RE
-    - TE
-    - RS
-    - TS
+- - !!set {cond_section}
+
+conditional_sections:
+  cond_section:
+    - MOD
+    - 19:
+        - XCE
+        - YCE
+        - ALE
+    - 20:
+        - !!set {cond_section2}
+
+  cond_section2:
+    - KPOS
+    - 2:
+      - RE
+      - TE
+      - RS
+      - TS
+
 doc: |

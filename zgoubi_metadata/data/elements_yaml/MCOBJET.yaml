@@ -1,0 +1,311 @@
+zgoubi_name: MCOBJET
+params:
+  BORO: {type: E, unit: "kG cm", default: 0.0, doc: "Reference rigidity"}
+  KOBJ: {type: I, unit: "", default: 0, doc: "Type of support of the random distribution. KOBJ= 1 : window; KOBJ= 2 : grid; KOBJ= 3 : phase-space ellipses"}
+  IMAX: {type: I, unit: "", default: 0, doc: "Number of particles to be generated"}
+  KY: {type: I, unit: "", default: 0, doc: "Type of probability density"}
+  KT: {type: I, unit: "", default: 0, doc: "Type of probability density"}
+  KX: {type: I, unit: "", default: 0, doc: "Type of probability density"}
+  KZ: {type: I, unit: "", default: 0, doc: "Type of probability density"}
+  KP: {type: I, unit: "", default: 0, doc: "Type of probability density"}
+  KX: {type: I, unit: "", default: 0, doc: "Type of probability density"}
+  KD: {type: I, unit: "", default: 0, doc: "Type of probability density"}
+  Y0: {type: E, unit: "m", default: 0.0, doc: "Mean value of coordinates"}
+  T0: {type: E, unit: "rad", default: 0.0, doc: "Mean value of coordinates"}
+  Z0: {type: E, unit: "m", default: 0.0, doc: "Mean value of coordinates"}
+  P0: {type: E, unit: "rad", default: 0.0, doc: "Mean value of coordinates"}
+  X0: {type: E, unit: "m", default: 0.0, doc: "Mean value of coordinates"}
+  D0: {type: E, unit: "", default: 0.0, doc: "Mean value of coordinates"}
+  DELTAY: {type: E, unit: "m", default: 0.0, doc: "Distribution widths, depending on KY , KT etc."}
+  DELTAT: {type: E, unit: "rad", default: 0.0, doc: "Distribution widths, depending on KY , KT etc."}
+  DELTAZ: {type: E, unit: "m", default: 0.0, doc: "Distribution widths, depending on KY , KT etc."}
+  DELTAP: {type: E, unit: "rad", default: 0.0, doc: "Distribution widths, depending on KY , KT etc."}
+  DELTAX: {type: E, unit: "m", default: 0.0, doc: "Distribution widths, depending on KY , KT etc."}
+  DELTAD: {type: E, unit: "", default: 0.0, doc: "Distribution widths, depending on KY , KT etc."}
+  NDELTAY: {type: E, unit: "m", default: 0.0, doc: "Sorting cut-offs (used only for Gaussian"}
+  NDELTAT: {type: E, unit: "rad", default: 0.0, doc: "Sorting cut-offs (used only for Gaussian"}
+  NDELTAZ: {type: E, unit: "m", default: 0.0, doc: "Sorting cut-offs (used only for Gaussian"}
+  NDELTAP: {type: E, unit: "rad", default: 0.0, doc: "Sorting cut-offs (used only for Gaussian"}
+  NDELTAX: {type: E, unit: "m", default: 0.0, doc: "Sorting cut-offs (used only for Gaussian"}
+  NDELTAD: {type: E, unit: "", default: 0.0, doc: "Sorting cut-offs (used only for Gaussian"}
+  N0: {type: E, unit: "", default: 0.0, doc: "Parameters involved in calculation of P(D)"}
+  NC0: {type: E, unit: "", default: 0.0, doc: "Parameters involved in calculation of P(D)"}
+  NC1: {type: E, unit: "", default: 0.0, doc: "Parameters involved in calculation of P(D)"}
+  NC2: {type: E, unit: "", default: 0.0, doc: "Parameters involved in calculation of P(D)"}
+  NC3: {type: E, unit: "", default: 0.0, doc: "Parameters involved in calculation of P(D)"}
+  IR0: {type: I, unit: "", default: 0, doc: "Random sequence seeds"}
+  IR1: {type: I, unit: "", default: 0, doc: "Random sequence seeds"}
+  IR2: {type: I, unit: "", default: 0, doc: "Random sequence seeds"}
+  IR3: {type: I, unit: "", default: 0, doc: "Random sequence seeds"}
+  IY: {type: I, unit: "", default: 0, doc: "Number of bars of the grid"}
+  IT: {type: I, unit: "", default: 0, doc: "Number of bars of the grid"}
+  IZ: {type: I, unit: "", default: 0, doc: "Number of bars of the grid"}
+  IP: {type: I, unit: "", default: 0, doc: "Number of bars of the grid"}
+  IX: {type: I, unit: "", default: 0, doc: "Number of bars of the grid"}
+  ID: {type: I, unit: "", default: 0, doc: "Number of bars of the grid"}
+  PY: {type: E, unit: "m", default: 0, doc: "Distance between bars"}
+  PT: {type: E, unit: "rad", default: 0, doc: "Distance between bars"}
+  PZ: {type: E, unit: "m", default: 0, doc: "Distance between bars"}
+  PP: {type: E, unit: "rad", default: 0, doc: "Distance between bars"}
+  PX: {type: E, unit: "m", default: 0, doc: "Distance between bars"}
+  PD: {type: E, unit: "", default: 0, doc: "Distance between bars"}
+
+
+template:
+- - BORO
+- - KOBJ
+- - IMAX
+- - KY
+  - KT
+  - KZ
+  - KP
+  - KX
+  - KD
+- - Y0
+  - T0
+  - Z0
+  - P0
+  - X0
+  - D0
+- - !!set {cond_section}
+- - IR1
+  - IR2
+  - IR3
+conditional_sections:
+  cond_section:
+    - KOBJ
+    - 1:
+        - - DELTAY
+          - DELTAT
+          - DELTAZ
+          - DELTAP
+          - DELTAX
+          - DELTAD
+        - - NDELTAY
+          - NDELTAT
+          - NDELTAZ
+          - NDELTAP
+          - NDELTAX
+          - NDELTAD
+        - - N0
+          - C0
+          - C1
+          - C2
+          - C3
+        - - IR1
+          - IR2
+          - IR3
+    - 2:
+        - - IY
+          - IT
+          - IZ
+          - IP
+          - IX
+          - ID
+        - - PY
+          - PT
+          - PZ
+          - PP
+          - PX
+          - PD
+        - - DELTAY
+          - DELTAT
+          - DELTAZ
+          - DELTAP
+          - DELTAX
+          - DELTAD
+        - - NDELTAY
+          - NDELTAT
+          - NDELTAZ
+          - NDELTAP
+          - NDELTAX
+          - NDELTAD
+        - - N0
+          - C0
+          - C1
+          - C2
+          - C3
+    - 3:
+        - - IY
+
+
+
+
+
+doc: |
+
+  Monte-Carlo generation of a 6-D object
+
+  .. rubric:: Zgoubi manual description
+
+  ``MCOBJET`` generates a set of ``IMAX`` random 6-D initial conditions (the maximum value for ``IMAX`` is
+  defined in the include file ’MAXTRA.H’). It can be used in conjunction with the keyword ``REBELOTE``
+  which either allows generating an arbitrarily high number of initial conditions, or, in the hypothesis of a
+  periodic structure, allows multi-turn tracking with initial conditions at pass number ``IPASS`` identified with
+  conditions at end of pass number ``IPASS − 1``.
+
+  The first datum in ``MCOBJET`` is the reference rigidity (a negative value is allowed)
+
+  .. math::
+
+      BORO = \frac{p_0}{q} (kG.cm)
+
+  Depending on the value of the next datum, ``KOBJ``, the ``IMAX`` particles have their initial random conditions
+  Y , T, Z, P, X and D (relative rigidity, :math:`B\rho /BORO`) generated on 3 different types of supports, as described
+  below.
+  Next come the data
+
+  .. math::
+
+      KY, KT, KZ, KP, KX, KD
+
+  that specify the type of probability density for the 6 coordinates.
+  KY, KT, KZ, KP, KX can take the following values :
+
+    1. Uniform density, :math:`p(x) = 1/2\delta x` if :math:`-\delta x \leq x \leq \delta x`, :math:`p(x) = 0` elsewhere.
+
+    2. Gaussian density, :math:`p(x) = \frac{1}{\delta x \sqrt{2\pi}} e^{-\frac{x^2}{2\delta x^2}}`
+
+    3. Parabolic density, :math:`p(x) = \frac{3}{4\delta x} (1-\frac{x^2}{2\delta x^2})` if :math:`-\delta x \leq x \leq \delta x`, :math:`p(x) = 0` elsewhere.
+
+  KD can take the following values :
+
+    1. Uniform density, :math:`p(D) = 1/2\delta D` if :math:`-\delta D \leq D \leq \delta D`, :math:`p(D) = 0` elsewhere.
+
+    2. Exponetial decay, :math:`p(D) = N_0 exp(C_0 + C_1 l + C_2 l^2 + C_3 l^3)` with :math:`0 D \leq l \leq 1` and :math:`-\delta D \leq D \leq \delta D`
+
+    3. :math:`p(D)` is determined by a kinematic relation, namely, with T = horizontal angle, :math:`D = \delta D \times T`.
+
+  Next come the central values for the random sorting,
+
+  .. math::
+
+      Y_0, T_0, Z_0, P_0, X_0, D_0
+
+  namely, the probability density laws :math:`p(x)(x = Y, T, Z, P or X)` and :math:`p(D)` described above apply to the
+  variables :math:`x-x_0 (\leq Y-Y_0, T-T_0, ...)` and :math:`D-D_0` respectively. Negative value for D0 is allowed (see
+  section 7.13, page 204).
+
+  * KOBJ = 1 : Random generation of IMAX particles in a hyper-window with widths (namely the half-extent
+    for uniform or parabolic distributions (KY,KT, ... = 1 or 3), and the r.m.s. width for Gaussian distributions
+    (KY,KT, ... = 2))
+
+    .. math::
+
+        \delta Y, \delta T, \delta Z, \delta P, \delta X, \delta D
+
+    Then follow the cut-off values, in units of the r.m.s. widths :math:`\delta Y, \delta T` ... (used only for Gaussian distributions,
+    KY,KT, ... = 2)
+
+    .. math::
+
+      N_{\delta Y}, N_{\delta T}, N_{\delta Z}, N_{\delta P}, N_{\delta X}, N_{\delta D}
+
+    The last data are parameters
+
+    .. math::
+
+      N_{0}, N_{\delta T}, C_{0}, C_{1}, C_{2}, C_{3}
+
+    needed for generation of the D coordinate upon option KD = 2 (unused if KD = 1, 3) and a set of three
+    integer seeds for initialization of random sequences,
+
+    .. math::
+
+      IR1, IR2, IR3 \text{(all 1e6)}
+
+    All particles generated by MCOBJET are tagged with a (non-S) character, for further statistic purposes
+    (e.g., with ``HISTO``, ``MCDESINT``).
+
+  * KOBJ = 2 : Random generation of IMAX = IY * IT * IZ * IP * IX * ID particles on a hyper-grid. The
+    input data are the number of bars in each coordinate
+
+    .. math::
+
+      IY, IT, IZ, IP, IX, ID
+
+    the spacing of the bars
+
+    .. math::
+
+      PY, PT, PZ, PP, PX, PD
+
+    the width of each bar
+
+    .. math::
+
+      \delta Y, \delta T, \delta Z, \delta P, \delta X, \delta D
+
+    the cut-offs, used with Gaussian densities (in units of the r.m.s. widths)
+
+    .. math::
+
+      N_{\delta Y}, N_{\delta T}, N_{\delta Z}, N_{\delta P}, N_{\delta X}, N_{\delta D}
+
+    This is illustrated in Fig 7.
+    The last two sets of data in this option are the parameters
+
+    .. math::
+
+      N_{0}, C_{0}, C_{1}, C_{2}, C_{3}
+
+    needed for generation of the D coordinate upon option KD= 2 (unused if KD= 1, 3) and a set of three
+    integer seeds for initialization of random sequences, IR1, IR2, and IR3 (all ≃ 106).
+    All particles generated by ``MCOBJET`` are tagged with a (non-S) character, for further statistic purposes (see
+    ``HISTO`` and ``MCDESINT``).
+
+    * KOBJ = 3 : Distribution of IMAX particles in a 6-D ellipsoid (with possible momentum correlation via
+      dispersion) defined by the three sets of data (one set per 2-D phase-space)
+
+      .. math::
+
+        \begin{align}
+
+          \alpha_Y, \beta_Y, \frac{\varepsilon_Y}{\pi}, N_{\varepsilon _Y}, \left[ , N'_{\varepsilon Y}, \text{ if } N_{\varepsilon _Y} < 0 \right] \left[ , D_Y, D_T\right]
+          \alpha_Z, \beta_Z, \frac{\varepsilon_Z}{\pi}, N_{\varepsilon _Z}, \left[ , N'_{\varepsilon Z}, \text{ if } N_{\varepsilon _Z} < 0 \right] \left[ , D_Z, D_P\right]
+          \alpha_X, \beta_X, \frac{\varepsilon_X}{\pi}, N_{\varepsilon _X}, \left[ , N'_{\varepsilon X}, \text{ if } N_{\varepsilon _X} < 0 \right]
+
+        \end{align}
+
+      where :math: `\alpha_{X,Y,Z},\beta_{X,Y,Z}, D_{Y,T}, D_{Z, P}` are the ellipse parameters and the dispersions and derivatives, :math: `\epsilon_{X,Y,Z/\pi}
+      are the rms emittances. This defines for each plane an elliptical frontier
+
+      .. math::
+
+        \begin{align}
+
+          \frac{1 + \alpha_Y^2}{ \beta_Y} Y^2 + 2\alpha_Y Y T + \beta_Y T^2 &= \varepsilon_Y / \pi \\
+          \frac{1 + \alpha_Z^2}{ \beta_Z} Z^2 + 2\alpha_Z Z P + \beta_Z P^2 &= \varepsilon_Z / \pi \\
+          \frac{1 + \alpha_l^2}{ \beta_l} l^2 + 2\alpha_l l \delta + \beta_l \delta^2 &= \varepsilon_l / \pi
+
+        \end{align}
+
+      with l the bunch length variable (unit is cm) and :math:`\delta` a short notation for :math:`\delta p / p`, momentum spread.
+      Sorting cut-offs :math:`N_{\varepsilon_Y}` , :math:`N_{\varepsilon_Z}` and :math:`N_{\varepsilon_X}` are accounted for if distributions
+      are Gaussian (KY,KT, ... = 2) ; in this case rms values are
+
+      .. math::
+
+        \begin{align}
+
+          \sigma_Y = \sqrt{\beta_Y \times \varepsilon_Y /\pi} \text{ and } \sigma_T = \sqrt{\gamma_Y \times \varepsilon_Y /\pi} \\
+          \sigma_Z = \sqrt{\beta_Z \times \varepsilon_Z /\pi} \text{ and } \sigma_P = \sqrt{\gamma_Z \times \varepsilon_Z /\pi} \\
+          \sigma_l = \sqrt{\beta_l \times \varepsilon_l /\pi} \text{ (bunch length in cm) and } \sigma_\delta = \sqrt{\gamma_l \times \varepsilon_l /\pi} \text{ momentum spread }
+
+        \end{align}
+
+        For uniform sorting, the distribution extends over the intervals, for respectively the radial, axial and longitudinal distribution,
+
+        .. math::
+
+          \begin{align}
+
+            \pm \sqrt{\varepsilon_Y / \pi \times \beta_Y} \text{ and } \sqrt{\beta_Y \times \varepsilon_Y /\pi} \text{ and } \pm \sqrt{\varepsilon_Y / \pi \times \gamma_Y} \\
+            \pm \sqrt{\varepsilon_Z / \pi \times \beta_Z} \text{ and } \sqrt{\beta_Z \times \varepsilon_Z /\pi} \text{ and } \pm \sqrt{\varepsilon_Z / \pi \times \gamma_Z} \\
+            \pm \sqrt{\varepsilon_l / \pi \times \beta_l} \text{ and } \sqrt{\beta_l \times \varepsilon_l /\pi} \text{ and } \pm \sqrt{\varepsilon_l / \pi \times \gamma_l}
+
+          \end{align}
+
+      *   :math:`N_{\varepsilon}` may be negative. The meaning of this is for the sorting to fill up an elliptical ring that extends from
+          :math:`\vert N_{\varepsilon} \vert` to :math:`\vert N_{\varepsilon}'' \vert` (rather than the inner region determined by
+          the :math:`N_{\varepsilon}` cut-off as discussed above, when :math:`N_{\varepsilon}` > 0).

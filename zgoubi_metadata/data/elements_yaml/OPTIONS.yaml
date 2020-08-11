@@ -1,0 +1,37 @@
+zgoubi_name: OPTIONS
+params:
+  IOPT: {type: I, unit: "", default: 0, doc: "IOPT = 0/1 : Off/On ; 0 (off) will inhibit all NBOP subsequent 0-1, ≥ 0 2*I requests"}
+  NBOP: {type: I, unit: "", default: 0, doc: "NBOP : total number of options"}
+template:
+- - [IOPT, NBOP]
+doc: |
+
+  Global or special options
+
+  .. rubric:: Zgoubi manual description
+
+  ``OPTIONS`` allows on/off switching of various options.
+  Available, for now :
+
+  * ``WRITE ON`` or ``OFF``
+
+  Role : inhibit (most of) write statements to zgoubi.res.
+  Interest : ``WRITE OFF`` may allow substantial savings on CPU time. ``WRITE ON`` sets back to
+  normal (the ’normal’ state of write outs may depend on the status of other commands, such as ``REBELOTE``,
+  on-going FIT[2], etc.).
+
+  * ``CONSTY ON`` or ``OFF``
+
+  Role : force to constant Y and Z coordinates during stepwise integration.
+  This allows for instance checking fields, or fabricating field maps from zgoubi’s analytical models of
+  optical elements, as follows.
+
+  Concurrent use of with IL = 1, 2, or 7 (cf. Sec. 7.6, p. 200) will allow logging ~B and/or ~E field(s)
+  (and their derivatives) experienced across optical elements, in zgoubi.res, zgoubi.plt or zgoubi.impdev.out
+  respectively.
+  As a consequence, forcing Y and Z to constant values, using ``CONSTY ON``, allows checking of fields
+  (and derivatives) at constantY and Z, as determined byOBJET, across (individual or short series of) optical
+  elements. This may be helpful when setting up input data in zgoubi. It can be for instance of great help in
+  case of complex geometrical and field data inputs, as in ``DIPOLES``, ``FFAG``.
+  Initial coordinates are set in a very regular manner using ``OBJET``. The ``Y`` coordinate will stand for the radius
+  value in the case of optical elements defined in polar coordinates (e.g., ``DIPOLES``, polar field maps, etc.).

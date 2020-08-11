@@ -1,26 +1,26 @@
 zgoubi_name: POLARMES
 params:
-- {name: IC, type: I, default: 0, doc: ""}
-- {name: IL, type: I, default: 0, doc: ""}
-- {name: BNORM, type: E, unit: "", default: 0, doc: ""}
-- {name: AN, type: E, unit: "", default: 0, doc: ""}
-- {name: RN, type: E, unit: "", default: 0, doc: ""}
-- {name: TITL, type: A80, default: "", doc: ""}
-- {name: IA, type: I, default: 0, doc: ""}
-- {name: JR, type: I, default: 0, doc: ""}
-- {name: FNAME, type: A80, default: "", doc: ""}
-- {name: ID, type: I, default: 0, doc: ""}
-- {name: A, type: E, unit: "", default: 0, doc: ""}
-- {name: B, type: E, unit: "", default: 0, doc: ""}
-- {name: C, type: E, unit: "", default: 0, doc: ""}
-- {name: IORDRE, type: I, default: 0, doc: ""}
-- {name: XPAS, type: E, unit: cm, default: 0, doc: ""}
-- {name: KPOS, type: I, default: 0, doc: ""}
-- {name: RE, type: E, unit: cm, default: 0, doc: ""}
-- {name: TE, type: E, unit: "", default: 0, doc: ""}
-- {name: RS, type: E, unit: cm, default: 0, doc: ""}
-- {name: TS, type: E, unit: "", default: 0, doc: ""}
-- {name: DP, type: E, unit: "", default: 0, doc: ""}
+  IC: {type: I, unit="", default: 0, doc: "Print the field map"}
+  IL: {type: I, unit="", default: 0, doc: ""}
+  BNORM: {type: E, unit="", default: 0., doc: "Field conversion coeffs"}
+  AN: {type: E, unit="", default: 0., doc: "A-unit conversion coeffs"}
+  RN: {type: E, unit="", default: 0., doc: "R-unit conversion coeffs"}
+  TITL: {type: A, unit="", default: '', doc: "Title. Start with “FLIP” to get field map X-flipped."}
+  IA: {type: I, unit="", default: 0.0, doc: "Number of angular nodes of the mesh"}
+  JR: {type: I, unit="", default: 0.0, doc: "Number of radial nodes of the mesh"}
+  FNAME: {type: A, unit="", default: '', doc: "File name"}
+  ID: {type: I, unit="", default: '', doc: "Integration boundary "}
+  A: {}
+  B: {}
+  C: {}
+  IORDRE: {type: I, unit="", default: 2, doc: "Degree of polynomial interpolation (see DIPOLE-M)"}
+  XPAS: {type: E, unit="", default: 0, doc: "Integration step"}
+  KPOS: {type: I, unit="", default: 0, doc: "As for DIPOLE-M. Normally 2."}
+  RE: { type: E, unit: cm, default: 0, doc: ""}
+  TE: { type: E, unit: "", default: 0, doc: ""}
+  RS: { type: E, unit: cm, default: 0, doc: ""}
+  TS: { type: E, unit: "", default: 0, doc: ""}
+  DP: { type: E, unit: "", default: 0, doc: ""}
 template:
 - - IC
   - IL
@@ -38,17 +38,23 @@ template:
 - - IORDRE
 - - XPAS
 - - KPOS
-- - cond_section
-cond_section:
-- key: KPOS
-  equals: 2
-  template:
-  - - RE
-    - TE
-    - RS
-    - TS
-- key: KPOS
-  equals: 1
-  template:
-  - - DP
+- !!set {cond_section}
+conditional_sections:
+  cond_section:
+    - KPOS
+    - 1:
+        - - DP
+      2:
+        - - RE
+          - TE
+        - - RS
+          - TS
 doc: |
+
+  2-D polar mesh magnetic field map
+
+  .. rubric:: Zgoubi manual description
+
+  Similar to ``CARTEMES``, apart from the polar mesh frame : ``IX`` is the number of angular nodes,
+  ``JY`` the number of radial nodes ; X(I) and Y (J) are respectively the angle and radius of a node (these
+  parameters are similar to those entering in the definition of the field map in ``DIPOLE-M``).

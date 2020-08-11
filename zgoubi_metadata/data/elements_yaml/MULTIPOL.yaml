@@ -59,7 +59,7 @@ params:
   R8: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
   R9: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
   R10: {type: E, unit: "rad", default: 0, doc: "Skew angle of field components"}
-  XPAS: {type: E, unit: "", unit: "", unit: 'mm', default: 1, doc: "Integration step"}
+  XPAS: {type: E, unit: 'mm', default: 1, doc: "Integration step"}
   KPOS: {type: I, unit: "", default: 0, doc: "KPOS =1 : element aligned, 2 : misaligned"}
   XCE: {type: E, unit: "", default: 0, doc: "X-Shift"}
   YCE: {type: E, unit: "", default: 0, doc: "Y-Shift"}

@@ -1,10 +1,11 @@
 zgoubi_name: PARTICUL
 params:
-- {name: M, type: E, unit: "", default: 0, doc: ""}
-- {name: Q, type: E, unit: "", default: 0, doc: ""}
-- {name: G, type: E, unit: "", default: 0, doc: ""}
-- {name: tau, type: E, unit: "", default: 0, doc: ""}
-- {name: X, type: E, unit: "", default: 0, doc: ""}
+M: {type: E, unit: "MeV_c2", default: 0, doc: "Mass"}
+Q: {type: E, unit: "C", default: 0, doc: "Charge"}
+G: {type: E, unit: "", default: 0, doc: "Gyromagnetic factor"}
+tau: {type: E, unit: "s", default: 0, doc: "COM life-time"}
+X: {type: E, unit: "", default: 0, doc: "UNUSED"}
+NAME: {type: A, unit="", default: 0, doc: "ELECTRON, POSITRON, MUON+, MUON-, PION+, PION-, PROTON, DEUTERON, HELION"}
 template:
 - - M
   - Q
@@ -12,3 +13,35 @@ template:
   - tau
   - X
 doc: |
+
+  Particle characteristics
+
+  .. rubric:: Zgoubi manual description
+
+  Since zgoubi works using the rigidity, (``BORO``, as declared in ``[MC]OBJET``), the keyword ``PARTICUL`` is
+  in general not necessary.
+  However, it needs be introduced (normally, following ``[MC]OBJET`` in the input data file zgoubi.dat)
+  when the definition of some characteristics of the particles (such as mass, charge, gyromagnetic factor,
+  life-time in the center of mass) is needed, as is the case when using the following procedures :
+    ``CAVITE`` : mass, charge
+    ``MCDESINT`` : mass, COM life-time
+    ``SPNTRK`` : mass, gyromagnetic factor
+    ``SRLOSS`` : mass, charge
+    ``SYNRAD`` : mass, charge
+    Electric and Electro-Magnetic elements : mass, charge
+
+    The declaration of ``PARTICUL`` must precede these keywords. If ``PARTICUL`` is omitted, which is in general the case
+    when ray-tracing ions in purely magnetic optical assemblies, then zgoubi only knows the particle rigidity and would
+    thus skip the computation of such quantities as time of flight, spin precession, synchrotron radiation, etc.
+    The expected attributes under ``PARTICUL`` are mass, charge, gyromagnetic factor, life-time.
+    On the other hand, particle name can be substituted to that parameter list. Known particles are:
+      ``ELECTRON``
+      ``POSITRON``
+      ``MUON+``
+      ``MUON``
+      ``PION+``
+      ``PION``
+      ``PROTON``
+      ``HELION``
+      ``DEUTERON``
+      Actual particle parameters are found listed in zgoubi.res when using ``PARTICUL``. They may also be found in rparti.f.
