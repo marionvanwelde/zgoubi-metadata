@@ -1,0 +1,35 @@
+zgoubi_name: SRLOSS
+params:
+  KSR: {type: I, unit:"", default: 0, doc:"On/off switch"}
+  I: {type: I, unit:"", default: 0, doc: "I = 1 for info output into zgoubi.SRLOSS.Out"}
+  PRINT: {type: A, unit:"", default: "", doc: "Optional, PRINT, anywhere beyond KSR: has the same effect as i = 1"}
+  KSOK: {type: I, unit:"", default: 0, doc: "Under development: Sokolov-Ternov switch optional (1/0 for on/off, default is off)."}
+  STR1: {type: A, unit:"", default: "", doc: "Apply SR loss to STR1 = ’ALL’ or ’all’ or a particular KEYWORD"}
+  LBLST: {type: [A], unit:"", default: "", doc: "a list of up to 5 labels to which this applies"}
+  STR2: {type: A, unit:"", default: "", doc: "Optional : STR2 = ’scale’ will scale fields following energy loss"}
+  LIST: {type: [A], unit:"", default: "", doc: "List : a list of up to 10 keywords to which this scaling applies"}
+  OPTION: {type: I, unit:"", default: 0, doc: "Option = 0 or 1 SR causes dp only Option = 2 SR causes both dp and angle kick (under development)."}
+  SEED: {type: I, unit:"", default: 0, doc: ""}
+
+template:
+  - - [KSR ,I, PRINT, KSOK]
+  - - [STR1, LBLST, STR2, LIST]
+  - - OPTION
+    - SEED
+
+doc: |
+
+  Synchrotron radiation energy loss
+
+  .. rubric:: Zgoubi manual description
+
+
+  The keyword ``SRLOSS`` allows activating or stopping (option ``KSR`` = 1, 0 respectively) stepwise tracking
+  of energy loss by stochastic emission of photons in magnetic fields, following the method described in section 3.1[20].
+  It can be chosen to allow radiation in the sole dipole fields, or in all types of fields regardless of their
+  multipole composition. It can also be chosen to allow for the radiation induced transverse kick (this is yet
+  to be installed in the code - not done as it is generally considered a negligible effect).
+  ``SRLOSS`` must be preceded by ``PARTICUL`` for defining mass and charge values as they enter in the definition
+  of ``SR`` parameters.
+  Statistics on ``SR`` parameters are computed and updated while tracking, the results of which can be obtained
+  by means of the keyword ``SRPRNT``.
