@@ -1,0 +1,63 @@
+zgoubi_name: CYCLOTRON
+params:
+template:
+doc: |
+  Spiral sector cyclotron
+
+  .. rubric:: Zgoubi manual description
+
+  ``CYCLOTRON` provides a model of a spiral sector dipole field [31, Appendix C, p. 149] [32]. The source code has
+   been derived from ``FFAG-SPI``, thus there is many similarities in their capabilities and operation.
+   The field along the particle’s trajectory is computed as the particle motion proceeds, by using the magnet’s
+   geometrical boundaries: At any position (R,θ) along the particle trajectory (see Fig 17), the value of the
+   vertical component of the mid-plane field is calculated using:
+
+  .. math::
+
+  B_Z (R, θ) = B_{norm} × F (R, θ) × R(R)
+
+
+  • :math:`R(R)= B_0 + B_1 × R + B_2 × R^2 + B_3 × R^3 + B_4 × R^4`,
+  • :math:`B_{norm}` is a normalization coefficient,
+  • F(R, θ) is the fringe field coefficient, given by (after Enge’s fringe model):
+
+  .. math ::
+
+  F(R,θ) = F_{entr}(R,θ) × F_{exit}(R,θ) = \frac{1}{1 + exp(P_{entr}(d_{entr}))}×\frac{1}{1 + exp(P_{exit}(d_{exit}))}
+
+  where
+
+  .. math ::
+
+  P(d) = C_0+ C_1 (\frac{d}{g})+ C_2 (\frac{d}{g})^2+ C_3 (\frac{d}{g})^3+ C_4 (\frac{d}{g})^4+ C_5 (\frac{d}{g})^5
+
+  and d is the distance from the Effective Field Boundary (EFB) either at the entrance or at the exit of
+  the magnet (:math:`d_{entr} and d_{exit} as shown in Fig 17)
+
+  The EFBs are modelled by a logarithmic spiral for which the angle ξ is allowed to increase radially, namely:
+
+  .. math ::
+
+  r = r_0 × exp(\frac{θ+ω}{tan ξ(r)}  (6.3.14)
+
+  where :math:`ξ(r)=ξ_0 +ξ_1 ×r + ξ_2 × r^2 + ξ_3 × r^3`, θ is the azimuthal angle (origin θ=0) and ω is a parameter
+  used to position the EFB with respect to the azimuthal position θ=0.
+  In this model, the magnet gap is also allowed to vary: g is given as a function of the radius by:
+
+  .. math ::
+
+  g(r) = g_0 + g_1 × r + g_2 × r^2 (6.3.15)
+
+  The field is then extrapolated off median plane by means of Taylor series: for that, the median plane antisymmetry
+  is assumed and the Maxwell equations are accommodated.
+
+  Note that ``CYCLOTRON`` allows the overlapping of 5 such dipole fields. This follows the method described in [46].
+  In the case of a cyclotron machine, the isochronicity is a crucial point: Because the revolution time has to be
+  constant (:math:`f_{rev} = \frac{qB}{2πγm_0}`), this implies that the radial dependence of the field must be
+  proportional to γ, so that :math:`R(\bar{R}) ∝ γ(\bar{R})`, where R is the average radius of the orbit.
+  Since :math:`f_{rev} = \frac{v}{C}, where C is the path length of the particle for one closed orbit, one obtains,
+  with a good approximation, that :math:'R ∝ β`. Thus,
+
+  .. math ::
+
+  R(R) \approx \frac{1}{\sqrt{1-(\frac{R}{R_0})^2}}

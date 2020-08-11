@@ -1,34 +1,34 @@
 zgoubi_name: BEND
 params:
-  IL: {type: I, default: 0, doc: ""}
-  XL: {type: E, unit: 'cm', default: 0, doc: ""}
-  Sk: {type: E, unit: "", default: 0, doc: ""}
-  B1: {type: E, unit: "", default: 0, doc: ""}
-  X_E: {type: E, unit: "", default: 0, doc: ""}
-  LAM_E: {type: E, unit: "", default: 0, doc: ""}
-  W_E: {type: E, unit: "", default: 0, doc: ""}
-  N: {type: I, default: 0, doc: ""}
-  C_0: {type: E, unit: "", default: 0, doc: ""}
-  C_1: {type: E, unit: "", default: 0, doc: ""}
-  C_2: {type: E, unit: "", default: 0, doc: ""}
-  C_3: {type: E, unit: "", default: 0, doc: ""}
-  C_4: {type: E, unit: "", default: 0, doc: ""}
-  C_5: {type: E, unit: "", default: 0, doc: ""}
-  X_S: {type: E, unit: "", default: 0, doc: ""}
-  LAM_S: {type: E, unit: "", default: 0, doc: ""}
-  W_S: {type: E, unit: "", default: 0, doc: ""}
-  NS: {type: I, default: 0, doc: ""}
-  CS_0: {type: E, unit: "", default: 0, doc: ""}
-  CS_1: {type: E, unit: "", default: 0, doc: ""}
-  CS_2: {type: E, unit: "", default: 0, doc: ""}
-  CS_3: {type: E, unit: "", default: 0, doc: ""}
-  CS_4: {type: E, unit: "", default: 0, doc: ""}
-  CS_5: {type: E, unit: "", default: 0, doc: ""}
-  XPAS: {type: X, default: 0, doc: ""}
-  KPOS: {type: I, default: 0, doc: ""}
-  XCE: {type: E, unit: "", default: 0, doc: ""}
-  YCE: {type: E, unit: "", default: 0, doc: ""}
-  ALE: {type: E, unit: "", default: 0, doc: ""}
+  IL: {type: I, unit: "", default: 0, doc: "Print field and coordinates along trajectories"}
+  XL: {type: E, unit: 'cm', default: 0.0, doc: "Magnet length (straight reference frame)"}
+  Sk: {type: E, unit: "radian", default: 0.0, doc: "Skew angle"}
+  B1: {type: E, unit: "kilogauss", default: 0.0, doc: "Dipole field"}
+  X_E: {type: E, unit: "centimeter", default: 0.0, doc: "Integration zone extension (entrance face)"}
+  LAM_E: {type: E, unit: "centimeter", default: 0.0, doc: "Fringe field extension (entrance face)"}
+  W_E: {type: E, unit: "radian", default: 0.0, doc: "Wedge angle (entrance face)"}
+  NE: {type: I, unit: "", default: 6, doc: "Unused"}
+  C0_E: {type: E, unit: "", default: 0.0, doc: "Entrance fringe field coefficient C0"}
+  C1_E: {type: E, unit: "", default: 1.0, doc: "Entrance fringe field coefficient C1"}
+  C2_E: {type: E, unit: "", default: 0.0, doc: "Entrance fringe field coefficient C2"}
+  C3_E: {type: E, unit: "", default: 0.0, doc: "Entrance fringe field coefficient C3"}
+  C4_E: {type: E, unit: "", default: 0.0, doc: "Entrance fringe field coefficient C4"}
+  C5_E: {type: E, unit: "", default: 0.0, doc: "Entrance fringe field coefficient C5"}
+  X_S: {type: E, unit: "centimeter", default: 0.0, doc: "Integration zone extension (exit face)"}
+  LAM_S: {type: E, unit: "centimeter", default: 0.0, doc: "Fringe field extension (exit face)"}
+  W_S: {type: E, unit: "radian", default: 0.0, doc: "Wedge angle (exit face)"}
+  NS: {type: I, unit: "", default: 6, doc: "Unused"}
+  C0_S: {type: E, unit: "", default: 0.0, doc: "Exit fringe field coefficient C0"}
+  C1_S: {type: E, unit: "", default: 1.0, doc: "Exit fringe field coefficient C1"}
+  C2_S: {type: E, unit: "", default: 0.0, doc: "Exit fringe field coefficient C2"}
+  C3_S: {type: E, unit: "", default: 0.0, doc: "Exit fringe field coefficient C3"}
+  C4_S: {type: E, unit: "", default: 0.0, doc: "Exit fringe field coefficient C4"}
+  C5_S: {type: E, unit: "", default: 0.0, doc: "Exit fringe field coefficient C5"}
+  XPAS: {type: E, unit: "centimeter",default: 1.0, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 2, doc: "Alignment parameter"}
+  XCE: {type: E, unit: "centimeter", default: 0.0, doc: "X shift"}
+  YCE: {type: E, unit: "centimeter", default: 0.0, doc: "Y shift"}
+  ALE: {type: E, unit: "radian", default: 0.0, doc: "Tilt"}
 template:
 - - IL
 - - XL
@@ -37,26 +37,69 @@ template:
 - - X_E
   - LAM_E
   - W_E
-- - N
-  - C_0
-  - C_1
-  - C_2
-  - C_3
-  - C_4
-  - C_5
+- - NE
+  - C0_E
+  - C1_E
+  - C2_E
+  - C3_E
+  - C4_E
+  - C5_E
 - - X_S
   - LAM_S
   - W_S
 - - NS
-  - CS_0
-  - CS_1
-  - CS_2
-  - CS_3
-  - CS_4
-  - CS_5
+  - C0_S
+  - C1_S
+  - C2_S
+  - C3_S
+  - C4_S
+  - C5_S
 - - XPAS
 - - KPOS
   - XCE
   - YCE
   - ALE
 doc: |
+  Bending magnet, Cartesian frame.
+
+  .. note:: This is mostly a **sector bend** element defined in cartesian coordinates.
+
+  .. rubric:: Zgoubi manual description
+
+  ``BEND`` is one of several keywords available for the simulation of dipole magnets. It presents the interest of
+  easy handling, and is well adapted for the simulation of synchrotron dipoles and such other regular dipoles as
+  sector magnets with wedge angles.
+
+  The field in ``BEND`` is defined in a Cartesian coordinate frame (unlike for instance ``DIPOLE``[S] that uses a
+  polar frame). As a consequence, having particle coordinates at entrance or exit of the magnet referring to the
+  curved main direction of motion may require using KPOS, in particular KPOS=3 (in a circular accelerator cell for
+  instance, see section 7.9, p. 201).
+
+  The dipole simulation accounts for the magnet geometrical length XL, for a possible skew angle (X-rotation, useful
+  for obtaining vertical deviation magnet), and for the field B1 such that in absence of fringe field the  deviation
+  θ satisfies :math:`XL = 2 \frac{BORO}{B1} sin(θ/2).
+
+  Then follows the description of the entrance and exit EFBs and fringe fields. The wedge angles :math:`W_E`(entrance)
+  and :math:`W_S` (exit) are defined with respect to the sector angle, with the signs as described in Fig. 12.
+  Within a distance :math:`± X_E` :math:`(±X_S)` on both sides of the entrance (exit) EFB, the fringe field model is
+  used (same as for ``QUADRUPO``, Fig. 35, p. 129) ; elsewhere, the field is supposed to be uniform.
+
+  If :math:`λ_E` (resp. :math:`λ_S) is zero sharp edge field model is assumed at entrance (resp. exit) of the magnet
+  and :math:`X_E` (resp. :math:`X_S`) is forced to zero. In this case, the wedge angle vertical first order focusing
+  effect (if \vec{B1} is non zero) is simulated at magnet entrance and exit by a kick
+  :math:`P_2 = P_1 − Z_1 tan(ε/ρ)` applied to each particle (:math:`P_1`, :math:`P_2` are the vertical angles
+  upstream and downstream the EFB, :math:`Z1` the vertical particle position at the EFB, ρ the local horizontal
+  bending radius and ε the wedge angle experienced by the particle ; ε depends on the horizontal angle T).
+
+  Magnet (mis-)alignment is assured by KPOS. KPOS also allows some degrees of automatic alignment useful for periodic
+  structures (section 7.9).
+
+  *From matrice-style code modeling, to zgoubi:*
+   Fig. 13 illustrates the conversion of matrix method style of data where the magnet is defined by its length and
+   deviation angle (see MAD input below, using ’SBEND’), to zgoubi input data using ``BEND`` (in this particular case
+   of an illustration of a rectangular magnet, ``MULTIPOL`` could be used, as well).
+
+  *Negative bend, vertical bend, tricks:*
+  Use ``YMY`` for the former, ``TRAROT`` with a ±π X-rotation for the latter. The two can be combined, so that a
+  vertical negative bend can be represented by the sequence TRAROT[π], YMY, BEND[B>0], YMY, TRAROT[−π], with
+  positionning methods for ``BEND`` as dis- cussed above (Fig. 13) still applying.
