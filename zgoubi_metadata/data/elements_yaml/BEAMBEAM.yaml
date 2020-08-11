@@ -1,5 +1,4 @@
 zgoubi_name: BEAMBEAM
-{type: E, unit: "", default: 0.0, doc: ""}
 params:
   SW: {type: I, unit: "", default: 0, doc: "0/1 : off/on"}
   I: {type: E, unit: "ampere", default: 0.0, doc: "beam intensity"}
