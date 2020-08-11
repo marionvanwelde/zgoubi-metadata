@@ -1,0 +1,50 @@
+zgoubi_name: BEAMBEAM
+{type: E, unit: "", default: 0.0, doc: ""}
+params:
+  SW: {type: I, unit: "", default: 0, doc: "0/1 : off/on"}
+  I: {type: E, unit: "ampere", default: 0.0, doc: "beam intensity"}
+  ALPHA_Y: {type: E, unit: "", default: 0.0, doc: "Horizontal beam parameters"}
+  BETA_Y: {type: E, unit: "m", default: 0.0, doc: "Horizontal beam parameters"}
+  EPSILON_Y: {type: E, unit: "m*radian", default: 0.0, doc: "Horizontal beam parameters : (EPSILON_Y,norm)/pi"}
+  ALPHA_Z: {type: E, unit: "", default: 0.0, doc: "Vertical beam parameters"}
+  BETA_Z: {type: E, unit: "m", default: 0.0, doc: "Vertical beam parameters"}
+  EPSILON_Z: ({type: E, unit: "m*radian", default: 0.0, doc: "Vertical beam parameters (EPSILON_Z,norm)/pi"}
+  SIGMA_X: {type: E, unit: "m", default: 0.0, doc: "rms bunch length"}
+  SIGMA_DP: {type: E, unit: "", default: 0.0, doc: "rms momentum spread"}
+  C: {type: E, unit: "m", default: 0.0, doc: "Ring circumference"}
+  ALPHA: {type: E, unit: "", default: 0.0, doc: "momentum compaction"}
+  QY: {type: E, unit: "", default: 0.0, doc: "Horizontal tune"}
+  QZ: {type: E, unit: "", default: 0.0, doc: "Vertical tune"}
+  QS: {type: E, unit: "", default: 0.0, doc: "Synchrotron tune"}
+  AY: {type: E, unit: "", default: 0.0, doc: "Horizontal amplitude"}
+  AZ: {type: E, unit: "", default: 0.0, doc: "Vertical amplitude"}
+  AX: {type: E, unit: "", default: 0.0, doc: "Longitudinal amplitude"}
+template:
+- - SW
+  - I
+- - ALPHA_Y
+  - BETA_Y
+  - EPSILON_Y
+- - ALPHA_Z
+  - BETA_Z
+  - EPSILON_Z
+- - SIGMA_X
+  - SIGMA_DP
+- - C
+  - ALPHA
+- - QY
+  - QZ
+  - QS
+- - AY
+  - AZ
+  - AS
+doc: |
+  Beam-beam lens.
+
+  .. rubric:: Zgoubi manual description
+
+  ``BEAMBEAM`` is a beam-beam lens simulation, a thin-lens transform [43], in the weak-strong approximation.
+  Upon option using SPNTRK, ``BEAMBEAM`` will include spin kicks, after modelling as described in Ref. [44].
+
+  *For software developers*
+  rbb.f reads the data from zgoubi.dat; bb.f and programs therein do the beam (and spin when requested) dynamics.

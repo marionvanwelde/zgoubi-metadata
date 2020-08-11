@@ -1,0 +1,67 @@
+zgoubi_name: CIBLE
+params:
+  M1: {type: E, unit: "MeV_c2", default: 0, doc: "Target incident particle mass"}
+  M2: {type: E, unit: "MeV_c2", default: 0, doc: "Scattered particle mass"}
+  M3: {type: E, unit: "MeV_c2", default: 0, doc: "Scattered particle mass"}
+  Q: {type: E, unit: "MeV_c2", default: 0, doc: "Q of the reaction"}
+  T2: {type: E, unit: "MeV_c2", default: 0, doc: "Incident particle kinetic energy"}
+  THETA: {type: E, unit: "deg", default: 0, doc: "Scattering angle"}
+  BETA: {type: E, unit: "deg", default: 0, doc: "Angle of the target"}
+  NT: {type: I, unit: "", default: 0, doc: "Number of samples in T after CIBLE"}
+  NP: {type: I, unit: "", default: 0, doc: "Number of samples in P after CIBLE"}
+  TS: {type: E, unit: "mrad", default: 0, doc: "Sampling size"}
+  PS: {type: E, unit: "mrad", default: 0, doc: "Sampling size"}
+  DT: {type: E, unit: "mrad", default: 0, doc: "Tilt angle"}
+  BORO: {type: E, unit: "kG cm", default: 0, doc: "New reference rigidity after CIBLE"}
+
+template:
+  - - M1
+    - M2
+    - M3
+    - Q
+  - - T2
+    - THETA
+    - BETA
+  - - NT
+    - NP
+  - - TS
+    - PS
+    - DT
+  - - BORO
+
+doc: |
+
+  Generate a secondary beam following target interaction
+
+  .. rubric:: Zgoubi manual description
+
+  The reaction is 1 + 2 -> 3 + 4 with the following parameters
+
+      Laboratory momentum :math:`p_1 \equiv 0`; :math:`p_2`; :math:`p_3`; :math:`p_4`;
+
+      Rest mass :math:`M_1`; :math:`M_2`; :math:`M_3`; :math:`M_4`;
+
+      Total energy in laboratory :math:`M_1c^2`; :math:`W_2`; :math:`W_3`; :math:`W_4`;
+
+  The geometry of the interaction is shown in Fig. 16.
+  The angular sampling at the exit of the target consists of the NT coordinates 0, :math:`\pm TS`,
+  :math:`\pm 2 \times TS` ... :math:`\pm (NT-1) \times TS/2` in the median plane,
+  and the NP coordinates 0, :math:`\pm PS`, :math:`\pm 2 \times PS` ... :math:`\pm (NT-1) \times PS/2` in the
+  vertical plane.
+
+  The position of B downstream is deduced from that of A upstream by a transformation equivalent to two
+  transformations using ``CHANGREF``, namely
+    ``CHANGREF`` (XCE = Y CE = 0, ALE = :math:`\beta`)
+  followed by
+    ``CHANGREF`` (XCE = Y CE = 0, ALE = :math:`\theta - \beta`).
+
+  Particle 4 is discarded, while particle 3 continues. The energy loss Q is related to the variable mass M4 by
+  :math:`Q = M_1 + M_2 -(M_3 + M_4)` and :math:`dQ = -dM_4`
+  The momentum sampling of particle 3 is derived from conservation of energy and momentum, according to
+
+  ..math::
+
+    \begin{align}
+      M_1 c^2 + W_2 &= W_3 + W_4 \\
+      p_4^2 &= p_2^2 + p_3^2 - 2p_2p_3cos(\theta - T) \\
+    \end{align}
