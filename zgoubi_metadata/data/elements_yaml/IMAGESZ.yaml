@@ -1,0 +1,10 @@
+zgoubi_name: IMAGESZ
+params:
+template:
+doc: |
+  Localization and size of vertical waists.
+
+  .. rubric:: Zgoubi manual description
+
+  Similar to IMAGES, but the calculations are performed with respect to the vertical coordinates
+  :math:`Z_i` and :math:`P_i`, in place of :math:`Y_i` and :math:`T_i`.

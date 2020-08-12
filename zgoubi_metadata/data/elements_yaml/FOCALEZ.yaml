@@ -1,0 +1,12 @@
+zgoubi_name: FOCALEZ
+params:
+  XL: {type: E, unit: "centimeter", default: 0.0, doc: "Distance from the location of the keyword."}
+template:
+- - XL
+doc: |
+  Particle coordinates and vertical beam size at distance XL.
+
+  .. rubric:: Zgoubi manual description
+
+  Similar to ``FOCALE``, but the calculations are performed with respect to the vertical coordinates
+  :math:`Z_i` and :math:`P_i`, in place of :math:`Y_i` and :math:`T_i`.

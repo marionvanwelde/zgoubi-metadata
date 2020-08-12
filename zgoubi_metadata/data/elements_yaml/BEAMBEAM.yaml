@@ -7,7 +7,7 @@ params:
   EPSILON_Y: {type: E, unit: "m*radian", default: 0.0, doc: "Horizontal beam parameters : (EPSILON_Y,norm)/pi"}
   ALPHA_Z: {type: E, unit: "", default: 0.0, doc: "Vertical beam parameters"}
   BETA_Z: {type: E, unit: "m", default: 0.0, doc: "Vertical beam parameters"}
-  EPSILON_Z: ({type: E, unit: "m*radian", default: 0.0, doc: "Vertical beam parameters (EPSILON_Z,norm)/pi"}
+  EPSILON_Z: {type: E, unit: "m*radian", default: 0.0, doc: "Vertical beam parameters (EPSILON_Z,norm)/pi"}
   SIGMA_X: {type: E, unit: "m", default: 0.0, doc: "rms bunch length"}
   SIGMA_DP: {type: E, unit: "", default: 0.0, doc: "rms momentum spread"}
   C: {type: E, unit: "m", default: 0.0, doc: "Ring circumference"}
