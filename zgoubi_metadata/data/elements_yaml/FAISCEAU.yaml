@@ -1,3 +1,14 @@
 zgoubi_name: FAISCEAU
 params:
+template:
 doc: |
+  Print particle coordinates.
+
+  .. rubric:: Zgoubi manual description
+
+  Print particle coordinates at the location where the keyword is introduced in the structure.
+  If first label is ’FORCE’, will force printout when normally inhibited (e.g., during FIT, or REBELOTE).
+
+  ``FAISCEAU`` can be introduced anywhere in a structure data list (zgoubi.dat). It produces a print
+  (into zgoubi.res) of initial and actual coordinates of the IMAX particles at the location where it stands,
+  together tagging indices and letters, etc.

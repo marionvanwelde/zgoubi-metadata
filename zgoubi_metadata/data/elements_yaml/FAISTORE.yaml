@@ -1,10 +1,39 @@
 zgoubi_name: FAISTORE
 params:
-- {name: FNAME, type: A80, default: "", doc: ""}
-- {name: LABELS, type: A1000, default: "", doc: ""}
-- {name: IP, type: I, default: 0, doc: ""}
+  FNAME: {type: X, unit: "", default: "zgoubi.fai", doc: "Storage file name"}
+  LABELS: {type: X, unit: "", default: "ALL", doc: "Label(s) of the element(s) at the exit of which the storage occurs (10 labels maximum)."}
+  IP: {type: I, unit: "", default: 0, doc: "Store every IP other pass (when using REBELOTE with NPASS ≥ IP − 1)."}
 template:
 - - FNAME
   - LABELS
 - - IP
 doc: |
+  Store coordinates at labeled elements.
+
+  .. rubric:: Zgoubi manual description
+
+  Store coordinates every IP other pass at labeled elements.
+
+  If either FNAME or first LABEL is ’none’ then no storage occurs. Store occurs at all elements if first LABEL is
+  ’all’ or ’ALL’.
+
+  ``FAISTORE`` has an effect similar to ``FAISCNL``, with more features.
+
+      - On the first data line, FNAME may be followed by a series of up to 10 LABELs. If there is no label, the print
+        occurs by default at the location of ``FAISTORE`` ; if there are labels the print occurs right downstream of
+        all optical elements wearing those labels (and no longer at the FAISTORE location).
+
+      - The next data line gives a parameter, IP : printing will occur at pass 1 and then at every IP other pass,
+        if using REBELOTE with NPASS ≥ IP − 1.
+
+  *Case of Binary storage:* it can be obtained from ``FAISCNL`` and ``FAISTORE``. This is for the sake of compactness
+  and access speed, for instance in case voluminous amounts of data would have to be manipulated using zpop.
+  This is achieved by giving the storage file a name of the form b FNAME or B FNAME (e.g., ‘b zgoubi.fai’).
+  The FORTRAN WRITE list is the same as in the FORMATTED case above.
+  This is compatible with the READ statements in zpop that will recognize binary storage from that very radical ’b ’
+  or ’B ’.
+
+  *Case of FIT[2] procedure :* it may not be desired to store during the FITting process, but instead only when the
+  FITtinig is completed. It is sufficient for that to (i) put ’AtFITfinal’ as the first label following FAISTORE
+  keyword, this will inhibit all storage until the final run following a FIT procedure, and (ii) avoid using the
+  ’nofinal’ instruction in FIT[2] (see p. 156)).
