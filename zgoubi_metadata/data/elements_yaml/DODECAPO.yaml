@@ -22,11 +22,11 @@ params:
   C3_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C3"}
   C4_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C4"}
   C5_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C5"}
-  XPAS: {type: E, unit: "centimeter", default: 0.0, doc: "Integration step"}
+  XPAS: {type: E, unit: "centimeter", default: 1.0, doc: "Integration step"}
   KPOS: {type: I, unit: "", default: 0.0, doc: "Alignment parameter: 1 (element aligned) or 2 (misaligned)"}
   XCE: {type: E, unit: "centimeter", default: 0.0, doc: "X shift"}
   YCE: {type: E, unit: "centimeter", default: 0.0, doc: "Y shift"}
-  ALE: {type: E, unit: "radian", default: 0.0, doc: "Magnet color for plotting"}
+  ALE: {type: E, unit: "radian", default: 0.0, doc: "Tilt"}
 template:
 - - IL
 - - XL

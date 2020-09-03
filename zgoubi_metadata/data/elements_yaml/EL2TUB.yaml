@@ -1,0 +1,48 @@
+zgoubi_name: EL2TUB
+
+params:
+  IL: {type: I, unit: "", default: 0, doc: 'Print field and coordinates along trajectories'}
+  X1: {type: E, unit: "meter", default: 0.0, doc: 'Length of first tube'}
+  D: {type: E, unit: "meter", default: 0.0, doc: 'distance between tubes'}
+  X2: {type: E, unit: "meter", default: 0.0, doc: 'length of second tube'}
+  R0: {type: E, unit: "centimeter", default: 0.0, doc: 'inner radius'}
+  V1: {type: E, unit: "volt", default: 0.0, doc: 'Potential'}
+  V2: {type: E, unit: "volt", default: 0.0, doc: 'Potential'}
+  XPAS: {type: E, unit: "centimeter", default: 1.0, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 0.0, doc: "Alignment parameter: 1 (element aligned) or 2 (misaligned)"}
+  XCE: {type: E, unit: "centimeter", default: 0.0, doc: "X shift"}
+  YCE: {type: E, unit: "centimeter", default: 0.0, doc: "Y shift"}
+  ALE: {type: E, unit: "radian", default: 0.0, doc: "Tilt"}
+
+template:
+- - IL
+- - X1
+  - D
+  - X2
+  - R0
+- - V1
+  - V2
+- - XPAS
+- - KPOS
+  - XCE
+  - YCE
+  - ALE
+
+doc: |
+  Two-tube electrostatic lens.
+
+  The lens is cylindrically symmetric about the X-axis.
+  The length and potential of the first (resp. second) electrode are X1 and V1 (X2 and V2). The distance between the
+  two electrodes is D, and their inner radius is :math:`R_0` (Fig. 26). The model for the electrostatic potential
+  along the axis is [50]
+
+  .. math::
+
+  V(X) = \frac{V_2 − V_1}{2} th{ωx􏰊}{R_0}(+\frac{V_1 + V_2}{2}) \quad if D = 0
+  V(X) = \frac{V_2 − V_1}{2} \frac{1}{2ωD/R_0} ln \frac{ch ω \frac{x+D}{R_0}}{ch ω \frac{x-D}{R_0}}(+\frac{V_1 + V_2}{2}) \quad if D \ne 0
+
+  (x = distance from half-way between the electrodes ; ω = 1.318 ; th = hyperbolic tangent ; ch = hyperbolic cosine)
+  from which the field :math:`\vec{E}(X, Y, Z)` and its derivatives are derived following the procedure described in
+  section 1.3.1 (note that they don’t depend on the constant term 􏰊 :math:`\frac{V_1 + V_2}{2}` which disappears when
+  differentiating).
+  Use ``PARTICUL`` prior to ``EL2TUB``, for the definition of particle mass and charge.
