@@ -1,0 +1,18 @@
+zgoubi_name: GASCAT
+params:
+  KGA: {type: I, unit: "", default: 0, doc: "Off/On switch"}
+  AI: {type: E, unit: "", default: 0.0, doc: "Atomic number"}
+  DEN: {type: E, unit: "", default: 0.0, doc: "density"}
+
+template:
+- - KGA
+- - AI
+  - DEN
+
+doc: |
+  Gas scattering.
+
+  Modification of particle momentum and velocity vector, performed at each integration step, under the effect of
+  scattering by residual gas.
+
+  .. note:: Implementation is to be completed in Zgoubi.

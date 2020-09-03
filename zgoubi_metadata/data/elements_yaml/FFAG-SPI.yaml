@@ -1,0 +1,187 @@
+zgoubi_name: FFAG-SPI
+params:
+  IL: {type: I, unit: "", default: 2, doc: "Print field and coordinates along trajectories"}
+  N: {type: I, unit: "", default: 1, doc: "Number of dipoles in the FFAG n-tuple (maximum 5)"}
+  AT: {type: E, unit: "degree", default: 0.0, doc: "Total angular extent of the N dipoles"}
+  RM: {type: E, unit: "centimeter", default: 0.0, doc: "Reference radius: mean radius used for the positioning of field boundaries"}
+  KIRD: {type: I, unit: "", default: 2, doc: "Analytical computation (KIRD = 0) or numerical interpolation (KIRD = 2,4, 25) of field derivatives"}
+  RESOL: {type: E, unit: "", default: 2, doc: ""}
+  XPAS: {type: E, unit: "centimeter", default: 0.1, doc: "Integration step"}
+  KPOS: {type: I, unit: "", default: 2, doc: "KPOS = 2 for FFA-SPI"}
+  RE: {type: E, unit: "centimeter", default: 0.0, doc: "Radius of reference at entrance of the magnet"}
+  TE: {type: E, unit: "radian", default: 0.0, doc: "Angle of reference at entrance of the magnet"}
+  RS: {type: E, unit: "centimeter", default: 0.0, doc: "Radius of reference at exit of the magnet"}
+  TS: {type: E, unit: "radian", default: 0.0, doc: "Angle of reference at exit of the magnet"}
+
+template:
+- - IL
+- - N
+  - AT
+  - RM
+- - !!set {subelement1}
+- - KIRD
+  - RESOL
+- - XPAS
+- - KPOS
+- - RE
+  - TE
+  - RS
+  - TS
+
+subelements:
+  subelement1:
+    params:
+      ACN: {type: E, unit: "degree", default: 0.0, doc: "Azimuth for dipole positioning"}
+      DRM: {type: E, unit: "centimeter", default: 0.0, doc: "Reference radius offset of each dipole : RM_i  = RM + DRM"}
+      BZ0: {type: E, unit: "kilogauss", default: 0.0, doc: "Field at the reference radius of each dipole"}
+      K: {type: E, unit: "", default: 0.0, doc: "Field index for each dipole"}
+      G0_E: {type: E, unit: "centimeter", default: 10.0, doc: "Reference gaps for the entrance fringe fields of each dipole"}
+      K_E: {type: E, unit: "", default: 0.0, doc: "Fringe field parameter kappa"}
+      NCE: {type: I, unit: "", default: 6, doc: "UNUSED"}
+      C0_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C0"}
+      C1_E: {type: E, unit: "", default: 1.0, doc: "Fringe field coefficient C1"}
+      C2_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C2"}
+      C3_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C3"}
+      C4_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C4"}
+      C5_E: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C5"}
+      SHIFT_E: {type: E, unit: "centimeter", default: 0.0, doc: "Shift of the EFB"}
+      OMEGA_E: {type: E, unit: "degree", default: 0.0, doc: "Azimuth of an EFB with respect to ACN"}
+      XI_E: {type: E, unit: "degree", default: 0.0, doc: "Spiral angle"}
+      U1_E: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      U2_E: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      U3_E: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      U4_E: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      G0_S: {type: E, unit: "centimeter", default: 10.0, doc: "Reference gaps for the exit fringe fields of each dipole."}
+      K_S: {type: E, unit: "", default: 0.0, doc: "Fringe field parameter kappa"}
+      NCS: {type: I, unit: "", default: 6, doc: "UNUSED"}
+      C0_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C0"}
+      C1_S: {type: E, unit: "", default: 1.0, doc: "Fringe field coefficient C1"}
+      C2_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C2"}
+      C3_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C3"}
+      C4_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C4"}
+      C5_S: {type: E, unit: "", default: 0.0, doc: "Fringe field coefficient C5"}
+      SHIFT_S: {type: E, unit: "centimeter", default: 0.0, doc: "Shift of the EFB"}
+      OMEGA_S: {type: E, unit: "degree", default: 0.0, doc: "Azimuth of an EFB with respect to ACN"}
+      XI_S: {type: E, unit: "degree", default: 0.0, doc: "Spiral angle"}
+      U1_S: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      U2_S: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      U3_S: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      U4_S: {type: E, unit: "", default: 0.0, doc: "UNUSED"}
+      G0_L: {type: E, unit: "centimeter", default: 0.0, doc: "UNUSED Reference gaps for the lateral fringe fields of each dipole."}
+      K_L: {type: E, unit: "", default: -1, doc: "UNUSED Fringe field parameter kappa"}
+      NCL: {type: I, unit: "", default: 6, doc: "UNUSED"}
+      C0_L: {type: E, unit: "", default: 0.0, doc: "UNUSED Fringe field coefficient C0"}
+      C1_L: {type: E, unit: "", default: 0.0, doc: "UNUSED Fringe field coefficient C1"}
+      C2_L: {type: E, unit: "", default: 0.0, doc: "UNUSED Fringe field coefficient C2"}
+      C3_L: {type: E, unit: "", default: 0.0, doc: "UNUSED Fringe field coefficient C3"}
+      C4_L: {type: E, unit: "", default: 0.0, doc: "UNUSED Fringe field coefficient C4"}
+      C5_L: {type: E, unit: "", default: 0.0, doc: "UNUSED Fringe field coefficient C5"}
+      SHIFT_L: {type: E, unit: "centimeter", default: 0.0, doc: "UNUSED  Shift of the EFB"}
+      OMEGA_L: {type: E, unit: "degree", default: 0.0, doc: "UNUSED"}
+      THETA_L: {type: E, unit: "degree", default: 0.0, doc: "UNUSED Entrance face wedge angle"}
+      R1_L: {type: E, unit: "centimeter", default: 1e9, doc: "UNUSED Lateral EFB radius"}
+      U1_L: {type: E, unit: centimeter"", default: 1e9, doc: "UNUSED Lateral EFB linear extent"}
+      U2_L: {type: E, unit: "centimeter", default: 1e9, doc: "UNUSED Lateral EFB linear extent"}
+      R2_L: {type: E, unit: "centimeter", default: 1e9, doc: "UNUSED Lateral EFB radius"}
+
+    template:
+    - - ACN
+      - DRM
+      - BZ0
+      - K
+    - - G0_E
+      - K_E
+    - - NCE
+      - C0_E
+      - C1_E
+      - C2_E
+      - C3_E
+      - C4_E
+      - C5_E
+      - SHIFT_E
+    - - OMEGA_E
+      - XI_E
+      - U1_E
+      - U2_E
+      - U3_E
+      - U4_E
+    - - G0_S
+      - K_S
+    - - NCS
+      - C0_S
+      - C1_S
+      - C2_S
+      - C3_S
+      - C4_S
+      - C5_S
+      - SHIFT_S
+    - - OMEGA_S
+      - XI_S
+      - U1_S
+      - U2_S
+      - U3_S
+      - U4_S
+    - - G0_L
+      - K_L
+    - - NCL
+      - C0_L
+      - C1_L
+      - C2_L
+      - C3_L
+      - C4_L
+      - C5_L
+      - SHIFT_L
+    - - OMEGA_L
+      - THETA_L
+      - R1_L
+      - U1_L
+      - U2_L
+      - R2_L
+
+doc: |
+  Spiral FFAG magnet, N-tuple.
+
+  .. rubric:: Zgoubi manual description
+
+  ``FFAG-SPI`` works much like ``FFAG`` as to the field modelling, with essentially a different axial dependence.
+  The ``FFAG-SPI`` procedure allows overlapping of fringe fields of neighboring dipoles, thus simulating in some sort
+  the field in a dipole N-tuple (similar to Fig. 31, page 137).
+  This allows for instance accounting for fringe field effects, or clamps, as schemed in Fig. 32.
+
+  The dimensioning of the magnet is defined by :
+
+      - AT : total angular aperture
+      - RM : mean radius used for the positioning of field boundaries
+
+  For each one of the N = 1 to (maximum) 5 dipoles of the N-tuple, the two effective field boundaries
+  (entrance and exit EFBs) from which the dipole field is drawn are defined from geometric boundaries,
+  the shape and position of which are determined by the following parameters:
+
+      - :math:`ACN_i` : arbitrary inner angle, used for EFBs positioning
+      - ω : azimuth of an EFB with respect to ACN
+      - ξ : spiral angle
+
+  with :math:`ACN_i` and ω as defined in Fig. 32 (similar to what can be found in Figs. 31 and 11-A).
+
+  *Calculation of the Field From a Single Dipole*
+
+  The magnetic field is calculated in polar coordinates. At all (R, θ) in the median plane (Z = 0),
+  the magnetic field due a single one (index i) of the dipoles of a N-tuple spiral FFAG magnet is written
+  $$B_{Z_i}(R, θ) = B_{Z_{0,i}} F_i(R, θ) (R/RM )^{K_i}$$
+  wherein :math:`B_{Z_{0,i}}` is a reference field, at reference radius :math:`RM_i`, whereas :math:`F(R,θ)` is
+  calculated as described below.
+
+  *Calculation of* :math:`F_i(R, θ)`
+
+  The fringe field coefficient :math:`F_i(R, θ)` associated with a dipole is computed as in the procedure ``DIPOLES``
+  (eq. 6.4.16), including radial dependence of the gap size :
+  $$g(R) = g_0 (RM/R)^κ$$
+  so to simulate the effect of gap shaping on :math:`B_{Z_i}(R,θ)|_R` field fall-off, over the all radial extent of
+  the dipole (with normally - yet not necessarily in practice - κ ≈ Ki).
+
+
+  *Calculation of the Full Field From All N Dipoles*
+
+  For the rest, namely calculation of the full field at particle position, as resulting from the N dipoles,
+  calculation of the mid-plane field derivatives, extrapolation off median plane, etc.,
+  things are performed in the same manner as for the ``DIPOLES`` procedure (see page 125).
